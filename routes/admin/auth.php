@@ -33,7 +33,6 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
 
     // admin user management
-    Route::get('user-management',[WebSocialLinkController::class,'userManagement'])->name('user.management');
     Route::get('user-delete/{id}',[WebSocialLinkController::class,'userDelete'])->name('user.delete');
 
 
