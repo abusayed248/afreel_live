@@ -8,7 +8,7 @@
 
                     </div>
 
-                    <h1 class="title pb-2 ">Explorez plus de <spen class="bc">7840+iuiuiui</spen> Jobs</h1>
+                    <h1 class="title pb-2 ">Explorez plus de <spen class="bc">7840+</spen> Jobs</h1>
                    
                     <p class="title_p ptc">Votre avenir commence ici, découvrez des opportunités sans limites avec notre large éventail de catégories</p>
                 </div>
