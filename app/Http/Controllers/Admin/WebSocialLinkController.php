@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\WebSocialLink;
 
 class WebSocialLinkController extends Controller
@@ -25,5 +26,11 @@ class WebSocialLinkController extends Controller
         ]);
         toastr()->success('', 'Social links updated successfully!');
         return redirect()->back();
+    }
+
+    // user management
+    public function userManagement() {
+        $users = User::latest()->get();
+        return view('admin.user.index', compact('users'));
     }
 }
