@@ -8,11 +8,11 @@ use App\Mail\WelcomeMail;
 use App\Models\SocialMedia;
 use App\Models\Verifytoken;
 use Illuminate\Http\Request;
+use App\Models\PaymentRequest;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Auth;
-use App\Models\PaymentRequest;
 
 class DashboardController extends Controller
 {
@@ -20,7 +20,7 @@ class DashboardController extends Controller
     //profile dashboard
     public function userDashboard()
     {
-       $this->buyerOnly();
+        $this->buyerOnly();
         $get_user = User::where('email', auth()->user()->email)->first();
         $job_posts = Post::where('user_id', auth()->user()->id)->get();
         if ($get_user->is_activated == 1) {
@@ -38,23 +38,31 @@ class DashboardController extends Controller
 
     public function useractivation(Request $request)
     {
-        $verifycoursetoken = $request->token;
-        $verifycoursetoken = Verifytoken::where('token', $verifycoursetoken)->first();
-        if ($verifycoursetoken) {
-            $verifycoursetoken->is_activated = 1;
-            $verifycoursetoken->save();
-            $user = User::where('email', $verifycoursetoken->email)->first();
+
+        $userId = intval($request->user);
+        $user = User::where('id', $userId)->first();
+
+        if ($user->otp_code == $request->token) {
             $user->is_activated = 1;
+            $user->otp_code = null;
             $user->save();
-            $getting_token = Verifytoken::where('token', $verifycoursetoken->token)->first();
-            $getting_token->delete();
             toastr()->success('', 'Email verified successfully!');
+            Auth::login($user);
             return redirect()->to('/');
         } else {
-            toastr()->success('', 'Your OTP is invalid please check your email OTP first');
-            return redirect('/verify-account');
+            toastr()->error('', 'Your OTP is invalid please check your email OTP first');
+            return redirect('/verify-otp/' . $user->id);
         }
     }
+
+    public function verifyOtpByUser(Request $request, $id)
+    {
+
+        $user = User::query()->where('id', $id)->first();
+        return view('otp_verification', compact('user'));
+    }
+
+
 
     public function verifyAccount(Request $request)
     {
@@ -77,11 +85,11 @@ class DashboardController extends Controller
     //candidate details
     public function candidateDetails(Request $request)
     {
-           if(Auth::user()->is_active == 1){
+        if (Auth::user()->is_active == 1) {
             $user = $request->user();
             $socialMedia = SocialMedia::first();
-             return view('user.profile.candidate-detail', compact('user', 'socialMedia'));
-        }else{
+            return view('user.profile.candidate-detail', compact('user', 'socialMedia'));
+        } else {
 
             return redirect()->route('verifyAccount');
         }
@@ -92,7 +100,7 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
-        $data = PaymentRequest::where('seller_id',$user->id)->where('type','seller')->latest()->get();
+        $data = PaymentRequest::where('seller_id', $user->id)->where('type', 'seller')->latest()->get();
 
         return view('user.profile.withdraw', compact('data'));
     }
@@ -123,6 +131,5 @@ class DashboardController extends Controller
 
 
         return redirect(route('user.withdraw'));
-
     }
 }
