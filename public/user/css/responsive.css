@@ -1,0 +1,19 @@
+@media (max-width: 403px) {
+    .recet_job_con .recet_job_title_div {
+        padding: 10px 0px;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .side_nav .collapse:not(.show) {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-expand-lg .navbar-toggler {
+        display: none !important;
+    }
+}
