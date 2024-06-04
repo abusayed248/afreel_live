@@ -194,11 +194,11 @@
                                 </div>
                                 <select class="form-select w-100" name="career_level">
                                     <option selected disabled selected>Sélectionnez-en un</option>
-                                    <option {{ old('career_level')=='Beggin s' ?'selected':'' }} value="Beggin's">
-                                        Beggin's</option>
-                                    <option {{ old('career_level')=='moyen' ?'selected':'' }} value="moyen ">moyen
+                                    <option {{ old('career_level')=='Débutant' ?'selected':'' }} value="Débutant">
+                                        Débutant</option>
+                                    <option {{ old('career_level')=='Intermédiaire' ?'selected':'' }} value="Intermédiaire ">Intermédiaire
                                     </option>
-                                    <option {{ old('career_level')=='experte' ?'selected':'' }} value="experte ">experte
+                                    <option {{ old('career_level')=='Expert' ?'selected':'' }} value="Expert ">Expert
                                     </option>
                                 </select>
 

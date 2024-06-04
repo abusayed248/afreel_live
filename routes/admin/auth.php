@@ -32,7 +32,8 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('website-social-links/update/{id}',[WebSocialLinkController::class,'update'])->name('update.social.links');
 
 
-
+    // admin user management
+    Route::post('user-management',[WebSocialLinkController::class,'userManagement'])->name('user.management');
 
 
 

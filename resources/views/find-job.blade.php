@@ -663,26 +663,26 @@
                                         aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <div class="form-check">
-                                                <input class="form-check-input" @isset($Beggins){{ $Beggins ? 'checked' : '' }} @endisset type="checkbox" value="Beggin's"
+                                                <input class="form-check-input" @isset($Débutant){{ $Débutant ? 'checked' : '' }} @endisset type="checkbox" value="Débutant"
                                                     name="career_level[]" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">
-                                                    Beggin's
+                                                    Débutant
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" @isset($moyen){{ $moyen ? 'checked'
-                                                    : '' }} @endisset type="checkbox" value="moyen"
+                                                <input class="form-check-input" @isset($Intermédiaire){{ $Intermédiaire ? 'checked'
+                                                    : '' }} @endisset type="checkbox" value="Intermédiaire"
                                                     name="career_level[]" id="flexCheckChecked">
                                                 <label class="form-check-label" for="flexCheckChecked">
-                                                    moyen
+                                                    Intermédiaire
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" @isset($experte){{
-                                                    $experte ? 'checked' : '' }} @endisset value="experte"
+                                                <input class="form-check-input" type="checkbox" @isset($Expert){{
+                                                    $Expert ? 'checked' : '' }} @endisset value="Expert"
                                                     name="career_level[]" id="flexCheckChecked">
                                                 <label class="form-check-label" for="flexCheckChecked">
-                                                    experte
+                                                    Expert
                                                 </label>
                                             </div>
                                         </div>
