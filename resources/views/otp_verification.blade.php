@@ -70,6 +70,7 @@
                         <input type="number" name="token" class="form-control" placeholder="Entrez OTP">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3 w-100 post_btn">Soumettre</button>
+                    <button type="button" class="btn btn-primary mt-3 w-100 post_btn">Vous n’avez pas reçu? Renvoyer</button>
                 </form>
             </div>
         </div>
