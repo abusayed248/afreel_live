@@ -29,12 +29,9 @@ class WebSocialLinkController extends Controller
     }
 
     // user management
-    public function userManagement() {
-        $users = User::latest()->get();
-        return view('admin.user.index', compact('users'));
-    }
+    
     public function userDelete($id) {
-        $users = User::whereId($id)->delete();
+        User::whereId($id)->delete();
         toastr()->success('', 'User deleted successfully!');
         return redirect()->back();
     }

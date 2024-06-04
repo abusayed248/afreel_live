@@ -25,7 +25,7 @@
             <div class="container">
                 <div class="row mt-3">
                     <div class="col-md-4">
-                        <div class="recet_job_con">
+                        <div class="recet_job_con mt-3">
                             <h4 class="p-3">Filtre de recherche</h4>
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">

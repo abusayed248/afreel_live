@@ -15,11 +15,6 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Website Social Links
                 </a>
-
-                <a class="nav-link" href="{{ route('admin.user.management') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    User Management
-                </a>
                 
             </div>
         </div>
