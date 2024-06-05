@@ -73,11 +73,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Entrez OTP</label>
-                        <input type="hidden" name="user" value="{{ auth()->user()->id }}" class="form-control" placeholder="Entrez OTP">
+                        <input type="hidden" name="user" value="{{ $user->id }}" class="form-control" placeholder="Entrez OTP">
                         <input type="number" name="token" class="form-control" placeholder="Entrez OTP">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3 w-100 post_btn">Soumettre</button>
-                    <button type="button" class="btn btn-primary mt-3 w-100 post_btn">Vous n’avez pas reçu? Renvoyer</button>
+                    <a href="{{ route('resend-otp', $user->id) }}" class="btn btn-primary mt-3 w-100 post_btn">Vous n’avez pas reçu? Renvoyer</a>
                 </form>
             </div>
         </div>

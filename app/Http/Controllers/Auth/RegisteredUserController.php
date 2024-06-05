@@ -70,20 +70,14 @@ class RegisteredUserController extends Controller
 
         $user->save();
 
+        Verifytoken::create([
+            'token'=> $validToken,
+            'email'=> $request->email,
+        ]);
 
-        Log::info("valid token is" . $validToken);
-        $get_token = new Verifytoken();
-        $get_token->token =  $validToken;
-        $get_token->email =  $request->email;
-        $get_token->save();
         $get_user_email = $request->email;
         $get_user_name = $request->username;
         Mail::to($request->email)->send(new WelcomeMail($get_user_email, $validToken, $get_user_name));
-
-
-
-        event(new Registered($user));
-
 
         return redirect('/verify-otp/' . $user->id);
     }

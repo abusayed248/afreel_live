@@ -57,10 +57,30 @@ class DashboardController extends Controller
 
     public function verifyOtpByUser(Request $request, $id)
     {
-
         $user = User::query()->where('id', $id)->first();
         return view('otp_verification', compact('user'));
     }
+
+    //resend otp
+    public function resendOtp($id)
+    {
+        $user = User::query()->where('id', $id)->first();
+        $validToken = rand(10, 100. . '2024');
+        $user->otp_code = $validToken;
+        $user->save();
+        Verifytoken::where($user->token)->update([
+            'token' => $validToken
+        ]);
+
+        $get_user_email = $user->email;
+        $get_user_name = $user->username;
+        Mail::to($user->email)->send(new WelcomeMail($get_user_email, $validToken, $get_user_name));
+
+        toastr()->success('', 'Resend OTP please check your email OTP first');
+        return redirect()->back();
+    }
+
+
 
 
 

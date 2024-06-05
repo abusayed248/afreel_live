@@ -7,7 +7,7 @@
     <title>Laravel Email Verification with OTP</title>
 </head>
 <body>
-    <h1>Thanks for register with us !</h1>
+    <h1 style="color: rgb(199, 76, 76)">Thanks for register with us !</h1>
     <p>{{ $get_user_name}}</p>
     <p>{{ $validToken}}</p>
 </body>
