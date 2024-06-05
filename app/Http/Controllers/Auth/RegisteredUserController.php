@@ -76,7 +76,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $get_user_email = $request->email;
-        $get_user_name = $request->username;
+        $get_user_name = $request->fullname;
         Mail::to($request->email)->send(new WelcomeMail($get_user_email, $validToken, $get_user_name));
 
         return redirect('/verify-otp/' . $user->id);
