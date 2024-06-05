@@ -73,7 +73,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Entrez OTP</label>
-                        <input type="hidden" name="user" value="{{ $user->id }}" class="form-control" placeholder="Entrez OTP">
+                        <input type="hidden" name="user" value="{{ auth()->user()->id }}" class="form-control" placeholder="Entrez OTP">
                         <input type="number" name="token" class="form-control" placeholder="Entrez OTP">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3 w-100 post_btn">Soumettre</button>
