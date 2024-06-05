@@ -57,11 +57,9 @@ class DashboardController extends Controller
 
     public function verifyOtpByUser(Request $request, $id)
     {
-        if (!Auth::check() && Auth::user()->is_activated < 1) {
-            $user = User::query()->where('id', $id)->first();
-            return view('otp_verification', compact('user'));
-        }
-        return back();
+        $user = User::query()->where('id', $id)->first();
+        return view('otp_verification', compact('user'));
+        
     }
 
     //resend otp
