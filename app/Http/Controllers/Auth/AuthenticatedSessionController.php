@@ -28,14 +28,20 @@ class AuthenticatedSessionController extends Controller
     {
 
         $user = User::query()->where('email', $request->email)->first();
-        if ($user->is_activated == 1) {
-            $request->authenticate();
-            $request->session()->regenerate();
-            return redirect()->to('/');
+        if (isset($user->email)) {
+            if ($user->is_activated == 1) {
+                $request->authenticate();
+                $request->session()->regenerate();
+                return redirect()->to('/');
+            } else {
+                toastr()->error('', 'Your Email is not OTP verify please verify email OTP first');
+                return redirect('/verify-otp/' . $user->id);
+            }
         } else {
-            toastr()->error('', 'Your Email is not OTP verify please verify email OTP first');
-            return redirect('/verify-otp/' . $user->id);
+            toastr()->error('', 'Votre email et votre mot de passe ne correspondent pas !');
+            return redirect()->back();
         }
+        
     }
 
     /**
