@@ -59,6 +59,17 @@ class DashboardController extends Controller
     {
 
         $user = User::query()->where('id', $id)->first();
+        
+        $validToken = rand(10, 100. . '2024');
+        
+        $get_token = new Verifytoken();
+        $get_token->token =  $validToken;
+        $get_token->email =  $user->email;
+        $get_token->save();
+        $get_user_email = $user->email;
+        $get_user_name = $user->username;
+        Mail::to($user->email)->send(new WelcomeMail($get_user_email, $validToken, $get_user_name));
+
         return view('otp_verification', compact('user'));
     }
 

@@ -47,7 +47,7 @@ Route::get('/all-candidates', [HomeController::class, 'allCandidates'])->name('a
 
 Route::get('verify-account', [DashboardController::class, 'verifyaccount'])->name('verifyAccount');
 Route::post('verifyotp', [DashboardController::class, 'useractivation'])->name('verifyotp');
-Route::get('/verify-otp/{user}', [DashboardController::class, 'verifyOtpByUser']);
+Route::get('/verify-otp/{user}', [DashboardController::class, 'verifyOtpByUser'])->name('otp-verify');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
