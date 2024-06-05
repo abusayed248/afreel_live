@@ -21,7 +21,9 @@
                                 </div>
                             </div>
 
-                            <x-input-error :messages="$errors->get('fullname')" class="mt-2" />
+                            @error('fullname')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
 
                             <div class="mb-3 row">
                                 <div>
@@ -32,7 +34,9 @@
                                 </div>
                             </div>
 
-                            <x-input-error :messages="$errors->get('username')" class="mt-2" />
+                            @error('username')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
 
                             <div class="mb-3 row">
                                 <div>
@@ -43,7 +47,9 @@
                                 </div>
                             </div>
 
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            @error('email')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
 
                             <div class="mb-3 row">
                                 <x-input-label for="password" class="col-form-label" value="{{ Lang::get('register.page.password.text') }}" />
@@ -53,7 +59,9 @@
                                 </div>
                             </div>
 
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            @error('password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
 
                             <div class="mb-3 row">
                                 <x-input-label for="password_confirmation" class="col-form-label" value="{{ Lang::get('register.page.confirm.password.text') }}" />
@@ -63,28 +71,34 @@
                                 </div>
                             </div>
 
-                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                            @error('password_confirmation')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
 
                             <div class="mb-3 row">
                                 <div class="col-md-6">
                                     <x-input-label for="country" class="col-form-label" value="{{ Lang::get('register.page.country.text') }}" />
                 
                                     <div class="">
-                                        <x-text-input id="country" class="form-control" type="text" placeholder="{{ Lang::get('register.page.country.text') }}"  name="country" required/>
+                                        <x-text-input id="country" class="form-control" type="text" :value="old('country')" placeholder="{{ Lang::get('register.page.country.text') }}"  name="country" required/>
                                     </div>
                                 </div>
 
-                                <x-input-error :messages="$errors->get('country')" class="mt-2" />
+                                @error('country')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
 
                                 <div class="col-md-6">
                                     <x-input-label for="city" class="col-form-label" value="{{ Lang::get('register.page.city.text') }}" />
                 
                                     <div class="">
-                                        <x-text-input id="city" class="form-control" type="text" placeholder="{{ Lang::get('register.page.city.text') }}"  name="city" required/>
+                                        <x-text-input id="city" class="form-control" :value="old('city')" type="text" placeholder="{{ Lang::get('register.page.city.text') }}"  name="city" required/>
                                     </div>
                                 </div>
 
-                                <x-input-error :messages="$errors->get('city')" class="mt-2" />
+                                @error('city')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             
@@ -97,7 +111,9 @@
                                 </div>
                             </div>
 
-                            <x-input-error :messages="$errors->get('photo')" class="mt-2" />
+                            @error('photo')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
 
                             <div class="mb-3 row">
                                 <div class="d-flex align-items-center justify-content-between">
