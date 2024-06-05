@@ -77,7 +77,7 @@
                         <input type="number" name="token" class="form-control" placeholder="Entrez OTP">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3 w-100 post_btn">Soumettre</button>
-                    <a href="{{ route('otp-verify', $user->id) }}" class="btn btn-primary mt-3 w-100 post_btn">Vous n’avez pas reçu? Renvoyer</a>
+                    <a href="{{ route('resend-otp', $user->id) }}" class="btn btn-primary mt-3 w-100 post_btn">Vous n’avez pas reçu? Renvoyer</a>
                 </form>
             </div>
         </div>
