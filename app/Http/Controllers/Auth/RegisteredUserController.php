@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'photo' => 'required|image',
         ]);
-
+        $validToken = rand(10, 100. . '2024');
         $user = User::create([
             'fullname' => $request->fullname,
             'name' => $request->fullname,
@@ -52,6 +52,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'country' => $request->country,
             'city' => $request->city,
+            'otp_code' => $validToken,
             'password' => Hash::make($request->password),
         ]);
 
@@ -69,7 +70,7 @@ class RegisteredUserController extends Controller
 
         $user->save();
 
-        $validToken = rand(10, 100. . '2024');
+
         Log::info("valid token is" . $validToken);
         $get_token = new Verifytoken();
         $get_token->token =  $validToken;
@@ -83,8 +84,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
 
-        return redirect()->route('user.dashboard');
+        return redirect('/verify-otp/' . $user->id);
     }
 }

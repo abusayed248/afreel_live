@@ -31,11 +31,11 @@ Route::get('/test', function () {
     return view('test');
 });
 
-Route::get('/test-success', [SubController::class,'success']);
+Route::get('/test-success', [SubController::class, 'success']);
 
-Route::get('/test-fail', [SubController::class,'fail']);
+Route::get('/test-fail', [SubController::class, 'fail']);
 
-Route::get('/withdraw-success', [SubController::class,'withdraw_success']);
+Route::get('/withdraw-success', [SubController::class, 'withdraw_success']);
 
 
 
@@ -47,6 +47,7 @@ Route::get('/all-candidates', [HomeController::class, 'allCandidates'])->name('a
 
 Route::get('verify-account', [DashboardController::class, 'verifyaccount'])->name('verifyAccount');
 Route::post('verifyotp', [DashboardController::class, 'useractivation'])->name('verifyotp');
+Route::get('/verify-otp/{user}', [DashboardController::class, 'verifyOtpByUser']);
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -57,9 +58,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //Withdraw
 
-    Route::get('withdraw', [DashboardController::class,'withdraw'])->name('user.withdraw');
+    Route::get('withdraw', [DashboardController::class, 'withdraw'])->name('user.withdraw');
 
-    Route::post('withdraw', [DashboardController::class,'withdraw_submit'])->name('user.withdraw');
+    Route::post('withdraw', [DashboardController::class, 'withdraw_submit'])->name('user.withdraw');
 
 
     //job aplication
@@ -131,7 +132,7 @@ Route::middleware('auth')->group(function () {
 
 //social-login
 Route::get('login/{provider}', [SocialController::class, 'redirect']);
-Route::get('login/{provider}/callback',[SocialController::class, 'Callback']);
+Route::get('login/{provider}/callback', [SocialController::class, 'Callback']);
 
 
 require __DIR__ . '/auth.php';

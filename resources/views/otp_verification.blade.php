@@ -29,26 +29,29 @@
         .otp_div {
             height: 100vh;
         }
-         .otp_sec{
+
+        .otp_sec {
             box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
         }
+
         .post_btn {
-        background-color: #10c558;
+            background-color: #10c558;
         }
+
         .post_btn:hover {
-        background-color: #15804e ;
+            background-color: #15804e;
         }
     </style>
 
 </head>
-    
-    <body>
+
+<body>
 
     <div class="container">
         <div class="row justify-content-center align-items-center otp_div">
             <div class="col-md-5 otp_sec p-4">
                 <h3 class="mt-5 text-center text-warning" style="font-weight: bold;">Vérification de l'E-mail</h3>
-              
+
                 @if(session()->has('message'))
                 <div class="alert alert-success">
                     {{ session()->get('message') }}
@@ -66,10 +69,11 @@
                 </div>
                 @endif
                 <!-- Modal -->
-                <form action="{{ route('verifyotp')}}" method="POST" >
+                <form action="{{ route('verifyotp')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Entrez OTP</label>
+                        <input type="hidden" name="user" value="{{ $user->id }}" class="form-control" placeholder="Entrez OTP">
                         <input type="number" name="token" class="form-control" placeholder="Entrez OTP">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3 w-100 post_btn">Soumettre</button>
@@ -78,25 +82,25 @@
             </div>
         </div>
     </div>
-     <!-- Include jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-        <!-- Dropify jQuery -->
-        <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
-
-
-        <!-- Selectize JS -->
-
-        <!-- Include Slick Slider JS -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-        <script src="{{ asset('user') }}/js/custom.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <!-- Dropify jQuery -->
+    <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
 
 
-        @stack('script')
+    <!-- Selectize JS -->
 
-    </body>
+    <!-- Include Slick Slider JS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="{{ asset('user') }}/js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+
+
+    @stack('script')
+
+</body>
 
 </html>
