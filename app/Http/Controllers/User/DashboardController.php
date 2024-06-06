@@ -110,14 +110,10 @@ class DashboardController extends Controller
     //candidate details
     public function candidateDetails(Request $request)
     {
-        if (Auth::user()->is_active == 1) {
-            $user = $request->user();
-            $socialMedia = SocialMedia::first();
-            return view('user.profile.candidate-detail', compact('user', 'socialMedia'));
-        } else {
-
-            return redirect()->route('verifyAccount');
-        }
+       
+        $user = $request->user();
+        $socialMedia = SocialMedia::first();
+        return view('user.profile.candidate-detail', compact('user', 'socialMedia'));
     }
 
     //Withdraw
