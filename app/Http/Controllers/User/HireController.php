@@ -15,7 +15,7 @@ class HireController extends Controller
     public function store($id)
     {
         $aplicant = Job_aplication::whereId($id)->first();
-        Hire::create([
+        $hire = Hire::create([
             'buyer_id' => Auth::id(),
             'seller_id' => $aplicant->seller_id,
             'post_id' => $aplicant->post_id,
@@ -27,7 +27,7 @@ class HireController extends Controller
         $hireCount->save();
 
         toastr()->success('', 'Hired successfully!');
-        return redirect()->back();
+        return redirect()->route('seller.job.order.details', $hire['aplicant_id']);
     }
     //hire person
     public function direcHireCandidate($id)

@@ -40,7 +40,7 @@
                                 @endphp
 
                                 @if(!$checkhired)
-                                <a id="hireButton" class="recet_job_apply_btn bc" href="#">Engagez moi</a>
+                                <a onclick="calltouchpay()" class="recet_job_apply_btn bc" href="#">Engagez moi</a>
                                 @else
                                 <span class="recet_job_apply_btn bc mx-2"><i class="fas fa-clipboard-check"></i>
                                     Déjà embauché !</span>
@@ -48,33 +48,7 @@
                                 <a class=" recet_job_apply_btn bc mx-2"
                                     href="{{ url('message/'.$applicationDetails->seller_id) }}">Contactez moi</a>
                             </div>
-
-
                         </div>
-
-
-                        <!-- <div class="col-md-2">
-                            <div class="candidate_pic">
-                                <img class="img-fluid job_deta_com_icon" src="{{ asset($applicationDetails->seller->photo) }}" alt="">
-                            </div>
-                        </div> -->
-                        <div class="col-md-10 d-flex justify-content-between align-items-center">
-                            <!-- <div>
-                                <h2 class="mb-3">{{ $applicationDetails->seller->fullname }}</h2>
-                                <div class="d-flex">
-                                    <div class="d-flex justify-content-start align-items-center">
-                                        <i class="fa-solid fa-location-dot p-1"></i><span>{{ $applicationDetails->seller->country.','.$applicationDetails->seller->city }}</span>
-                                    </div>
-                                    <div class="d-flex justify-content-start align-items-center job_status p-2">
-                                        <i class="fa-solid fa-suitcase p-1"></i><span>{{ $applicationDetails->seller->job_title }}</span>
-                                    </div>
-                                </div>
-
-                            </div> -->
-
-
-                        </div>
-
 
                         <div class="col-md-12 mt-4 p-2">
                             <h6 class="mb-3 fw-bold">Lettre de motivation</h6>
@@ -105,6 +79,7 @@
             </div>
         </div>
     </div>
+    
     @php
     $email = Auth::user()->email;
     $first = Auth::user()->name;
@@ -112,44 +87,26 @@
     $phone = Auth::user()->phone;
     
     @endphp
-    <script src="{{ asset('user') }}//flipdown/countdown.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src=https://touchpay.gutouch.net/touchpayv2/script/touchpaynr/prod_touchpay-0.0.1.js type="text/javascript"></script>
-        <script>
-            document.getElementById('hireButton').addEventListener('click', function(e) {
-                e.preventDefault();
-                let url = '{{ route("hire.person", $applicationDetails->id) }}';
+   <script src=https://touchpay.gutouch.net/touchpayv2/script/touchpaynr/prod_touchpay-0.0.1.js type="text/javascript"></script>
+    <script>
+            
+        function calltouchpay() {
+            var email = {!! json_encode($email) !!};
+            var id = {!! json_encode($applicationDetails->id) !!};
+            var first = {!! json_encode($first) !!};
+            var last = {!! json_encode($last) !!};
+            var phone = {!! json_encode($phone) !!};
+            var amount = {!! json_encode($applicationDetails->seller_amount) !!};
+            var s_url = '{{ route("hire.person", $applicationDetails->id) }}';
+            var f_url = '{{ route("application.details", $applicationDetails->id) }}';
 
-                // Perform the AJAX request to submit the hire
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    data: {
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        // Call the payment function
-                        calltouchpay();
-                    },
-                    error: function(xhr) {
-                        console.error("There was an error with the hiring process.");
-                    }
-                });
-            });
-
-            function calltouchpay() {
-                var email = {!! json_encode($email) !!};
-                var id = {!! json_encode($applicationDetails->id) !!};
-                var first = {!! json_encode($first) !!};
-                var last = {!! json_encode($last) !!};
-                var phone = {!! json_encode($phone) !!};
-                var amount = {!! json_encode($applicationDetails->seller_amount) !!};
-
-                sendPaymentInfos(new Date().getTime(),
-                    'XCPNY11168', 'v4GE9BuvtAA9tuDS9xZsmPLVpAZ0wZFcZFAb9OBcauTQeS3Dw4',
-                    'xcompnay.com', 'http://127.0.0.1:8000/seller/job-order-complete' + id,
-                    'http://127.0.0.1:8000/test-fail' + id, amount,
-                    'Abidjan', email, first, last, phone);
-            }
-        </script>
+            sendPaymentInfos(new Date().getTime(),
+                'XCPNY11168', 'v4GE9BuvtAA9tuDS9xZsmPLVpAZ0wZFcZFAb9OBcauTQeS3Dw4',
+                'xcompnay.com', s_url,
+                f_url, amount,
+                'Abidjan', email, first, last, phone);
+        }
+    </script>
+       
+        
 </x-app-layout>

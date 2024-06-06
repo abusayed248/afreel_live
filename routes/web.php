@@ -98,6 +98,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //seller job order details
     Route::get('/seller/job-order-details/{id}', [JobAplicationController::class, 'sellerJobOrderDetails'])->name('seller.job.order.details');
 
+    //accept order
+    Route::get('/accept-order/{id}', [JobAplicationController::class, 'acceptOrder'])->name('accept-order');
+
+    //complete job list
+    Route::get('/complete-job-list', [JobAplicationController::class, 'completeJobs'])->name('complete.jobs');
+
     //job order cancel
     Route::get('/order-cancel/{id}', [HireController::class, 'orderCancel'])->name('order.cancel');
 

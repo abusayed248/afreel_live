@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\Job_aplication;
 use App\Models\PaymentRequest;
 use App\Http\Controllers\Controller;
+use App\Models\OrderAccept;
 use Illuminate\Support\Facades\Auth;
 
 class JobAplicationController extends Controller
@@ -141,8 +142,31 @@ class JobAplicationController extends Controller
         $payment->status = 0;
         $payment->save();
 
-        toastr()->success('', 'Order Completed Successfully!');
+        toastr()->success('', 'Commande terminée avec succès!');
 
         return redirect(route('user.dashboard'));
+    }
+
+    //accept order
+    public function acceptOrder($id) {
+        $hire = Hire::find($id);
+        // dd($hire->toArray());
+        OrderAccept::create([
+            'buyer_id' => $hire->buyer_id,
+            'seller_id' => $hire->seller_id,
+            'job_title' => $hire->post->job_title,
+            'amount' => $hire->applier->seller_amount,
+        ]);
+        Post::where('id', $hire->post_id)->delete();
+        $hire->delete();
+
+        toastr()->success('', 'Commande acceptée avec succès!');
+        return redirect()->route('homepage');
+    }
+
+    //complete jobs
+    public function completeJobs() {
+        $completeJobs = OrderAccept::where(['seller_id' => Auth::id()])->get();
+        return view('user.complete-job', compact('completeJobs'));
     }
 }

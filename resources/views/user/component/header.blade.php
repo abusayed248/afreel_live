@@ -31,6 +31,13 @@
                            Mes boulots
                         </a>
                     </li>
+                    @auth
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('complete.jobs') }}">
+                            Travaux terminés
+                        </a>
+                    </li>
+                    @endauth
                 </ul>
                 <div class="login_nav_pic mx-2">
 

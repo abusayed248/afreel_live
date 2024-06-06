@@ -127,7 +127,7 @@
                                          @if ($sellerHireDetails->post->user_id == Auth::user()->id)
                                             @if ($sellerHireDetails->post->order_complete != 1)
                                             <div class="row justify-content-between">
-                                                <a href="#" onclick="calltouchpay()" class="col-form-label col-md-6 btn btn-success mt-2 w-48 py-2">Accepteur</a>
+                                                <a href="{{ route('accept-order',  $sellerHireDetails->id) }}"  class="col-form-label col-md-6 btn btn-success mt-2 w-48 py-2">Accepteur</a>
 
                                                 <a id="cancelOrder" href="{{ route('order.cancel', $sellerHireDetails->id) }}" class="col-form-label col-md-6 btn btn-danger mt-2 w-48 py-2">Annuler</a>
                                             </div>
@@ -146,36 +146,6 @@
         </div>
     </div>
 
-    @php
-        $email = Auth::user()->email;
-        $first = Auth::user()->name;
-        $last = Auth::user()->fullname;
-        $phone = Auth::user()->phone;
-        // dd($sellerHireDetails->applier->seller_amount);
-    @endphp
-
-
-
-<script src=https://touchpay.gutouch.net/touchpayv2/script/touchpaynr/prod_touchpay-0.0.1.js  type="text/javascript"></script>
-<script type="text/javascript">
-    function calltouchpay(){
-
-        var email = {!! json_encode($email) !!};
-        var id = {!! json_encode($sellerHireDetails->post->id) !!};
-        var first = {!! json_encode($first) !!};
-        var last = {!! json_encode($last) !!};
-        var phone = {!! json_encode($phone) !!};
-        var amount = {!! json_encode($sellerHireDetails->applier->seller_amount) !!};
-
-
-
-        sendPaymentInfos(new Date().getTime(),
-                         'XCPNY11168','v4GE9BuvtAA9tuDS9xZsmPLVpAZ0wZFcZFAb9OBcauTQeS3Dw4',
-                         'xcompnay.com',  'http://127.0.0.1:8000/seller/job-order-complete'+id,
-                         'http://127.0.0.1:8000/test-fail'+id, amount,
-                         'Abidjan',email,first,last,phone);
-    }
-</script>
 
     @push('script')
     <script src="{{ asset('user') }}//flipdown/countdown.js"></script>
