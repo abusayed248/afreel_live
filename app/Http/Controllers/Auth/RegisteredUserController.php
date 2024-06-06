@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'fullname' => 'required|string|max:55',
             'username' => 'required|string|alpha_dash|min:4|max:15|unique:users',
-            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:'. User::class,
             'country' => 'required|string',
             'city' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -76,7 +76,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $get_user_email = $request->email;
-        $get_user_name = $request->username;
+        $get_user_name = $request->fullname;
         Mail::to($request->email)->send(new WelcomeMail($get_user_email, $validToken, $get_user_name));
 
         return redirect('/verify-otp/' . $user->id);

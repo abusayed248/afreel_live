@@ -74,7 +74,7 @@ class DashboardController extends Controller
         ]);
 
         $get_user_email = $user->email;
-        $get_user_name = $user->username;
+        $get_user_name = $user->fullname;
         Mail::to($user->email)->send(new WelcomeMail($get_user_email, $validToken, $get_user_name));
 
         toastr()->success('', 'Resend OTP please check your email OTP first');
