@@ -47,8 +47,8 @@
 
                 sendPaymentInfos(new Date().getTime(),
                                  'XCPNY11168','v4GE9BuvtAA9tuDS9xZsmPLVpAZ0wZFcZFAb9OBcauTQeS3Dw4',
-                                 'xcompnay.com',  'http://127.0.0.1:8000/test-success',
-                                 'http://127.0.0.1:8000/test-fail', 3000,
+                                 'xcompnay.com',  {!! json_encode(url('test-success')) !!},
+            {!! json_encode(url('test-fail')) !!}, 3000,
                                  'Abidjan',email,first,last,phone);
             }
         </script>
