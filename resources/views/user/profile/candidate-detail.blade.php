@@ -17,7 +17,7 @@
                                         <img class="img-fluid" src="{{asset($user->photo)}}" alt="">
 
                                     </div>
-                            @if(Request::url() === 'https://afreel.com/candidate-detail')         
+                            @if(Request::url() ===  route('candidate.detail'))         
                                     <div class="up_date_div">
                                         <i class="fa-solid fa-circle-plus in_fo_add "
                                              onclick="document.getElementById('getFile').click()"> </i>
@@ -60,7 +60,7 @@
 
                             </div>
                         </div>
-                        @if(Request::url() === 'https://afreel.com/candidate-detail')  
+                        @if(Request::url() ===  route('candidate.detail'))  
                         <div class="col-md-3 d-flex justify-content-end align-items-center">
                             <a class="applied_job2 w-100 h-100" href="{{ route('user.sub') }}">
                                 <div class=" pt-3 pb-3">
@@ -116,7 +116,7 @@
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-3 fw-bold">À propos Nom du candidat</h6>
                                 
-                                @if(Request::url() === 'https://afreel.com/candidate-detail')         
+                                @if(Request::url() ===  route('candidate.detail'))         
                                      <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop1"></i>   
                                      @else
@@ -139,7 +139,7 @@
                         <div class="mt-5">
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-3 fw-bold">Qualification</h6>
-                                   @if(Request::url() === 'https://afreel.com/candidate-detail')  
+                                   @if(Request::url() === route('candidate.detail'))  
                                      <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop2"></i>
 
@@ -208,7 +208,7 @@
                             <div class="mt-5">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="mb-3 fw-bold">Expérience</h6>
-                                       @if(Request::url() === 'https://afreel.com/candidate-detail')   
+                                       @if(Request::url() ===  route('candidate.detail'))   
                                         <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop3"></i>
 
@@ -240,7 +240,7 @@
                             <div class="mt-5">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="mb-3 fw-bold">Compétences fondamentales</h6>
-                                       @if(Request::url() === 'https://afreel.com/candidate-detail') 
+                                       @if(Request::url() ===  route('candidate.detail')) 
                                         <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop4"></i>
 
