@@ -150,13 +150,19 @@ class JobAplicationController extends Controller
     //accept order
     public function acceptOrder($id) {
         $hire = Hire::find($id);
-        // dd($hire->toArray());
-        OrderAccept::create([
+        
+        $order = OrderAccept::create([
             'buyer_id' => $hire->buyer_id,
             'seller_id' => $hire->seller_id,
             'job_title' => $hire->post->job_title,
             'amount' => $hire->applier->seller_amount,
         ]);
+
+        $wallet = User::where('id', $order['seller_id'])->first();
+        $amount = $wallet->wallet+$order['amount'];
+        $wallet->wallet = $amount;
+        $wallet->save();
+
         Post::where('id', $hire->post_id)->delete();
         $hire->delete();
 
@@ -166,7 +172,7 @@ class JobAplicationController extends Controller
 
     //complete jobs
     public function completeJobs() {
-        $completeJobs = OrderAccept::where(['seller_id' => Auth::id()])->get();
+        $completeJobs = OrderAccept::where('seller_id', Auth::id())->orWhere('buyer_id', Auth::id())->get();
         return view('user.complete-job', compact('completeJobs'));
     }
 }

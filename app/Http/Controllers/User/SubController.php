@@ -22,37 +22,37 @@ class SubController extends Controller
         $update->sub_date = Carbon::today();
         $update->update();
 
-        return redirect(route('user.dashboard'));
+        return redirect()->route('user.dashboard');
     }
 
     public function success(Request $request)
     {
         $user = Auth::user();
 
-        if ($request->amount == 3000) {
-            # code...
+        if ($request->amount > 3000 && $request->amount < 5000) {
             $user->sub_id = 1;
-        }else {
-            # code...
+            $user->sub_date = Carbon::now();
+        }elseif($request->amount > 5000) {
             $user->sub_id = 2;
+            $user->sub_date = Carbon::now();
         }
 
-        $user->update();
+        $user->save();
 
-        toastr()->success('', 'You are subscribed Successfully!');
+        toastr()->success('', 'Vous êtes inscrit avec succès!');
 
-        return redirect(route('user.dashboard'));
+        return redirect()->route('candidate.detail');
     }
 
     public function fail(Request $request)
     {
-        toastr()->success('', 'Invalid Credentials provided for payment!');
+        toastr()->success("", "Informations d'identification non valides fournies pour le paiement!");
         return redirect(route('user.sub'));
     }
 
     public function withdraw_success()
     {
-        toastr()->success('', 'Withdraw Successful!');
+        toastr()->success('', 'Retrait réussi!');
         return redirect(route('admin.withdraw.index'));
     }
 }
