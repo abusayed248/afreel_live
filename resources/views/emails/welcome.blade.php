@@ -12,19 +12,18 @@
     <div style="margin: auto;">
         <div style="width: 500px; text-align: center; border: black 1px solid;">
             <div style="background-color: #EDEADE;padding: 5px 5px;">
-                <a href="https://afreel.com/"><img style="max-width: 300px;" src="https://afreel.com/user/img/logo.png"
-                        alt=""></a>
+                <a href="https://afreel.com/"><img style="max-width: 300px;" src="https://afreel.com/user/img/logo.png" alt=""></a>
                 <p>Connecter l’Afrique pour libérer le talent</p>
             </div>
             <h1>Hi <span>{{ $get_user_name}}</span></h1>
-            <h2>Thanks for staying with us!</h2>
-            <h2>Verify Your E-mail</h2>
+            <h2>-Merci d’être avec nous!</h2>
+            <h2>Vérifier votre email</h2>
             <div>
                 <span style="background: red; color: white; padding: 15px 10px; font-size: 30px; border-radius: 5px;">{{
                     $validToken}}</span>
             </div>
             <div style="margin-top: 20px;">
-                <a href="https://afreel.com/">Go to Website</a>
+                <a href="https://afreel.com/">aller sur le site</a>
             </div>
             <div style="background-color: #172228; padding: 5px 5px; color: white;">
                 <p style="padding: 10px;">À propos de la société</p>
