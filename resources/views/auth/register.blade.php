@@ -14,10 +14,10 @@
 
                             <div class="mb-3 row">
                                 <div>
-                                    <x-input-label class="col-form-label" for="fullname" value="{{ Lang::get('register.page.fullname.text') }}" />
+                                    <x-input-label class="col-form-label" for="fullname" value="Nom comple" />
                                 </div>
                                 <div class="">
-                                    <x-text-input id="fullname" placeholder="{{ Lang::get('register.page.fullname.placeholder.text') }}" class="form-control" type="text" name="fullname" :value="old('fullname')" required />
+                                    <x-text-input id="fullname" placeholder="Nom comple" class="form-control" type="text" name="fullname" :value="old('fullname')" required />
                                 </div>
                             </div>
 

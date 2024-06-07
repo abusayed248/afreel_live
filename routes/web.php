@@ -30,6 +30,7 @@ use App\Http\Controllers\Frontend\PostController as FrontendPostController;
 Route::get('/test', function () {
     return view('test');
 });
+Route::get('/policy-and-confidentiality', [HomeController::class, 'policy'])->name('policy-and-confidentiality');
 
 Route::get('/test-success', [SubController::class, 'success']);
 
@@ -39,6 +40,7 @@ Route::get('/withdraw-success', [SubController::class, 'withdraw_success']);
 
 
 
+Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/find-job', [HomeController::class, 'findJobs'])->name('find.job');
 
