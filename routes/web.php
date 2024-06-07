@@ -41,7 +41,6 @@ Route::get('/withdraw-success', [SubController::class, 'withdraw_success']);
 
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
-Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/find-job', [HomeController::class, 'findJobs'])->name('find.job');
 
 //al candidates
