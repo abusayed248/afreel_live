@@ -3,17 +3,19 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Post;
-use App\Models\SocialMedia;
-use App\Models\Job_aplication;
 use App\Models\User;
+use App\Models\SocialMedia;
 use Illuminate\Http\Request;
+use App\Models\Job_aplication;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
 
 class HomeController extends Controller
 {
     // for home page
     public function index()
     {
+        Artisan::call('subscriptions:update');
         $latestPosts = Post::take(6)->latest()->get();
         $hireTopCandidates = User::take(3)->orderByDesc('hire_count')->get();
         $jobPostCategory = Post::all();
