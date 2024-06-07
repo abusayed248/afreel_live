@@ -30,6 +30,7 @@ use App\Http\Controllers\Frontend\PostController as FrontendPostController;
 Route::get('/test', function () {
     return view('test');
 });
+Route::get('/policy-and-confidentiality', [HomeController::class, 'policy'])->name('policy-and-confidentiality');
 
 Route::get('/test-success', [SubController::class, 'success']);
 

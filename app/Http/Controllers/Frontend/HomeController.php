@@ -188,4 +188,10 @@ class HomeController extends Controller
         return view('all-candidates', compact('candidates'));
     }
 
+      // for policy page
+    public function policy()
+    {
+       return view('policy-and-confidentiality');
+    }
+
 }
