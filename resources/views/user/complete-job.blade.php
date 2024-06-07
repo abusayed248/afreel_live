@@ -14,28 +14,32 @@
                             </div>
 
                             @if(!empty($completeJobs) && count($completeJobs) > 0)
-
-                            @foreach($completeJobs as $key => $completeJob)
-
-
-                            <div
-                                class="p-2 recet_job_con d-flex justify-content-between  align-items-center flex-wrap mt-3">
-
-                                <div class="recet_job_title_div col-md-12 d-flex justify-content-between p-3">
-                                    <div class="col-md-4 d-flex justify-content-sm-start  align-items-center">
-                                        <h5>{{ $completeJob->job_title }}</h5>
-                                    </div>
-                                    <div class="col-md-4 d-flex justify-content-sm-start align-items-center">
-                                        <h6><span class="mx-1"><i class="fa-solid fa-franc-sign"></i></span>{{ $completeJob->amount }}</h6>
-                                    </div>
-                                    <div class="col-md-4 d-flex justify-content-sm-start  align-items-center">
-                                        <h5>
-                                            <a class="bc" href="{{ route('candidate.profile.details', $completeJob->seller->id) }}"> {{ $completeJob->seller->fullname }} </a>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
+                            <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Titre d'emploi</th>
+                                    <th scope="col">Montante</th>
+                                    <th scope="col">Nom</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                
+                                @foreach($completeJobs as $key => $completeJob)
+                                  <tr>
+                                    <td>{{ $completeJob->job_title }}</td>
+                                    <td>{{ $completeJob->amount }}</td>
+                                    <td>
+                                        @if(auth()->user()->id == $completeJob->seller_id)
+                                        <a href="{{ route('candidate.profile.details', $completeJob->buyer_id) }}" class="bc">{{ $completeJob->buyer->fullname }}</a>
+                                        @endif
+                                        @if(auth()->user()->id == $completeJob->buyer_id)
+                                        <a href="{{ route('candidate.profile.details', $completeJob->seller_id) }}" class="bc">{{ $completeJob->seller->fullname }}</a>
+                                        @endif
+                                    </td>
+                                  </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                             @endif
                         </div>
                     </div>

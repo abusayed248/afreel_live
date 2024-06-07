@@ -60,7 +60,7 @@
 
                             </div>
                         </div>
-   @if(Request::url() === 'https://afreel.com/candidate-detail')  
+                        @if(Auth::check())  
                         <div class="col-md-3 d-flex justify-content-end align-items-center">
                             <a class="applied_job2 w-100 h-100" href="{{ route('user.sub') }}">
                                 <div class=" pt-3 pb-3">
@@ -68,23 +68,28 @@
                                        
                                     <div class="d-flex justify-content-end flex-column text-center">
                                         @php
-                                        $users = Auth::user()->created_at;
-
-                                        $end = \Carbon\Carbon::parse($users);
-
-                                        $start = \Carbon\Carbon::parse($users);
-
-                                        $enddate = $end->addDays(30);
-
-                                        $diif = $start->diffInDays($enddate);
+                                    
+                                        // Get the user's created date
+                                        $createdDate = Auth::user()->created_at;
+                                    
+                                        // Parse the created date
+                                        $start = \Carbon\Carbon::parse($createdDate);
+                                    
+                                        // Calculate the end date by adding 30 days to the start date
+                                        $endDate = $start->copy()->addDays(30);
+                                    
+                                        // Calculate the remaining days from today to the end date
+                                        $remainingDays = \Carbon\Carbon::now()->diffInDays($endDate, false);
                                         @endphp
+                                        
                                         @if (Auth::user()->sub_id == null)
-                                        <span>Essai ({{ $diif }} jours restants!)</span>
+                                            <span>Essai ({{ $remainingDays }} jours restants!)</span>
                                         @elseif(Auth::user()->sub_id == 1)
-                                        <span>Basic</span>
+                                            <span>Basic</span>
                                         @elseif(Auth::user()->sub_id == 2)
-                                        <span>prime</span>
+                                            <span>Prime</span>
                                         @endif
+                                    
                                         <p>abonnement</p>
                                         <i class="fa-regular fa-bell app_icon"></i>
 
@@ -94,10 +99,8 @@
                                    
                                 </div>
                             </a>
-                        </div>
-                            @else
-                                            
-                                    @endif
+                        </div>              
+                        @endif
 
                         <div class="col-md-4 d-flex justify-content-sm-start justify-content-md-end align-items-center">
                             <div class=" d-flex justify-content-center align-items-center w-100 text-center mt-2">
