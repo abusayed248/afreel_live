@@ -35,7 +35,7 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td colspan="2">
                                                     <a href="{{ route('admin.user.delete', $user->id) }}" class="btn btn-danger">Delete </a>
-                                                    <a href="#" class="btn btn-warning">Deactive </a>
+                                                    {{-- <a href="#" class="btn btn-warning">Deactive </a> --}}
                                                 </td>
                                             </tr>
                                         @endforeach
