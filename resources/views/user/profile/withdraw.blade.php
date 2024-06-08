@@ -13,11 +13,12 @@
                                 <a style="float: right" href="#" class="btn btn-success withdraw">Demande de retrait</a>
                             </div>
                             <div class="card-body">
+                                
                                 <table class="table" id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th>Nom du Vendeur</th>
-                                            <th>Montante</th>
+                                            <th>montant</th>
                                             <th>Statut</th>
                                             <th>Date</th>
                                         </tr>
@@ -62,7 +63,7 @@
             <div class="modal-body">
               <form action="{{ route('user.withdraw') }}" method="post">
                 @csrf
-                <label>Montante</label>
+                <label>Montant</label>
                 <input type="number" max="{{ Auth::user()->wallet }}" name="amount" class="form-control" required>
                 <br>
                 <label>Mode de paiement</label>

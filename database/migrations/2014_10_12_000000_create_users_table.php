@@ -26,8 +26,6 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->json('tag')->nullable();
             $table->string('language')->nullable();
-            $table->string('school')->nullable();
-            $table->string('school_passing_year')->nullable();
             $table->string('inter')->nullable();
             $table->string('inter_passing_year')->nullable();
             $table->string('graduation')->nullable();

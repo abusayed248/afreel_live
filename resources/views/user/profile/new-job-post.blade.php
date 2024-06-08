@@ -264,14 +264,14 @@
 
                             <div class="col-md-6">
                                 <div>
-                                    <label class="col-form-label">Besoin Urgent</label>
+                                    <label class="col-form-label">Besoin</label>
                                 </div>
 
                                 <select class="form-select w-100" name="when_needed">
                                     <option selected disabled selected>Sélectionnez-en un</option>
-                                    <option {{ old('when_needed')=='régulière' ?'selected':'' }} value="régulière">
-                                        régulière</option>
-                                    <option {{ old('when_needed')=='Urgent' ?'selected':'' }} value="Urgent ">Urgent
+                                    <option {{ old('when_needed')=='Régulier' ?'selected':'' }} value="Régulier">
+                                        régulier</option>
+                                    <option {{ old('when_needed')=='Urgent' ?'selected':'' }} value="urgent ">Urgent
                                     </option>
                                 </select>
 
@@ -297,13 +297,11 @@
 
                                 <select class="form-select w-100" name="gender">
                                     <option selected disabled selected>Sélectionnez-en un</option>
-                                    <option {{ old('gender')=='en malais' ?'selected':'' }} value="en malais">en malais
+                                    <option {{ old('gender')=='homme' ?'selected':'' }} value="Homme">Homme
                                     </option>
-                                    <option {{ old('gender')=='femelle' ?'selected':'' }} value="femelle ">femelle
+                                    <option {{ old('gender')=='femme' ?'selected':'' }} value="Femme">Femme
                                     </option>
-                                    <option {{ old('gender')=='Les deux' ?'selected':'' }} value="Les deux ">Les deux
-                                    </option>
-                                </select>
+                                   </select>
 
                                 @error('gender')
                                 <span class="text-danger">{{ $message }}</span>

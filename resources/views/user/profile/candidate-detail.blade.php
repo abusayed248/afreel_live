@@ -50,7 +50,7 @@
                                         <div class="mt-2 mb-2 px-2">
                                             <i class="fa-solid fa-business-time"></i>
                                             <span class="bc">
-                                                {{ $user->job_type}}
+                                                {{ $user->job_title}}
                                             </span>
                                         </div>
                                     </div>
@@ -153,23 +153,7 @@
                                     <ul>
                                         <li>
                                             <div class="esclio-110 bg-light rounded px-3 py-3">
-                                                <h4 class="mb-0 ft-medium fs-md">Lycée</h4>
-                                                <div class="esclio-110-info full-width mb-2">
-                                                    <span class="text-muted me-2"><i
-                                                            class="fa-solid fa-graduation-cap"></i>
-                                                        {{ $user->school }}
-                                                    </span>
-                                                    <span class="text-muted me-2"><i
-                                                            class="fa-regular fa-calendar-days"></i>
-                                                        {{ $user->school_passing_year }}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="esclio-110 bg-light rounded px-3 py-3">
-                                                <h4 class="mb-0 ft-medium fs-md">Intermédiaire</h4>
+                                                <h4 class="mb-0 ft-medium fs-md">Collège</h4>
                                                 <div class="esclio-110-info full-width mb-2">
                                                     <span class="text-muted me-2">
                                                         <i class="fa-solid fa-graduation-cap"></i>
@@ -186,7 +170,7 @@
 
                                         <li>
                                             <div class="esclio-110 bg-light rounded px-3 py-3">
-                                                <h4 class="mb-0 ft-medium fs-md">L'obtention du diplôme</h4>
+                                                <h4 class="mb-0 ft-medium fs-md">Université</h4>
                                                 <div class="esclio-110-info full-width mb-2">
                                                     <span class="text-muted me-2">
                                                         <i class="fa-solid fa-graduation-cap"></i>
@@ -237,6 +221,41 @@
                             </div>
 
 
+                            <div class="mt-5">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-3 fw-bold">Compétences fondamentales</h6>
+                                       @if(Request::url() ===  route('candidate.detail')) 
+                                        <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop4"></i>
+
+                                       @else
+                                                                                
+                                       @endif
+                                   
+                                </div>
+                                <div class="exslio-list mt-3">
+
+                                    <ul>
+                                        <li>
+                                            <div class="esclio-110 bg-light rounded px-3 py-3">
+                                                <div class="esclio-110-decs full-width">
+                                                    @isset($user->tag)
+                                                    @foreach($user->tag as $tag)
+                                                    @php
+                                                    $values = explode(' ', $tag);
+                                                    @endphp
+
+                                                    @foreach($values as $value)
+                                                    <span class="tag_btn">{{ ucfirst($value) }}</span>
+                                                    @endforeach
+                                                    @endforeach
+                                                    @endisset
+
+                                                </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                             <div class="mt-5">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="mb-3 fw-bold">Compétences fondamentales</h6>
@@ -328,32 +347,10 @@
                 <form method="post" action="{{ route('user.update.info') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <div class="mb-3 row">
+                       <div class="mb-3 row">
                             <div class="col-md-6">
                                 <div>
-                                    <label class="col-form-label">High School</label>
-                                </div>
-                                <input type="text" name="school" value="{{ $user->school }}" class="form-control"
-                                    placeholder="High School Name">
-                            </div>
-
-                            <div class="col-md-6">
-                                <div>
-                                    <label class="col-form-label">High School Passing Year</label>
-                                </div>
-                                <input type="text" name="school_passing_year" value="{{ $user->school_passing_year }}"
-                                    class="form-control" placeholder="High School Passing Year">
-
-                                @error('school_passing_year')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <div class="col-md-6">
-                                <div>
-                                    <label class="col-form-label">Inter Medium</label>
+                                    <label class="col-form-label">Collège</label>
                                 </div>
                                 <input type="text" name="inter" value="{{ $user->inter }}" class="form-control"
                                     placeholder="Inter Medium Name">
@@ -361,10 +358,10 @@
 
                             <div class="col-md-6">
                                 <div>
-                                    <label class="col-form-label">Inter Medium Passing Year</label>
+                                    <label class="col-form-label">Passage à l'université</label>
                                 </div>
                                 <input type="text" name="inter_passing_year" value="{{ $user->inter_passing_year }}"
-                                    class="form-control" placeholder="High School Passing Year">
+                                    class="form-control" placeholder="Passage à l'université">
 
                                 @error('inter_passing_year')
                                 <span class="text-danger">{{ $message }}</span>
@@ -380,7 +377,7 @@
                         <div class="mb-3 row">
                             <div class="col-md-6">
                                 <div>
-                                    <label class="col-form-label">Graduation</label>
+                                    <label class="col-form-label">Université</label>
                                 </div>
                                 <input type="text" name="graduation" value="{{ $user->graduation }}"
                                     class="form-control" placeholder="Graduation">
@@ -388,7 +385,7 @@
 
                             <div class="col-md-6">
                                 <div>
-                                    <label class="col-form-label">Graduation Passing Year</label>
+                                    <label class="col-form-label">Passage universitaire</label>
                                 </div>
                                 <input type="text" name="graduation_passing_year"
                                     value="{{ $user->graduation_passing_year }}" class="form-control"

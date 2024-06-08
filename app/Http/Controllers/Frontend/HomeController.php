@@ -184,6 +184,7 @@ class HomeController extends Controller
             $keywords = '%' . strtolower($keywords) . '%'; 
             $candidatesQuery->whereRaw('LOWER(fullname) like ?', [$keywords])
                             ->orWhereRaw('LOWER(username) like ?', [$keywords])
+                            ->orWhereRaw('LOWER(job_title) like ?', [$keywords])
                             ->orWhereRaw('LOWER(job_category) like ?', [$keywords])
                             ->orWhereRaw('LOWER(tag) like ?', [$keywords]);
         }

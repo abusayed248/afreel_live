@@ -15,7 +15,6 @@ class AdressController extends Controller
     {
         $request->validate([
             'phone' => 'nullable|numeric',
-            'school_passing_year' => 'nullable|numeric',
             'inter_passing_year' => 'nullable|numeric',
             'graduation_passing_year' => 'nullable|numeric',
             'photo' => 'nullable|image',
@@ -43,12 +42,6 @@ class AdressController extends Controller
         }
         if ($request->has('job_category')) {
             $userinfo->job_category = $request->job_category;
-        }
-        if ($request->has('school')) {
-            $userinfo->school = $request->school;
-        }
-        if ($request->has('school_passing_year')) {
-            $userinfo->school_passing_year = $request->school_passing_year;
         }
         if ($request->has('inter')) {
             $userinfo->inter = $request->inter;
