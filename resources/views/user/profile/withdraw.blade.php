@@ -13,6 +13,7 @@
                                 <a style="float: right" href="#" class="btn btn-success withdraw">Demande de retrait</a>
                             </div>
                             <div class="card-body">
+                                
                                 <table class="table" id="datatablesSimple">
                                     <thead>
                                         <tr>
