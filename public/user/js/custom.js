@@ -85,12 +85,12 @@ function myFunctioncheck() {
 
     }
 }
-var input2 = document.querySelector('.password_log');
+var input3 = document.querySelector('.password_log');
 function myFunctionlog() {
-    if (input2.type === "password") {
-        input2.type = "text"
+    if (input3.type === "password") {
+        input3.type = "text"
     } else {
-        input2.type = "password"
+        input3.type = "password"
 
 
     }

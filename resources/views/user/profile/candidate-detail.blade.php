@@ -60,11 +60,7 @@
 
                             </div>
                         </div>
-<<<<<<< HEAD
-                        @if(Request::url() === 'http://127.0.0.1:8000/candidate-detail')  
-=======
                         @if(Request::url() ===  route('candidate.detail'))  
->>>>>>> 02b5689665286acdd4c12cb31f4e5cc8799d922c
                         <div class="col-md-3 d-flex justify-content-end align-items-center">
                             <a class="applied_job2 w-100 h-100" href="{{ route('user.sub') }}">
                                 <div class=" pt-3 pb-3">
