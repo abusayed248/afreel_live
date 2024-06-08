@@ -15,6 +15,19 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Website Social Links
                 </a>
+
+                @if(Auth::guard('admin')->user()->type == 1)
+
+                <a class="nav-link" href="{{ route('admin.manages') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Admin Manages
+                </a>
+                @endif
+
+                <a class="nav-link" href="{{ route('admin.website.social.links') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Chanage Password
+                </a>
                 
             </div>
         </div>
