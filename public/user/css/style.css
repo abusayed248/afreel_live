@@ -906,3 +906,8 @@ input:focus {
     position: absolute;
     right: 0;
 }
+
+.dropdown-item:active {
+    color: #fff;
+    background-color: var(--blue) !important;
+}

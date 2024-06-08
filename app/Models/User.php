@@ -34,8 +34,6 @@ class User extends Authenticatable
         'job_category',
         'age', 'tag',
         'language',
-        'school',
-        'school_passing_year',
         'inter',
         'inter_passing_year',
         'graduation',

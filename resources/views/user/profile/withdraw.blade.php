@@ -17,7 +17,7 @@
                                     <thead>
                                         <tr>
                                             <th>Nom du Vendeur</th>
-                                            <th>Montante</th>
+                                            <th>montant</th>
                                             <th>Statut</th>
                                             <th>Date</th>
                                         </tr>

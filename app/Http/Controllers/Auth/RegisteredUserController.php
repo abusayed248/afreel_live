@@ -39,6 +39,7 @@ class RegisteredUserController extends Controller
             'fullname' => 'required|string|max:55',
             'username' => 'required|string|alpha_dash|min:4|max:15|unique:users',
             'email' => 'required|string|lowercase|email|max:255|unique:'. User::class,
+            'job_title' => 'required',
             'country' => 'required|string',
             'city' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -46,10 +47,12 @@ class RegisteredUserController extends Controller
         ]);
         $validToken = rand(10, 100. . '2024');
         $user = User::create([
+
             'fullname' => $request->fullname,
             'name' => $request->fullname,
             'username' => $request->username,
             'email' => $request->email,
+            'job_title' => $request->job_title,
             'country' => $request->country,
             'city' => $request->city,
             'otp_code' => $validToken,

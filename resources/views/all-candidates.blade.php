@@ -41,7 +41,7 @@
                                                 <h6 class="fw-bold mt-2 mb-2">{{ $candidate->fullname }}</h6>
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <i class="fa-solid fa-briefcase p-2"></i>
-                                                    <span>{{ $candidate->job_category }}</span>
+                                                    <span>{{ $candidate->job_title }}</span>
                                                 </div>
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <i class="fa-solid fa-location-dot p-2"></i><span>{{
