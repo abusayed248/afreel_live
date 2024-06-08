@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminManageController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfileController;
@@ -44,4 +45,10 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+
+    //admin manages
+    Route::get('admin-manages',[AdminManageController::class,'index'])->name('manages');
+    Route::get('admin-create',[AdminManageController::class,'create'])->name('create.admin');
+    Route::get('admin-delete/{id}',[AdminManageController::class,'destroy'])->name('delete.admin');
+    Route::post('admin-store',[AdminManageController::class,'store'])->name('store');
 });

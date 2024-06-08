@@ -16,6 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         Artisan::call('subscriptions:update');
+        Artisan::call('schedule:run');
         $latestPosts = Post::take(6)->latest()->get();
         $hireTopCandidates = User::take(3)->orderByDesc('hire_count')->get();
         $jobPostCategory = Post::all();
