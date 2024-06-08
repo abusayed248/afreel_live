@@ -44,7 +44,7 @@
                     @guest
                     <button type="button" class="sign_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class="fa-regular fa-user"></i>
-                        <span>{{ Lang::get('signin.user') }}</span>
+                        <span>Se connecter</span>
                     </button>
                     @endguest
 

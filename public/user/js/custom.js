@@ -14,9 +14,7 @@ const d = new Date();
 let year = d.getFullYear();
 document.getElementById("FooterYear").innerHTML = year;
 
-
-
-
+// Slider
 $(document).ready(function () {
 
     $('.slider-banar').slick({
@@ -66,4 +64,35 @@ $(document).ready(function () {
     });
 });
 
+// Password
+var input1 = document.querySelector('#password');
+function myFunctioncheckshow() {
+    if (input1.type === "password") {
+        input1.type = "text"
+    } else {
+        input1.type = "password"
+
+
+    }
+}
+var input2 = document.querySelector('#password_confirmation');
+function myFunctioncheck() {
+    if (input2.type === "password") {
+        input2.type = "text"
+    } else {
+        input2.type = "password"
+
+
+    }
+}
+var input2 = document.querySelector('.password_log');
+function myFunctionlog() {
+    if (input2.type === "password") {
+        input2.type = "text"
+    } else {
+        input2.type = "password"
+
+
+    }
+}
 

@@ -33,6 +33,8 @@ h6 {
 
 }
 
+
+
 .bc {
     color: var(--blue);
 }
@@ -74,6 +76,10 @@ h6 {
 }
 
 .navbar .navbar-nav .nav-item {
+    font-size: 14px !important;
+}
+
+.btn-success span {
     font-size: 14px !important;
 }
 
@@ -887,4 +893,16 @@ input:focus {
     position: relative;
     transform: translateY(-30px);
     text-align: center;
+}
+
+.pass_div {
+    position: relative;
+}
+
+.pas-eye {
+    margin-top: 10px;
+    transform: translate(-20px, -38px);
+    cursor: pointer;
+    position: absolute;
+    right: 0;
 }
