@@ -27,7 +27,7 @@
                                 @foreach($completeJobs as $key => $completeJob)
                                   <tr>
                                     <td>{{ $completeJob->job_title }}</td>
-                                    <td>{{ $completeJob->amount }}</td>
+                                    <td><i class="fa-solid fa-franc-sign mx-2"></i>{{ $completeJob->amount }}</td>
                                     <td>
                                         @if(auth()->user()->id == $completeJob->seller_id)
                                         <a href="{{ route('candidate.profile.details', $completeJob->buyer_id) }}" class="bc">{{ $completeJob->buyer->fullname }}</a>

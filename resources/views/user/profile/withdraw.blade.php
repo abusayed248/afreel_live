@@ -32,7 +32,7 @@
                                                 <td>{{ $item->amount }}</td>
                                                 <td>
                                                     @if ($item->status == 0)
-                                                        <span class="badge badge-warning" style="background: yellow">Pending</span>
+                                                        <span class="badge badge-warning" style="background: #fe9536">Pending</span>
                                                     @else
                                                         <span class="badge badge-success" style="background: green">Success</span>
                                                     @endif

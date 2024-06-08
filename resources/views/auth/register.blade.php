@@ -14,105 +14,128 @@
 
                             <div class="mb-3 row">
                                 <div>
-                                    <x-input-label class="col-form-label" for="fullname" value="Nom comple" />
+                                    <x-input-label class="col-form-label" for="fullname" value="Nom complet" />
                                 </div>
                                 <div class="">
-                                    <x-text-input id="fullname" placeholder="Nom comple" class="form-control" type="text" name="fullname" :value="old('fullname')" required />
+                                    <x-text-input id="fullname" placeholder="Nom complet" class="form-control"
+                                        type="text" name="fullname" :value="old('fullname')" required />
                                 </div>
                             </div>
 
                             @error('fullname')
-                                <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                             @enderror
 
                             <div class="mb-3 row">
                                 <div>
-                                    <x-input-label id="username" class="col-form-label" for="username" value="nom d'utilisateur" />
+                                    <x-input-label id="username" class="col-form-label" for="username"
+                                        value="nom d'utilisateur" />
                                 </div>
                                 <div>
-                                    <x-text-input id="username" class="form-control" placeholder="nom d'utilisateur" type="text" name="username" :value="old('username')" required />
+                                    <x-text-input id="username" class="form-control" placeholder="nom d'utilisateur"
+                                        type="text" name="username" :value="old('username')" required />
                                 </div>
                             </div>
 
                             @error('username')
-                                <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                             @enderror
 
                             <div class="mb-3 row">
                                 <div>
-                                    <x-input-label class="col-form-label" for="email" value="{{ Lang::get('register.page.email.text') }}" />
+                                    <x-input-label class="col-form-label" for="email"
+                                        value="{{ Lang::get('register.page.email.text') }}" />
                                 </div>
                                 <div class="">
-                                    <x-text-input id="email" class="form-control" placeholder="{{ Lang::get('register.page.email.placeholder.text') }}" type="email" name="email" :value="old('email')" required />
+                                    <x-text-input id="email" class="form-control"
+                                        placeholder="{{ Lang::get('register.page.email.placeholder.text') }}"
+                                        type="email" name="email" :value="old('email')" required />
                                 </div>
                             </div>
 
                             @error('email')
-                                <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                             @enderror
 
                             <div class="mb-3 row">
-                                <x-input-label for="password" class="col-form-label" value="{{ Lang::get('register.page.password.text') }}" />
+                                <x-input-label for="password" class="col-form-label"
+                                    value="{{ Lang::get('register.page.password.text') }}" />
 
-                                <div class="">
-                                    <x-text-input id="password" class="form-control" type="password" placeholder="{{ Lang::get('register.page.password.placeholder.text') }}" name="password" />
+                                <div class="pass_div">
+                                    <x-text-input id="password" class="form-control pass_input w-100" type="password"
+                                        placeholder="{{ Lang::get('register.page.password.placeholder.text') }}"
+                                        name="password" />
+                                    <i onclick="myFunctioncheckshow()" id="password_co"
+                                        class="fa-regular fa-eye pas-eye"></i>
                                 </div>
                             </div>
 
                             @error('password')
-                                <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                             @enderror
 
                             <div class="mb-3 row">
-                                <x-input-label for="password_confirmation" class="col-form-label" value="{{ Lang::get('register.page.confirm.password.text') }}" />
-            
-                                <div class="">
-                                    <x-text-input id="password_confirmation" class="form-control" type="password" placeholder="{{ Lang::get('register.page.confirm.password.placeholder.text') }}"  name="password_confirmation" required/>
+                                <x-input-label for="password_confirmation" class="col-form-label"
+                                    value="{{ Lang::get('register.page.confirm.password.text') }}" />
+
+                                <div class="pass_div">
+                                    <x-text-input id="password_confirmation" class="form-control w-100" type="password"
+                                        placeholder="{{ Lang::get('register.page.confirm.password.placeholder.text') }}"
+                                        name="password_confirmation" required />
+                                    <i onclick="myFunctioncheck()" id="password_con"
+                                        class="fa-regular fa-eye pas-eye"></i>
                                 </div>
                             </div>
 
                             @error('password_confirmation')
-                                <span class="text-danger">{{ $message }}</span>
+                            <span class=" text-danger">{{ $message }}</span>
                             @enderror
 
                             <div class="mb-3 row">
                                 <div class="col-md-6">
-                                    <x-input-label for="country" class="col-form-label" value="{{ Lang::get('register.page.country.text') }}" />
-                
+                                    <x-input-label for="country" class="col-form-label"
+                                        value="{{ Lang::get('register.page.country.text') }}" />
+
                                     <div class="">
-                                        <x-text-input id="country" class="form-control" type="text" :value="old('country')" placeholder="{{ Lang::get('register.page.country.text') }}"  name="country" required/>
+                                        <x-text-input id="country" class="form-control" type="text"
+                                            :value="old('country')"
+                                            placeholder="{{ Lang::get('register.page.country.text') }}" name="country"
+                                            required />
                                     </div>
                                 </div>
 
                                 @error('country')
-                                    <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
                                 <div class="col-md-6">
-                                    <x-input-label for="city" class="col-form-label" value="{{ Lang::get('register.page.city.text') }}" />
-                
+                                    <x-input-label for="city" class="col-form-label"
+                                        value="{{ Lang::get('register.page.city.text') }}" />
+
                                     <div class="">
-                                        <x-text-input id="city" class="form-control" :value="old('city')" type="text" placeholder="{{ Lang::get('register.page.city.text') }}"  name="city" required/>
+                                        <x-text-input id="city" class="form-control" :value="old('city')" type="text"
+                                            placeholder="{{ Lang::get('register.page.city.text') }}" name="city"
+                                            required />
                                     </div>
                                 </div>
 
                                 @error('city')
-                                    <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
-                            
+
 
                             <div class="mb-3 row">
                                 <x-input-label class="col-form-label" for="photo" :value="__('Photo')" />
-            
+
                                 <div class="">
                                     <input type="file" class="dropify" data-height="145" name="photo" />
                                 </div>
                             </div>
 
                             @error('photo')
-                                <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                             @enderror
 
                             <div class="mb-3 row">
@@ -123,9 +146,10 @@
                         </form>
 
                         <div class="social-login">
-                            <a href="{{ url('/login/google') }}" class="d-flex social-pd">
-                                <span class="w-25"><i class="fa-brands fa-google"></i></span>
-                                <span class="w-75">{{ Lang::get('login.page.continuewithgoogletext') }}</span>
+                            <a class="d-flex align-items-center justify-content-center bc btn-success mb-3 p-2"
+                                href="{{ url('/login/google') }}" class="d-flex social-pd">
+                                <span><i class="fa-brands fa-google"></i></span>
+                                <span class="mx-3">{{ Lang::get('login.page.continuewithgoogletext') }}</span>
                             </a>
                         </div>
                     </div>
@@ -134,5 +158,5 @@
         </div>
     </section>
 
-   
+
 </x-guest-layout>

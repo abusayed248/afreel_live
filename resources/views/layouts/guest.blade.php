@@ -62,6 +62,7 @@
                             </div>
                             <div class="">
                                 <x-text-input id="email" class="form-control" placeholder="Votre e-mail" type="email" name="email" :value="old('email')" required />
+                                
                             </div>
                         </div>
                         <x-input-error class="text-danger" :messages="$errors->get('email')" class="mt-2" />
@@ -72,7 +73,9 @@
                             </div>
 
                             <div>
-                                <x-text-input class="form-control" placeholder="Mot de passe" id="password" type="password" name="password" />
+                                <x-text-input class="form-control password_log" placeholder="Mot de passe" id="password" type="password" name="password" />
+                                 <i onclick="myFunctionlog()" id="password_log"
+                                        class="fa-regular fa-eye pas-eye"></i>
                             </div>
                         </div>
                         <x-input-error class="text-danger" :messages="$errors->get('password')" class="mt-2" />
@@ -100,12 +103,13 @@
                         </div>
                     </form>
 
-                    <div class="social-login">
-                        <a href="{{ url('/login/google') }}" class="d-flex social-pd">
-                            <span class="w-25"><i class="fa-brands fa-google"></i></span>
-                            <span class="w-75">{{ Lang::get('login.page.continuewithgoogletext') }}</span>
-                        </a>
-                    </div>
+                <div class="social-login">
+                            <a class="d-flex align-items-center justify-content-center bc btn-success mb-3 p-2"
+                                href="{{ url('/login/google') }}" class="d-flex social-pd">
+                                <span><i class="fa-brands fa-google"></i></span>
+                                <span class="mx-3">{{ Lang::get('login.page.continuewithgoogletext') }}</span>
+                            </a>
+                        </div>
 
                 </div>
             </div>

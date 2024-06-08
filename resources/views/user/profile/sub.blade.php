@@ -65,7 +65,7 @@
         sendPaymentInfos(new Date().getTime(),
                          'XCPNY11168','v4GE9BuvtAA9tuDS9xZsmPLVpAZ0wZFcZFAb9OBcauTQeS3Dw4',
                          'xcompnay.com',  {!! json_encode(url('test-success')) !!},
-            {!! json_encode(url('test-fail')) !!}, 5000,
+                         {!! json_encode(url('test-fail')) !!}, 5000,
                          'Abidjan', email, first, last,  phone);
     }
 </script>
