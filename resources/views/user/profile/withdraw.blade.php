@@ -63,7 +63,7 @@
             <div class="modal-body">
               <form action="{{ route('user.withdraw') }}" method="post">
                 @csrf
-                <label>Montante</label>
+                <label>Montant</label>
                 <input type="number" max="{{ Auth::user()->wallet }}" name="amount" class="form-control" required>
                 <br>
                 <label>Mode de paiement</label>
