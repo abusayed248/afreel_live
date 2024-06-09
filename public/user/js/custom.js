@@ -1,7 +1,16 @@
 $('.dropify').dropify({
     messages: {
-        'default': 'Select Your Profile Picture',
-        'replace': 'Select Your Profile Picture',
+        'default': 'Sélectionnez votre photo de profil',
+        'replace': 'Sélectionnez votre photo de profil',
+        'remove': 'Remove',
+        'error': 'Error. The file is either not square, larger than 2 MB or not an acceptable file type'
+    }
+});
+
+$('.dropify2').dropify({
+    messages: {
+        'default': 'Ajouter une vidéo et une photo de portfolio',
+        'replace': 'Ajouter une vidéo et une photo de portfolio',
         'remove': 'Remove',
         'error': 'Error. The file is either not square, larger than 2 MB or not an acceptable file type'
     }

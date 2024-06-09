@@ -12852,3 +12852,7 @@ body {
 .nav-ad-btn {
   box-shadow: none !important;
 }
+
+.sb-sidenav {
+  background-color: white;
+}

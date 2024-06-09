@@ -23,6 +23,8 @@ class WebSocialLinkController extends Controller
             'twitter' => $request->twitter,
             'instagram' => $request->instagram,
             'linkedin' => $request->linkedin,
+             'number' => $request->phone_number,
+             'email' => $request->com_email,
         ]);
         toastr()->success('', 'Social links updated successfully!');
         return redirect()->back();

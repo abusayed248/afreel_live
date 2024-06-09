@@ -10,12 +10,14 @@
                     Powered by XCompany Abidjan,</br>
                     Angre 7ème tranche Café de Versailles </br>
                 </address>
-                <a class="pt-2 f_e" href="mailto:support@afreel.com">support@afreel.com</a>.<br>
-                <div class=" d-flex mt-3">
-
                     @php
                     $webSocialLinks = \App\Models\WebSocialLink::first(); 
                     @endphp 
+                <a class="pt-2 f_e" href="mailto:support@afreel.com">{{ $webSocialLinks->email }}</a>.<br>
+                <a class="pt-2 f_e" href="tel:01738517125">{{ $webSocialLinks->number }}</a>.<br>
+                <div class=" d-flex mt-3">
+
+                
                    
                     <div class="media_icon tag_btn d-flex justify-content-center align-items-center">
                         <a href="{{ $webSocialLinks->fb }}">

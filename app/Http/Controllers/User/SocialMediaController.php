@@ -20,7 +20,7 @@ class SocialMediaController extends Controller
             'twitter' => $request->twitter,
             'instagram' => $request->instagram,
             'linkedin' => $request->linkedin,
-        ]);
+          ]);
         toastr()->success('', 'Social media account updated successfully!');
         return redirect()->back();
     }

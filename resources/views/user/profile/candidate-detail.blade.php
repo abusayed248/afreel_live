@@ -17,10 +17,10 @@
                                         <img class="img-fluid" src="{{asset($user->photo)}}" alt="">
 
                                     </div>
-                            @if(Request::url() ===  route('candidate.detail'))         
+                                    @if(Request::url() === route('candidate.detail'))
                                     <div class="up_date_div">
                                         <i class="fa-solid fa-circle-plus in_fo_add "
-                                             onclick="document.getElementById('getFile').click()"> </i>
+                                            onclick="document.getElementById('getFile').click()"> </i>
                                         <form method="post" action="{{ route('user.update.info') }}"
                                             enctype="multipart/form-data">
                                             @csrf
@@ -30,8 +30,8 @@
                                             <input type="hidden" name="fullname" value="{{$user->fullname}}" />
                                         </form>
                                     </div>
-                                     @else
-                                            
+                                    @else
+
                                     @endif
                                 </div>
 
@@ -60,46 +60,46 @@
 
                             </div>
                         </div>
-                        @if(Request::url() ===  route('candidate.detail'))  
+                        @if(Request::url() === route('candidate.detail'))
                         <div class="col-md-3 d-flex justify-content-end align-items-center">
                             <a class="applied_job2 w-100 h-100" href="{{ route('user.sub') }}">
                                 <div class=" pt-3 pb-3">
-                                    
-                                       
+
+
                                     <div class="d-flex justify-content-end flex-column text-center">
                                         @php
-                                    
+
                                         // Get the user's created date
                                         $createdDate = Auth::user()->created_at;
-                                    
+
                                         // Parse the created date
                                         $start = \Carbon\Carbon::parse($createdDate);
-                                    
+
                                         // Calculate the end date by adding 30 days to the start date
                                         $endDate = $start->copy()->addDays(30);
-                                    
+
                                         // Calculate the remaining days from today to the end date
                                         $remainingDays = \Carbon\Carbon::now()->diffInDays($endDate, false);
                                         @endphp
-                                        
+
                                         @if (Auth::user()->sub_id == null)
-                                            <span>Essai ({{ $remainingDays }} jours restants!)</span>
+                                        <span>Essai ({{ $remainingDays }} jours restants!)</span>
                                         @elseif(Auth::user()->sub_id == 1)
-                                            <span>Basic</span>
+                                        <span>Basic</span>
                                         @elseif(Auth::user()->sub_id == 2)
-                                            <span>Prime</span>
+                                        <span>Prime</span>
                                         @endif
-                                    
+
                                         <p>abonnement</p>
                                         <i class="fa-regular fa-bell app_icon"></i>
 
-                                    </div>       
-                                
+                                    </div>
 
-                                   
+
+
                                 </div>
                             </a>
-                        </div>              
+                        </div>
                         @endif
 
                         <div class="col-md-4 d-flex justify-content-sm-start justify-content-md-end align-items-center">
@@ -114,16 +114,16 @@
                     <div class="col-md-12 mt-4 p-2">
                         <div class="mt-5">
                             <div class="d-flex justify-content-between">
-                                <h6 class="mb-3 fw-bold">À propos Nom du candidat</h6>
-                                
-                                @if(Request::url() ===  route('candidate.detail'))         
-                                     <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop1"></i>   
-                                     @else
-                                            
-                                    @endif
-                                    </div>
-                                    <div class="exslio-list mt-3">
+                                <h6 class="mb-3 fw-bold">À propos du candidat</h6>
+
+                                @if(Request::url() === route('candidate.detail'))
+                                <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop1"></i>
+                                @else
+
+                                @endif
+                            </div>
+                            <div class="exslio-list mt-3">
                                 <ul>
                                     <li>
                                         <div class="esclio-110 bg-light rounded px-3 py-3">
@@ -139,14 +139,14 @@
                         <div class="mt-5">
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-3 fw-bold">Qualification</h6>
-                                   @if(Request::url() === route('candidate.detail'))  
-                                     <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
+                                @if(Request::url() === route('candidate.detail'))
+                                <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop2"></i>
 
-                                   @else
-                                                                            
-                                   @endif
-                                                              
+                                @else
+
+                                @endif
+
                             </div>
                             <div>
                                 <div class="exslio-list mt-3">
@@ -192,14 +192,12 @@
                             <div class="mt-5">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="mb-3 fw-bold">Expérience</h6>
-                                       @if(Request::url() ===  route('candidate.detail'))   
-                                        <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
+                                    @if(Request::url() === route('candidate.detail'))
+                                    <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop3"></i>
+                                    @else
+                                    @endif
 
-                                           @else
-                                                                                    
-                                           @endif
-                                   
                                 </div>
                                 <div>
                                     <div class="exslio-list mt-3">
@@ -224,14 +222,14 @@
                             <div class="mt-5">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="mb-3 fw-bold">Compétences fondamentales</h6>
-                                       @if(Request::url() ===  route('candidate.detail')) 
-                                        <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
+                                    @if(Request::url() === route('candidate.detail'))
+                                    <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop4"></i>
 
-                                       @else
-                                                                                
-                                       @endif
-                                   
+                                    @else
+
+                                    @endif
+
                                 </div>
                                 <div class="exslio-list mt-3">
 
@@ -258,35 +256,29 @@
                             </div>
                             <div class="mt-5">
                                 <div class="d-flex justify-content-between">
-                                    <h6 class="mb-3 fw-bold">Compétences fondamentales</h6>
-                                       @if(Request::url() ===  route('candidate.detail')) 
-                                        <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop4"></i>
+                                    <h6 class="mb-3 fw-bold">Portefeuille</h6>
+                                    @if(Request::url() === route('candidate.detail'))
+                                    <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop5"></i>
+                                    @else
+                                    @endif
 
-                                       @else
-                                                                                
-                                       @endif
-                                   
                                 </div>
                                 <div class="exslio-list mt-3">
 
                                     <ul>
-                                        <li>
-                                            <div class="esclio-110 bg-light rounded px-3 py-3">
-                                                <div class="esclio-110-decs full-width">
-                                                    @isset($user->tag)
-                                                    @foreach($user->tag as $tag)
-                                                    @php
-                                                    $values = explode(' ', $tag);
-                                                    @endphp
+                                        <li class="d-flex flex-wrap justify-content-between w-100">
 
-                                                    @foreach($values as $value)
-                                                    <span class="tag_btn">{{ ucfirst($value) }}</span>
-                                                    @endforeach
-                                                    @endforeach
-                                                    @endisset
-
-                                                </div>
+                                            <div
+                                                class="col-md-6 col-sm-12 p-3 recent_activities d-flex justify-content-center align-items-center">
+                                                <img class="img-fluid porft_div "
+                                                    src="{{asset($user->protfolio_photo)}}" alt="Téléchargez une photo">
+                                            </div>
+                                            <div
+                                                class="col-md-6 col-sm-12 p-3 recent_activities d-flex justify-content-center align-items-center">
+                                                <video class="porft_div" controls
+                                                    src="{{asset($user->protfolio_video)}}"></video>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
@@ -347,7 +339,7 @@
                 <form method="post" action="{{ route('user.update.info') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                       <div class="mb-3 row">
+                        <div class="mb-3 row">
                             <div class="col-md-6">
                                 <div>
                                     <label class="col-form-label">Collège</label>
@@ -468,6 +460,37 @@
                             <input type="text" id="tag"
                                 value="@isset($user->tag) @foreach($user->tag as $key => $tag) {{ $tag }} @endforeach @endisset"
                                 name="tag" class="form-control" data-role="tagsinput">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <div class="accoun_btn_div">
+                            <input class="w-100 btn btn-success" type="submit" value="Ajouter">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Portefeuille -->
+    <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Portfolio publicitaire vidéo sa photo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form method="post" action="{{ route('user.update.info') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3 row">
+                            <x-input-label class="col-form-label" for="photo" :value="__('Photos et vidéos')" />
+                            <div class="">
+                                <input type="file" class="dropify2" data-height="145" name="photo_or_video"
+                                    value="{{ $user->school }}" />
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
