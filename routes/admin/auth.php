@@ -51,4 +51,8 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('admin-create',[AdminManageController::class,'create'])->name('create.admin');
     Route::get('admin-delete/{id}',[AdminManageController::class,'destroy'])->name('delete.admin');
     Route::post('admin-store',[AdminManageController::class,'store'])->name('store');
+
+    //change passwords
+    Route::get('admin-store',[AdminManageController::class,'changePassword'])->name('change.password.index');
+    Route::post('password-change',[AdminManageController::class,'passwordChange'])->name('password.change');
 });
