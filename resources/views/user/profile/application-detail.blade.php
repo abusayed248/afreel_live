@@ -12,17 +12,19 @@
                                             alt="">
                                     </div>
                                 </div>
-                                <div class="">
-                                    <div class="px-4 d-flex">
+                                <div >
+                                    <div class="px-2">
                                         <a style="color: black;"
                                     href="{{ route('candidate.profile.details', $applicationDetails->seller->id) }}">
                                             <h2 class="mb-1">{{ $applicationDetails->seller->fullname }}</h2>
                                         </a>
-                                       
-                                        <div>{{ $applicationDetails->seller->job_title }}</div>
-                                    </div>
+                                     </div>
 
                                     <div class="row px-4">
+                                         <div>
+                                            <i class="fa-solid fa-briefcase"></i>
+                                            {{ $applicationDetails->seller->job_title }}
+                                        </div>
                                         <div class="mt-2 mb-2">
                                             <i class="fa-solid fa-location-dot"></i>
                                             <samp class="bc">{{
@@ -74,22 +76,22 @@
                         </div>
                     </div>
 
-                   
+
                 </div>
             </div>
         </div>
     </div>
-    
+
     @php
     $email = Auth::user()->email;
     $first = Auth::user()->name;
     $last = Auth::user()->fullname;
     $phone = Auth::user()->phone;
-    
+
     @endphp
    <script src=https://touchpay.gutouch.net/touchpayv2/script/touchpaynr/prod_touchpay-0.0.1.js type="text/javascript"></script>
     <script>
-            
+
         function calltouchpay() {
             var email = {!! json_encode($email) !!};
             var id = {!! json_encode($applicationDetails->id) !!};
@@ -107,6 +109,6 @@
                 'Abidjan', email, first, last, phone);
         }
     </script>
-       
-        
+
+
 </x-app-layout>

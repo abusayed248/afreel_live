@@ -6,10 +6,6 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Afreel User
                 </a>
-                <a class="nav-link" href="{{ route('admin.payment.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    Payment Request
-                </a>
                 <a class="nav-link" href="{{ route('admin.withdraw.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Withdraw Request

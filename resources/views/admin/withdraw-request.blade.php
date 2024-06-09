@@ -26,16 +26,6 @@
                                         {{-- <th>Salary</th> --}}
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Seller Name</th>
-                                        <th>Amount</th>
-                                        <th>Payment Type</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                        {{-- <th>Salary</th> --}}
-                                    </tr>
-                                </tfoot>
                                 <tbody>
                                     @foreach ($data as $item)
                                         <tr>
