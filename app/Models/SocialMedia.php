@@ -10,6 +10,9 @@ class SocialMedia extends Model
     use HasFactory;
 
     protected $fillable = [
-        'fb', 'twitter', 'instagram', 'linkedin',
+        'fb',
+         'twitter',
+          'instagram', 
+          'linkedin',
     ];
 }

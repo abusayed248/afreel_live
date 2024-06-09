@@ -1,8 +1,12 @@
- <div id="layoutSidenav_nav">
+<div id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion shadow-lg" id="sidenavAccordion">
         <div class="sb-sidenav-menu shadow mt-4">
             <div class="nav">
-               <a class="nav-link" href="{{ route('admin.payment.index') }}">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Afreel User
+                </a>
+                <a class="nav-link" href="{{ route('admin.payment.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Payment Request
                 </a>
@@ -13,7 +17,7 @@
 
                 <a class="nav-link" href="{{ route('admin.website.social.links') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    Website Social Links
+                    Company contact
                 </a>
 
                 @if(Auth::guard('admin')->user()->type == 1)
@@ -28,7 +32,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Chanage Password
                 </a>
-                
+
             </div>
         </div>
     </nav>
