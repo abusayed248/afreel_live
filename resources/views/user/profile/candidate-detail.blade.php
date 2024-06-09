@@ -490,6 +490,8 @@
                             <div class="">
                                 <input type="file" class="dropify2" data-height="145" name="photo_or_video"
                                     value="{{ $user->school }}" />
+                                <input type="hidden" value="{{ $user->protfolio_photo }}" name="old_protfolio_photo">
+                                <input type="hidden" value="{{ $user->protfolio_video }}" name="old_protfolio_video">
                             </div>
                         </div>
                     </div>

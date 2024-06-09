@@ -159,7 +159,9 @@ class JobAplicationController extends Controller
         ]);
 
         $wallet = User::where('id', $order['seller_id'])->first();
-        $amount = $wallet->wallet+$order['amount'];
+        $perAmount = $order['amount'] * 0.025;
+        $grandAmount = $order['amount'] - $perAmount;
+        $amount = $wallet->wallet+$grandAmount;
         $wallet->wallet = $amount;
         $wallet->save();
 

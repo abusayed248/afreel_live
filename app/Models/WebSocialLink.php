@@ -10,6 +10,6 @@ class WebSocialLink extends Model
     use HasFactory;
 
     protected $fillable = [
-        'fb', 'twitter', 'instagram', 'linkedin',
+        'fb', 'twitter', 'instagram', 'linkedin', 'number', 'email',
     ];
 }
