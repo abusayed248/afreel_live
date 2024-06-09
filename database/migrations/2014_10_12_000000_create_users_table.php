@@ -33,6 +33,8 @@ return new class extends Migration
             $table->string('certified')->nullable();
             $table->string('photo')->nullable();
             $table->text('about_info')->nullable();
+            $table->string('protfolio_video')->nullable();
+            $table->string('protfolio_photo')->nullable();
             $table->string('user_type')->nullable();
             $table->rememberToken();
             $table->timestamps();

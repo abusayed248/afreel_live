@@ -39,7 +39,7 @@ class User extends Authenticatable
         'graduation',
         'graduation_passing_year',
         'certified',
-        'country',
+        'country','protfolio_video','protfolio_photo',
         'city',
         'photo',
         'about_info',
