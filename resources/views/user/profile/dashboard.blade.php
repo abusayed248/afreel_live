@@ -24,7 +24,7 @@
                                 class="p-2 recet_job_con d-flex justify-content-between  align-items-center flex-wrap mt-3">
 
                                 <div class="recet_job_title_div col-md-12 d-flex justify-content-between p-3">
-                                    <h5>{{ $job_post->job_title }}</h5>
+                                    <h5>{{ ucwords(Str::limit($job_post->job_title, 50, '...')) }}</h5>
 
                                     @php
                                     $checkhired = \App\Models\Hire::where('post_id', '=', $job_post->id)->first();
