@@ -927,4 +927,5 @@ input:focus {
     width: 400px;
     text-align: center;
     overflow: hidden;
+    height: 400px;
 }

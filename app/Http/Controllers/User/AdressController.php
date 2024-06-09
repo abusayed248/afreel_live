@@ -103,34 +103,35 @@ class AdressController extends Controller
             $mime = $p_photo->getMimeType();
             $fileSize = $p_photo->getSize();
 
-            if ($mime == "video/x-flv" || $mime == "video/mp4" || $mime == "application/x-mpegURL" || $mime == "video/MP2T" || $mime == "video/3gpp" || $mime == "video/quicktime" || $mime == "video/x-msvideo" || $mime == "video/x-ms-wmv") {
-                if ($fileSize > 10240) {
-                    $extension = $p_photo->getClientOriginalExtension();
+            // Define the size limits in bytes
+            $videoSizeLimit = 10240 * 1024; // 10 MB in bytes
+            $photoSizeLimit = 2048 * 1024;  // 2 MB in bytes
+
+            if (in_array($mime, ["video/x-flv", "video/mp4", "application/x-mpegURL", "video/MP2T", "video/3gpp", "video/quicktime", "video/x-msvideo", "video/x-ms-wmv"])) {
+                if ($fileSize < $videoSizeLimit) {
+                    if ($request->old_protfolio_video) {
+                        unlink(public_path($request->old_protfolio_video));
+                    }
                     $fileNameToStore = time() . '.' . $extension; // Filename to store
                     $destinationPath = 'files/protfolio_video';
                     $p_photo->move(public_path($destinationPath), $fileNameToStore);
-                    $userinfo->protfolio_video = 'files/protfolio_video/' . $fileNameToStore;
-
+                    $userinfo->protfolio_video = $destinationPath . '/' . $fileNameToStore;
                 } else {
-                    toastr()->success('', 'La vidéo ne dépassera pas 10 Mo');
-
+                    toastr()->error('La vidéo ne dépassera pas 10 Mo');
                 }
-
             } else {
-                if ($fileSize > 2048) {
-                    $extension = $p_photo->getClientOriginalExtension();
+                if ($fileSize < $photoSizeLimit) {
+                    if ($request->old_protfolio_photo) {
+                        unlink(public_path($request->old_protfolio_photo));
+                    }
                     $fileNameToStore = time() . '.' . $extension; // Filename to store
                     $destinationPath = 'files/protfolio_photo';
                     $p_photo->move(public_path($destinationPath), $fileNameToStore);
-                    $userinfo->protfolio_photo = 'files/protfolio_photo/' . $fileNameToStore;
-
+                    $userinfo->protfolio_photo = $destinationPath . '/' . $fileNameToStore;
                 } else {
-                    toastr()->success('', "La taille de l'image ne doit pas dépasser 2 Mo");
-
+                    toastr()->error("La taille de l'image ne doit pas dépasser 2 Mo");
                 }
-
             }
-
         }
 
         $userinfo->save();
