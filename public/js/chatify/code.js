@@ -397,13 +397,24 @@ function IDinfo(id) {
           return;
         }
         // avatar photo
-        $(".messenger-infoView")
-          .find(".avatar")
-          .css("background-image", 'url("' + data.fetch.photo + '")');
-        $(".header-avatar").css(
-          "background-image",
-          'url("' + data.fetch.photo + '")'
-        );
+        if (data.fetch.provider == 'google') {
+          $(".messenger-infoView")
+            .find(".avatar")
+            .css("background-image", 'url("' + data.fetch.photo + '")');
+          $(".header-avatar").css(
+            "background-image",
+            'url("' + data.fetch.photo + '")'
+          );
+        } else{
+          $(".messenger-infoView")
+            .find(".avatar")
+            .css("background-image", 'url("' + 'https://afreel.com/' + data.fetch.photo + '")');
+          $(".header-avatar").css(
+            "background-image",
+            'url("' + 'https://afreel.com/' + data.fetch.photo + '")'
+          );
+        }
+        
         // Show shared and actions
         $(".messenger-infoView-btns .delete-conversation").show();
         $(".messenger-infoView-shared").show();
