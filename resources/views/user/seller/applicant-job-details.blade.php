@@ -61,7 +61,7 @@
 
                 <h3 class="mb-3"><span class="mx-3 bc"><i class="fas fa-users"></i></span>Détails de votre commande</h3>
 
-                <div class="row db_div recent_activities p-2">
+                <div class="row db_div recent_activities p-2 mb-3">
                     <div class="p-2 d-flex  align-items-center flex-wrap mt-3">
 
                         <div class="recet_job_title_div col-md-7">
@@ -113,7 +113,7 @@
                                 @endif
 
                                 <div class=" mt-3">
-                                    <div class="accoun_btn_div">
+                                    <div class="accoun_btn_div ">
                                         @if(!$jobPoster)
 
                                          <label class="col-form-label" form="attachment">Attachment</label>
@@ -126,7 +126,7 @@
 
                                          @if ($sellerHireDetails->post->user_id == Auth::user()->id)
                                             @if ($sellerHireDetails->post->order_complete != 1)
-                                            <div class="row justify-content-between">
+                                            <div class="row justify-content-between ">
                                                 <a href="{{ route('accept-order',  $sellerHireDetails->id) }}"  class="col-form-label col-md-6 btn btn-success mt-2 w-48 py-2">Accepteur</a>
 
                                                 <a id="cancelOrder" href="{{ route('order.cancel', $sellerHireDetails->id) }}" class="col-form-label col-md-6 btn btn-danger mt-2 w-48 py-2">Annuler</a>
