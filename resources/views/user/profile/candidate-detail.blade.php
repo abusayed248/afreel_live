@@ -255,7 +255,7 @@
                             </div>
                             <div class="mt-5">
                                 <div class="d-flex justify-content-between">
-                                    <h6 class="mb-3 fw-bold">Portefeuille</h6>
+                                    <h6 class="mb-3 fw-bold">Portofolio</h6>
                                     @if(Request::url() === route('candidate.detail'))
                                     <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop5"></i>
