@@ -121,6 +121,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //candidate profile details
     Route::get('/candidate/profile/{id}', [HomeController::class, 'candidateProfile'])->name('candidate.profile.details');
 
+    //refund money
+    Route::post('/refund-money', [HomeController::class, 'refundMoney'])->name('user.refund');
 
 
     //social account update

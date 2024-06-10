@@ -11,6 +11,11 @@
                     Withdraw Request
                 </a>
 
+                <a class="nav-link" href="{{ route('admin.refund.request') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Refund Request
+                </a>
+
                 <a class="nav-link" href="{{ route('admin.website.social.links') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Company contact

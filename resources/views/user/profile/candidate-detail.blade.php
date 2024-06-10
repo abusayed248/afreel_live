@@ -39,7 +39,6 @@
                                 <div class="">
                                     <div class="px-4">
                                         <h2 class="mb-1">{{ $user->fullname }}</h2>
-                                        <p>{{ $user->job_title }}</p>
                                     </div>
 
                                     <div class="row px-4">
