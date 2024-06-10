@@ -301,6 +301,8 @@
                                     </option>
                                     <option {{ old('gender')=='femme' ?'selected':'' }} value="Femme">Femme
                                     </option>
+                                    <option {{ old('gender')=='Mixte' ?'selected':'' }} value="Mixte">Mixte
+                                    </option>
                                    </select>
 
                                 @error('gender')

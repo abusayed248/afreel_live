@@ -4,7 +4,7 @@
     <div class="container mt-4 mb-3">
         <div class="row">
             <div class="col-md-12">
-                  <h3 class="mb-3"><span class="mx-3 bc"><i class="fas fa-users"></i></span>Candidates</h3>
+                  <h3 class="mb-3"><span class="mx-3 bc"><i class="fas fa-users"></i></span>Candidats</h3>
 
                 @foreach($showAppliedLists as $showAppliedList)
                 <div class="row db_div recent_activities p-2">

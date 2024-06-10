@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\RefundMonyController;
 use App\Http\Controllers\Admin\WebSocialLinkController;
 
 
@@ -27,6 +28,10 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::get('withdraw-request',[PaymentController::class,'withdraw_index'])->name('withdraw.index');
     Route::get('withdraw-approve/{id}',[PaymentController::class,'withdraw_approve'])->name('withdraw.approve');
+
+    //refund request
+    Route::get('refund-request',[RefundMonyController::class,'refund_index'])->name('refund.request');
+    Route::get('refund-approve/{id}',[RefundMonyController::class,'refund_approve'])->name('refund.approve');
 
 
     Route::get('website-social-links',[WebSocialLinkController::class,'index'])->name('website.social.links');

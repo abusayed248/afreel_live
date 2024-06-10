@@ -7,7 +7,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Job_aplication;
 use App\Http\Controllers\Controller;
+use App\Models\RefundMony;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class HireController extends Controller
 {
@@ -52,8 +54,17 @@ class HireController extends Controller
     public function orderCancel($id)
     {
         
-        Hire::whereId($id)->delete();
-        toastr()->success('', 'Order Canceld!');
-        return redirect('/');
+        $job =  Hire::find($id);
+        if($job) {
+            Session::put('buyer_info', $job->applier);
+        }
+        
+
+        $refunds = RefundMony::with('buyer')->where('buyer_id', Auth::id())->get();
+        if (!$refunds) {
+            $job->delete();
+        }
+       
+        return view('user.profile.refund', compact('refunds'));
     }
 }

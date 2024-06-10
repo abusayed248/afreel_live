@@ -16,7 +16,7 @@
                         <div class="m-3 row">
                             <div class="col-md-6">
                                 <div>
-                                    <label class="col-form-label">combien d'argent veux tut</label>
+                                    <label class="col-form-label">combien d'argent veux tu</label>
                                 </div>
                                 <input type="number" class="form-control w-100" name="seller_amount" min="5"
                                     value="{{ old('seller_amount') }}" placeholder="Votre besoin Montant">

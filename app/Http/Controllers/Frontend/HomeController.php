@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\RefundMony;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 use App\Models\Job_aplication;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -196,6 +199,28 @@ class HomeController extends Controller
     public function policy()
     {
        return view('policy-and-confidentiality');
+    }
+      // for refund money
+    public function refundMoney(Request $request)
+    {
+        $user = Auth::user();
+
+        $refund = new RefundMony;
+        $refund->buyer_id = $user->id;
+        $refund->amount = $request->amount;
+        $refund->payment_type = $request->type;
+        $refund->phone = $request->phone;
+        $refund->bank_name = $request->bank_name;
+        $refund->account_name = $request->account_name;
+        $refund->account_number = $request->account_number;
+        $refund->routing_number = $request->routing_number;
+        $refund->type = 'buyer';
+        $refund->status = 0;
+        $refund->save();
+
+       toastr()->success('', 'Votre demande de remboursement a été soumise avec succès.!');
+       Session::forget('buyer_info');
+       return redirect()->to('/');
     }
 
 }
