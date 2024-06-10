@@ -20,7 +20,6 @@ class DashboardController extends Controller
     //profile dashboard
     public function userDashboard()
     {
-        $this->buyerOnly();
         $get_user = User::where('email', auth()->user()->email)->first();
         $job_posts = Post::where('user_id', auth()->user()->id)->latest()->get();
         if ($get_user->is_activated == 1) {

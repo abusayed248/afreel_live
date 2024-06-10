@@ -26,6 +26,9 @@ use App\Http\Controllers\Frontend\PostController as FrontendPostController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/strorage-link', function() {
+    Artisan::call('storage:link');
+});
 
 Route::get('/test', function () {
     return view('test');
