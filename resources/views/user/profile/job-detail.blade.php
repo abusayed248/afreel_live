@@ -91,11 +91,11 @@
                         <div class=" mt-3">
                             @php
                             $apply_job = \App\Models\Job_aplication::where(['seller_id' => auth()->user()->id, 'post_id' => $post->id])->first();
-                            $notApply_job = \App\Models\Post::where('user_id', '=', auth()->user()->id)->first();
+                            $notApply_job = \App\Models\Post::where('user_id', '=', $post->user_id)->first();
                             $hireCheck = \App\Models\Hire::where('post_id', '=', $post->id)->first();
                             @endphp
 
-                            @if(!$notApply_job)
+                            @if($notApply_job->user->id != Auth::user()->id)
                                 @if(!$hireCheck)
                                     @if(!$apply_job)
                                     <a class="btn btn-success" href="{{ route('job.aplication', ['slug' => $post->slug, 'id' => $post->id]) }}">Postuler à un emploi </a>

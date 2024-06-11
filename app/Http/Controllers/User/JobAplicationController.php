@@ -60,12 +60,12 @@ class JobAplicationController extends Controller
                 }
             }
             if ($enddate->lt(Carbon::today())) {
-                toastr()->success('', 'Please Update subscription to hire!');
+                toastr()->error('', 'Please Update subscription to hire!');
                 return redirect(route('user.sub'));
             }
         } elseif ($applyCount->sub_id == 2) {
             if ($enddate->lt(Carbon::today())) {
-                toastr()->success('', 'Please Update subscription to hire!');
+                toastr()->error('', 'Please Update subscription to hire!');
                 return redirect(route('user.sub'));
             }
         }
@@ -76,30 +76,41 @@ class JobAplicationController extends Controller
             'cover_letter' => 'required',
             'file' => 'nullable|max:10240|mimes:docx,pdf,zip' //a required, max 10000kb, doc or docx file
         ]);
-
-
-
-        $job_application = Job_aplication::create([
-            'seller_id'       => \Auth::id(),
-            'post_id'         => $request->post_id,
-            'cover_letter'    => $request->cover_letter,
-            'seller_amount'   => $request->seller_amount,
-            'seller_deadline' => $request->seller_deadline,
-        ]);
-
-
-        $document = $request->file('file');
-        if ($document) {
-            $extension = $document->getClientOriginalExtension();
-            $fileNameToStore = Str::random(5) . '.' . $extension; // Filename to store
-            $destinationPath = 'files/aplication/document';
-            $document->move(public_path($destinationPath), $fileNameToStore);
-            $job_application->file = 'files/aplication/document/' . $fileNameToStore;
-            $job_application->save();
+                                                                                    
+        
+        $jobApplyCount = User::find(Auth::id());
+        
+        
+        if ($jobApplyCount->job_apply_count > 10 && $applyCount->sub_id == 1) {
+            toastr()->error('', 'Veuillez vous abonner au forfait premium !');
+                return redirect(route('user.sub'));
+        } else{
+            $job_application = Job_aplication::create([
+                'seller_id'       => \Auth::id(),
+                'post_id'         => $request->post_id,
+                'cover_letter'    => $request->cover_letter,
+                'seller_amount'   => $request->seller_amount,
+                'seller_deadline' => $request->seller_deadline,
+            ]);
+            $jobApplyCount->increment('job_apply_count');
+    
+    
+    
+            $document = $request->file('file');
+            if ($document) {
+                $extension = $document->getClientOriginalExtension();
+                $fileNameToStore = Str::random(5) . '.' . $extension; // Filename to store
+                $destinationPath = 'files/aplication/document';
+                $document->move(public_path($destinationPath), $fileNameToStore);
+                $job_application->file = 'files/aplication/document/' . $fileNameToStore;
+                $job_application->save();
+            }
+    
+            toastr()->success('', 'Job applied successfully!');
+            return redirect()->route('homepage');
         }
 
-        toastr()->success('', 'Job applied successfully!');
-        return redirect()->route('homepage');
+        
     }
 
 
