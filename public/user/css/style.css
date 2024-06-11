@@ -22,10 +22,6 @@ h6 {
     margin: 0 !important;
 }
 
-.row {
-    padding: 0px 5px !important;
-}
-
 :root {
     --blue: #11c759;
     --blueb: rgba(40, 182, 97, 0.11);

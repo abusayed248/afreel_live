@@ -22,11 +22,11 @@ class DashboardController extends Controller
     {
         $get_user = User::where('email', auth()->user()->email)->first();
         $job_posts = Post::where('user_id', auth()->user()->id)->latest()->get();
-        if ($get_user->is_activated == 1) {
-            return view('user.profile.dashboard', compact('job_posts'));
-        } else {
-            return redirect()->route('verifyAccount');
-        }
+        if ($get_user->provider == 'google') {
+            $get_user->is_activated = 1;
+            $get_user->save();
+        } 
+        return view('user.profile.dashboard', compact('job_posts'));
     }
 
     // job post details
