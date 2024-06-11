@@ -14,14 +14,14 @@
 
                         <div class="mb-3 row">
                             <div>
-                                <x-input-label class="col-form-label" for="email" :value="__('Email')" />
+                                <x-input-label class="col-form-label" for="loginname" :value="__('Email ou numéro de téléphone')" />
                             </div>
                             <div class="">
-                                <x-text-input id="email" class="form-control" placeholder="Votre e-mail" type="email"
-                                    name="email" :value="old('email')" required />
+                                <x-text-input id="loginname" class="form-control" placeholder="Votre e-mail" type="text"
+                                    name="loginname" :value="old('loginname')" required />
                             </div>
                         </div>
-                        <x-input-error class="text-danger" :messages="$errors->get('email')" class="mt-2" />
+                        <x-input-error class="text-danger" :messages="$errors->get('loginname')" class="mt-2" />
 
                         <div class="mb-3">
                             <div>

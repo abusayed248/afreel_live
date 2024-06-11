@@ -708,8 +708,10 @@
                                 <h5 class="p-1">{{ ucwords(Str::limit($job->job_title, 50, '...')) }}</h5>
                                 <div class="d-flex">
                                     <div class="d-flex justify-content-start align-items-center">
+                                        @if($job->user->country && $job->user->city)
                                         <i class="fa-solid fa-location-dot p-1"></i><span>{{
                                             $job->user->country.','.$job->user->city }}</span>
+                                        @endif
                                     </div>
                                     <div class="d-flex justify-content-start align-items-center job_status p-2">
                                         <i class="fa-solid fa-suitcase p-1"></i><span>{{ $job->job_type }}</span>

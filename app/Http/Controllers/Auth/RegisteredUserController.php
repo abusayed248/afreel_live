@@ -42,6 +42,7 @@ class RegisteredUserController extends Controller
             'job_title' => 'required',
             'country' => 'required|string',
             'city' => 'required',
+            'phone' => 'required|numeric|digits:10',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'photo' => 'required|image',
         ]);
@@ -52,6 +53,7 @@ class RegisteredUserController extends Controller
             'name' => $request->fullname,
             'username' => $request->username,
             'email' => $request->email,
+            'phone' => $request->phone,
             'job_title' => $request->job_title,
             'country' => $request->country,
             'city' => $request->city,
