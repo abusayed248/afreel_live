@@ -58,6 +58,22 @@
                             @enderror
 
                             <div class="mb-3 row">
+                                <div>
+                                    <x-input-label class="col-form-label" for="phone"
+                                        value="Numéro de portable" />
+                                </div>
+                                <div class="">
+                                    <x-text-input id="phone" class="form-control"
+                                        placeholder="Numéro de portable"
+                                        type="number" name="phone" :value="old('phone')" required />
+                                </div>
+                            </div>
+
+                            @error('phone')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
+                            <div class="mb-3 row">
                                 <x-input-label for="password" class="col-form-label"
                                     value="{{ Lang::get('register.page.password.text') }}" />
 
