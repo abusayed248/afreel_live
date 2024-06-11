@@ -114,7 +114,7 @@ class PostController extends Controller
             $post->save();
         }
         $post->save();
-        toastr()->success('', 'Post added successfully!');
+        toastr()->success('', 'Message ajouté avec succès!');
         return redirect()->back();
     }
 

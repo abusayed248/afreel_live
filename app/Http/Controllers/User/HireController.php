@@ -28,7 +28,7 @@ class HireController extends Controller
         $hireCount->hire_count++;
         $hireCount->save();
 
-        toastr()->success('', 'Hired successfully!');
+        toastr()->success('', 'Embauché avec succès!');
         return redirect()->route('seller.job.order.details', $hire['aplicant_id']);
     }
     //hire person
@@ -45,7 +45,7 @@ class HireController extends Controller
         $hireCount->hire_count++;
         $hireCount->save();
 
-        toastr()->success('', 'Hired successfully!');
+        toastr()->success('', 'Embauché avec succès!');
         return redirect()->back();
     }
 

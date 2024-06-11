@@ -45,11 +45,11 @@ class DashboardController extends Controller
             $user->is_activated = 1;
             $user->otp_code = null;
             $user->save();
-            toastr()->success('', 'Email verified successfully!');
+            toastr()->success('', 'Email vérifié avec succès!');
             Auth::login($user);
             return redirect()->to('/');
         } else {
-            toastr()->error('', 'Your OTP is invalid please check your email OTP first');
+            toastr()->error('', "Votre OTP n'est pas valide, veuillez d'abord vérifier votre OTP de messagerie");
             return redirect('/verify-otp/' . $user->id);
         }
     }
@@ -76,7 +76,7 @@ class DashboardController extends Controller
         $get_user_name = $user->fullname;
         Mail::to($user->email)->send(new WelcomeMail($get_user_email, $validToken, $get_user_name));
 
-        toastr()->success('', 'Resend OTP please check your email OTP first');
+        toastr()->success('', "Renvoyer l'OTP, veuillez d'abord vérifier votre OTP par e-mail");
         return redirect()->back();
     }
 
@@ -128,8 +128,6 @@ class DashboardController extends Controller
     public function withdraw_submit(Request $request)
     {
         $user = Auth::user();
-
-        // dd($request->all());
 
         $payment = new PaymentRequest;
         $payment->seller_id = $user->id;

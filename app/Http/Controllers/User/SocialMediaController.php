@@ -21,7 +21,7 @@ class SocialMediaController extends Controller
             'instagram' => $request->instagram,
             'linkedin' => $request->linkedin,
           ]);
-        toastr()->success('', 'Social media account updated successfully!');
+        toastr()->success('', 'Compte de réseau social mis à jour avec succès!');
         return redirect()->back();
     }
 

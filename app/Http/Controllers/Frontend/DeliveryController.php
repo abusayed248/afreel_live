@@ -36,7 +36,7 @@ class DeliveryController extends Controller
             $delivery->save();
         }
         
-        toastr()->success('', 'Order delivery successfully!');
+        toastr()->success('', 'Livraison de la commande réussie!');
         return redirect()->back();
     }
 
@@ -44,6 +44,6 @@ class DeliveryController extends Controller
     {
         $file = Delivery::whereId($id)->first();
         return response()->download(public_path($file->attachment));
-        toastr()->success('', 'Attachment downloaded successfully!');
+        toastr()->success('', 'Pièce jointe téléchargée avec succès!');
     }
 }

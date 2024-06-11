@@ -38,38 +38,6 @@ class JobAplicationController extends Controller
     //store job applocation
     function storeJobAplication(Request $request)
     {
-        $applyCount = Auth::user();
-        $trial_end = Carbon::parse($applyCount->created_at)->addDays(30);
-        $buyDate = Carbon::parse($applyCount->sub_date);
-        $enddate = $buyDate->clone()->addDays(30);
-
-        if ($applyCount->sub_id == null) {
-            if ($trial_end->lt(Carbon::today())) {
-                toastr()->success('', 'Please Update subscription to hire!');
-                return redirect(route('user.sub'));
-            }
-        } elseif ($applyCount->sub_id == 1) {
-            if (!is_null($buyDate)) {
-                $filteredApplications = Job_aplication::query()
-                    ->where('seller_id', Auth::id())
-                    ->whereBetween('created_at', [$buyDate, $enddate])
-                    ->count();
-                if ($filteredApplications > 11) {
-                    toastr()->success('', 'Please Update subscription to hire!');
-                    return redirect(route('user.sub'));
-                }
-            }
-            if ($enddate->lt(Carbon::today())) {
-                toastr()->error('', 'Please Update subscription to hire!');
-                return redirect(route('user.sub'));
-            }
-        } elseif ($applyCount->sub_id == 2) {
-            if ($enddate->lt(Carbon::today())) {
-                toastr()->error('', 'Please Update subscription to hire!');
-                return redirect(route('user.sub'));
-            }
-        }
-
         $request->validate([
             'seller_amount' => 'min:1|required|numeric',
             'seller_deadline' => 'required',
@@ -81,7 +49,7 @@ class JobAplicationController extends Controller
         $jobApplyCount = User::find(Auth::id());
         
         
-        if ($jobApplyCount->job_apply_count > 10 && $applyCount->sub_id == 1) {
+        if ($jobApplyCount->job_apply_count > 10 && $jobApplyCount->sub_id == 1) {
             toastr()->error('', 'Veuillez vous abonner au forfait premium !');
                 return redirect(route('user.sub'));
         } else{
@@ -106,7 +74,7 @@ class JobAplicationController extends Controller
                 $job_application->save();
             }
     
-            toastr()->success('', 'Job applied successfully!');
+            toastr()->success('', 'Poste postulé avec succès!');
             return redirect()->route('homepage');
         }
 
@@ -133,7 +101,7 @@ class JobAplicationController extends Controller
     {
         $file = Job_aplication::whereId($id)->first();
         return response()->download(public_path($file->file));
-        toastr()->success('', 'File downloaded successfully!');
+        toastr()->success('', 'Fichier téléchargé avec succès!');
     }
 
     public function sellerJobOrderComplete($id)

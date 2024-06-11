@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
                 $request->session()->regenerate();
                 return redirect()->to('/');
             } else {
-                toastr()->error('', 'Your Email is not OTP verify please verify email OTP first');
+                toastr()->error('', "Votre e-mail n'est pas un OTP, veuillez d'abord vérifier l'OTP de votre e-mail");
                 return redirect('/verify-otp/' . $user->id);
             }
         } else {
