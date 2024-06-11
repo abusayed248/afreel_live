@@ -25,12 +25,11 @@ return new class extends Migration
             $table->string('job_category')->nullable();
             $table->integer('age')->nullable();
             $table->json('tag')->nullable();
-            $table->string('language')->nullable();
+            $table->integer('job_apply_count')->nullable()->default(0);
             $table->string('inter')->nullable();
             $table->string('inter_passing_year')->nullable();
             $table->string('graduation')->nullable();
             $table->string('graduation_passing_year')->nullable();
-            $table->string('certified')->nullable();
             $table->string('photo')->nullable();
             $table->text('about_info')->nullable();
             $table->string('protfolio_video')->nullable();

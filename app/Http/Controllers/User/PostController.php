@@ -113,8 +113,8 @@ class PostController extends Controller
             $post->file = 'files/post/document/'.$fileNameToStore;
             $post->save();
         }
-
-        toastr()->success('', 'Post added successfully!');
+        $post->save();
+        toastr()->success('', 'Message ajouté avec succès!');
         return redirect()->back();
     }
 

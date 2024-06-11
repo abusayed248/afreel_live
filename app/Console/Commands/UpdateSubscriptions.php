@@ -28,6 +28,7 @@ class UpdateSubscriptions extends Command
         foreach ($users as $user) {
             $user->sub_id = null;
             $user->sub_date = null;
+            $user->job_apply_count = null;
             $user->save();
         }
 
