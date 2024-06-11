@@ -49,7 +49,7 @@
 
                 <ul>
                     <li><a target="_blank"
-                            href="https://www.google.com/maps/place/Cafe+de+Versailles/@5.386634,-3.990017,17z/data=!4m8!3m7!1s0xfc19370c07e91c5:0x2a167ea9689b5903!8m2!3d5.3866287!4d-3.9874421!9m1!1b1!16s%2Fg%2F11h409czvz?entry=ttu">Site
+                            href="https://www.google.com/maps/place/XCompany/@5.3869379,-3.9883214,15z/data=!4m2!3m1!1s0x0:0x475ac4881d8810ad?sa=X&ved=1t:2428&hl=fr&ictx=111">Site
                             carte</a></li>
                     <li><a href="{{ route('policy-and-confidentiality') }}">Politique de confidentialité</a></li>
                 </ul>
