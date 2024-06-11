@@ -30,6 +30,7 @@ class SocialController extends Controller
                 'photo'         => $userSocial->getAvatar(),
                 'provider_id'   => $userSocial->getId(),
                 'provider'      => $provider,
+                'is_activated'  => 1,
             ]);
             Auth::login($user);
             return redirect()->route('homepage');

@@ -20,12 +20,7 @@ class DashboardController extends Controller
     //profile dashboard
     public function userDashboard()
     {
-        $get_user = User::where('email', auth()->user()->email)->first();
         $job_posts = Post::where('user_id', auth()->user()->id)->latest()->get();
-        if ($get_user->provider == 'google') {
-            $get_user->is_activated = 1;
-            $get_user->save();
-        } 
         return view('user.profile.dashboard', compact('job_posts'));
     }
 
