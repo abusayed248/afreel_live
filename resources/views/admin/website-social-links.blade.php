@@ -72,11 +72,11 @@
                                             <div>
                                                 <label class="col-form-label">Phone Number</label>
                                             </div>
-                                            <input type="number" name="phone_number"
-                                                value="{{ $webSocialLinks->number }}" class="form-control"
+                                            <input type="number" name="phone"
+                                                value="{{ $webSocialLinks->phone }}" class="form-control"
                                                 placeholder="Company Phone Number">
 
-                                            @error('instagram')
+                                            @error('phone')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -85,10 +85,10 @@
                                             <div>
                                                 <label class="col-form-label">E-mail</label>
                                             </div>
-                                            <input type="email" name="com_email" value="{{ $webSocialLinks->email }}"
+                                            <input type="email" name="email" value="{{ $webSocialLinks->email }}"
                                                 class="form-control" placeholder="Company E-mail">
 
-                                            @error('linkedin')
+                                            @error('email')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
