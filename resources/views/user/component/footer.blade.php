@@ -13,8 +13,8 @@
                     @php
                     $webSocialLinks = \App\Models\WebSocialLink::first(); 
                     @endphp 
-                <a class="pt-2 f_e" href="mailto:support@afreel.com">{{ $webSocialLinks->email }}</a>.<br>
-                <a class="pt-2 f_e" href="tel:01738517125">{{ $webSocialLinks->number }}</a>.<br>
+                <a class="pt-2 f_e" href="mailto:{{ $webSocialLinks->email }}">{{ $webSocialLinks->email }}</a>.<br>
+                <a class="pt-2 f_e" href="tel:{{ $webSocialLinks->phone }}">{{ $webSocialLinks->phone }}</a>.<br>
                 <div class=" d-flex mt-3">
 
                 
