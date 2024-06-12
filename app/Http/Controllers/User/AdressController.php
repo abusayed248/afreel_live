@@ -29,6 +29,13 @@ class AdressController extends Controller
         if ($request->has('job_title')) {
             $userinfo->job_title = $request->job_title;
         }
+        if ($request->has('country')) {
+            $userinfo->country = $request->country;
+        }
+        if ($request->has('city')) {
+            $userinfo->city = $request->city;
+        }
+
         if ($request->has('phone')) {
             $userinfo->phone = $request->phone;
         }
@@ -68,6 +75,9 @@ class AdressController extends Controller
         if ($request->has('city')) {
             $userinfo->city = $request->city;
         }
+        if ($request->has('job_title')) {
+            $userinfo->job_title = $request->job_title;
+        }
         if ($request->has('bio')) {
             $userinfo->about_info = $request->bio;
         }
@@ -105,7 +115,7 @@ class AdressController extends Controller
 
             // Define the size limits in bytes
             $videoSizeLimit = 10240 * 1024; // 10 MB in bytes
-            $photoSizeLimit = 2048 * 1024;  // 2 MB in bytes
+            $photoSizeLimit = 2048 * 1024; // 2 MB in bytes
 
             if (in_array($mime, ["video/x-flv", "video/mp4", "application/x-mpegURL", "video/MP2T", "video/3gpp", "video/quicktime", "video/x-msvideo", "video/x-ms-wmv"])) {
                 if ($fileSize < $videoSizeLimit) {
