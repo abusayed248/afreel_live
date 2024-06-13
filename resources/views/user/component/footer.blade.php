@@ -11,14 +11,14 @@
                     Angre 7ème tranche Café de Versailles </br>
                 </address>
                     @php
-                    $webSocialLinks = \App\Models\WebSocialLink::first(); 
-                    @endphp 
+                    $webSocialLinks = \App\Models\WebSocialLink::first();
+                    @endphp
                 <a class="pt-2 f_e" href="mailto:{{ $webSocialLinks->email }}">{{ $webSocialLinks->email }}</a>.<br>
                 <a class="pt-2 f_e" href="tel:{{ $webSocialLinks->phone }}">{{ $webSocialLinks->phone }}</a>.<br>
                 <div class=" d-flex mt-3">
 
-                
-                   
+
+
                     <div class="media_icon tag_btn d-flex justify-content-center align-items-center">
                         <a href="{{ $webSocialLinks->fb }}">
                             <i class="fa-brands fa-facebook"></i>
@@ -28,8 +28,8 @@
                             <i class="fa-brands fa-x-twitter"></i>
                         </a></div>
                     <div class="media_icon tag_btn d-flex justify-content-center align-items-center">
-                        <a href="{{ $webSocialLinks->linkedin }}">
-                            <i class="fa-brands fa-linkedin"></i>
+                        <a href="//api.whatsapp.com/send?phone=+225{{$webSocialLinks->phone}}&text=WHATEVER_LINK_OR_TEXT_YOU_WANT_TO_SEND">
+                            <i class="fa-brands fa-whatsapp"></i>
                         </a>
                     </div>
                     <div class="media_icon tag_btn d-flex justify-content-center align-items-center"><a href="{{ $webSocialLinks->instagram }}">
