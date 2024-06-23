@@ -30,8 +30,10 @@
                                     @foreach ($data as $item)
                                         <tr>
                                             <td>
+                                                 @if(!empty($item->seller->name) && !empty($item->seller->email))
                                                 {{ $item->seller->name }}
                                                 ( {{ $item->seller->email }} )
+                                                  @endif
                                             </td>
                                             <td>{{ $item->amount }}</td>
                                             <td>{{ $item->payment_type }}</td>

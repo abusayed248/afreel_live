@@ -899,6 +899,7 @@ input:focus {
     position: relative;
 }
 
+
 .pas-eye {
     margin-top: 10px;
     transform: translate(-20px, -38px);
@@ -924,4 +925,40 @@ input:focus {
     text-align: center;
     overflow: hidden;
     height: 400px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    #navbarSupportedContent {
+        margin-left: 20px;
+    }
+
+    .sign_btn {
+        padding: 0px 0px;
+
+    }
+
+    .container {
+        padding: 0PX 15PX !important;
+    }
+
+    .ap-btn {
+        width: 100%;
+        text-align: center;
+        margin: 15px;
+    }
+
+    .ap-btn .recet_job_apply_btn {
+        display: inherit;
+
+    }
+
+    .navbar .navbar-brand {
+        max-width: 150px !important;
+    }
+
+    .title_sub {
+        padding: 0px 0px !important;
+    }
+
 }
