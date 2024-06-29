@@ -86,8 +86,12 @@
                         <div class="recet_job_title_div col-md-7">
                             <h5 class="p-1">{{ ucwords(Str::limit($latestPost->job_title, 35, '...')) }}</h5>
                             <div class="d-flex justify-content-start align-items-center">
-                                <i class="fa-solid fa-location-dot p-1"></i><span>@if( $latestPost->user){{
-                                    $latestPost->user->country.','.$latestPost->user->city }} @endif</span>
+                                 @if( !empty($latestPost->user->country) && !empty($latestPost->user->city))
+                                    <i class="fa-solid fa-location-dot p-1"></i>
+                                    <span>
+                                       {{ ucwords(Str::limit( $latestPost->user->country.','.$latestPost->user->city, 25, '...')) }}
+                                    </span>
+                                  @endif
                             </div>
 
                             <div class="d-flex">

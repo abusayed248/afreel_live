@@ -13,7 +13,7 @@
                         <div class="col-md-5">
                             <div class="d-flex candi_det_div">
                                 <div class="px-4">
-                                    <div class="candidate_pic">
+                                    <div class="candidate_pic" onmousemove="hiIcon()" onmouseout="viIcon()">
                                         <img class="img-fluid" src="{{asset($user->photo)}}" alt="">
 
                                     </div>
