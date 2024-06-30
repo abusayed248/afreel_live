@@ -19,7 +19,7 @@
             </div>
             <div class="container">
                 <div class="row mt-3">
-                    
+
                     <div class="col-md-12">
 
                         @if(!empty($candidates) && $candidates->count())
@@ -44,8 +44,12 @@
                                                     <span>{{ $candidate->job_title }}</span>
                                                 </div>
                                                 <div class="d-flex justify-content-center align-items-center">
-                                                    <i class="fa-solid fa-location-dot p-2"></i><span>{{
-                                                        $candidate->country.','.$candidate->city }}</span>
+                                                  @if( !empty($candidate->country) && !empty($candidate->city))
+                                    <i class="fa-solid fa-location-dot p-1"></i>
+                                    <span>
+                                       {{ ucwords(Str::limit( $candidate->country.','.$candidate->city, 20, '...')) }}
+                                    </span>
+                                  @endif
                                                 </div>
 
                                                 <div class="m-3">

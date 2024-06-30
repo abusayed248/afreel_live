@@ -925,3 +925,41 @@ input:focus {
     overflow: hidden;
     height: 400px;
 }
+
+.candidate_pic:hover {
+    width: 160px;
+    height: 160px;
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .sign_btn {
+        padding: 0px 0px;
+
+    }
+
+    .container {
+        padding: 0px 15px !important;
+    }
+
+    .ap-btn {
+        width: 100%;
+        text-align: center;
+        margin: 15px;
+    }
+
+    .ap-btn .recet_job_apply_btn {
+        display: inherit;
+
+    }
+
+    .navbar .navbar-brand {
+        max-width: 150px;
+    }
+
+    .title_sub {
+        padding: 0px 0px;
+    }
+
+}

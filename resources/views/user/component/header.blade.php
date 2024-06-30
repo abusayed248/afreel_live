@@ -3,8 +3,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img class="img-fluid" src="{{ asset('user') }}/img/logo.png" alt="">
-                <p class="motto">Connecter l’Afrique pour libérer le talent</p>
-            </a>
+             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -39,7 +38,7 @@
                     </li>
                     @endauth
                 </ul>
-                <div class="login_nav_pic mx-2">
+                <div class="login_nav_pic">
 
                     @guest
                     <button type="button" class="sign_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -81,7 +80,7 @@
 
                 </div>
                 @auth
-                <div class="mx-2 m-1">
+                <div class="m-1">
                     <a href="{{ route('user.withdraw') }}" class="btn btn-success text-white">
                         {{-- <i class="fa-solid fa-plus"></i> --}}
                         <span>Portefeuille: {{ Auth::user()->wallet }}</span>
@@ -89,7 +88,7 @@
                 </div>
                 @endauth
 
-                <div class="mx-2 m-1">
+                <div class=" m-1">
                     <a href="{{ route('user.job.post') }}" class="btn text-white post_btn">
                         <i class="fa-solid fa-plus"></i>
                         <span>{{ Lang::get('post.a.job.text') }}</span>

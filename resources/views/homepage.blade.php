@@ -9,7 +9,7 @@
                     </div>
 
                     <h1 class="title pb-2 ">Explorez plus de <spen class="bc">7840+</spen> Jobs</h1>
-                   
+
                     <p class="title_p ptc">Votre avenir commence ici, découvrez des opportunités sans limites avec notre large éventail de catégories</p>
                 </div>
                 <div class="col-md-6 text-end">
@@ -34,7 +34,7 @@
                         </div>
                         <div class="active_job_con">
                             <h4 class="pb-2 fw-bold">{{Lang::get('home.page.emploi.text')}}</h4>
-                            <p class="ptc">Des opportunités de carrière en constante évolution prêtes à être saisies 
+                            <p class="ptc">Des opportunités de carrière en constante évolution prêtes à être saisies
 </p>
 
                         </div>
@@ -74,7 +74,7 @@
     <section class="bg-light mt-5 pb-5 pt-3">
         <div class="container">
             <div class="text-center">
-               
+
                 <p class="ptc">Emplois récents</p>
                 <h1>Emplois <span class="bc">Récents</span> répertoriés actif</h1>
             </div>
@@ -86,8 +86,12 @@
                         <div class="recet_job_title_div col-md-7">
                             <h5 class="p-1">{{ ucwords(Str::limit($latestPost->job_title, 35, '...')) }}</h5>
                             <div class="d-flex justify-content-start align-items-center">
-                                <i class="fa-solid fa-location-dot p-1"></i><span>@if( $latestPost->user){{
-                                    $latestPost->user->country.','.$latestPost->user->city }} @endif</span>
+                                 @if( !empty($latestPost->user->country) && !empty($latestPost->user->city))
+                                    <i class="fa-solid fa-location-dot p-1"></i>
+                                    <span>
+                                       {{ ucwords(Str::limit( $latestPost->user->country.','.$latestPost->user->city, 25, '...')) }}
+                                    </span>
+                                  @endif
                             </div>
 
                             <div class="d-flex">
@@ -123,7 +127,7 @@
 
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-5 ap-btn">
                             <a class=" recet_job_apply_btn bc"
                                 href="{{ route('job.post.details', ['slug' => $latestPost->slug, 'id' => $latestPost->id]) }}">Postuler
                                 à un emploi <i class="fa-regular fa-circle-right"></i></a>

@@ -10,7 +10,9 @@
                             <div class="d-flex candi_det_div">
                                 <div class="px-4">
                                     <div class="candidate_pic">
+                                       @if(!empty($post->user->photo))
                                         <img class="img-fluid" src="{{ asset($post->user->photo) }}" alt="">
+                                         @endif
                                     </div>
                                 </div>
                                 <div class="">
@@ -19,9 +21,11 @@
                                     </div>
                                       <div class="row px-4">
                                         <div class="mt-2 mb-2">
-                                            <i class="fa-solid fa-location-dot"></i>
-                                            <samp class="bc">{{ $post->user->country.', '.$post->user->city }}</samp>
-                                        </div>
+                                             @if(!empty($post->user->photo))
+                                              <i class="fa-solid fa-location-dot"></i>
+                                                <samp class="bc">{{ $post->user->country.', '.$post->user->city }}</samp>
+                                              @endif
+                                          </div>
                                      </div>
                                  </div>
                              </div>

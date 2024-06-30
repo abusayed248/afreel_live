@@ -105,3 +105,11 @@ function myFunctionlog() {
     }
 }
 
+
+function hiIcon() {
+    document.querySelector('.fa-circle-plus').style.opacity = '0';
+}
+function viIcon() {
+    document.querySelector('.fa-circle-plus').style.opacity = '';
+}
+
