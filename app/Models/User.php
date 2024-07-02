@@ -32,7 +32,7 @@ class User extends Authenticatable
         'job_title',
         'job_type',
         'job_category',
-        'age', 'tag',
+        'client_type', 'tag',
         'job_apply_count',
         'inter',
         'inter_passing_year',
