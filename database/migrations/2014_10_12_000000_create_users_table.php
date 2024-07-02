@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('job_title')->nullable();
             $table->string('job_type')->nullable();
             $table->string('job_category')->nullable();
-            $table->integer('age')->nullable();
+            $table->string('client_type')->nullable();
             $table->json('tag')->nullable();
             $table->integer('job_apply_count')->nullable()->default(0);
             $table->string('inter')->nullable();

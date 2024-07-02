@@ -48,7 +48,6 @@ class RegisteredUserController extends Controller
         ]);
         $validToken = rand(10, 100. . '2024');
         $user = User::create([
-
             'fullname' => $request->fullname,
             'name' => $request->fullname,
             'username' => $request->username,
@@ -57,6 +56,8 @@ class RegisteredUserController extends Controller
             'job_title' => $request->job_title,
             'country' => $request->country,
             'city' => $request->city,
+            'user_type' => $request->user_type,
+            'client_type' => $request->client_type,
             'otp_code' => $validToken,
             'password' => Hash::make($request->password),
         ]);
