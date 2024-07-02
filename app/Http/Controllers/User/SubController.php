@@ -35,6 +35,9 @@ class SubController extends Controller
         }elseif($request->amount > 5000) {
             $user->sub_id = 2;
             $user->sub_date = Carbon::now();
+        }elseif($request->amount > 1500 && $request->amount < 3000) {
+            $user->bost_profile = 1;
+            $user->boost_profile_date = Carbon::now();
         }
 
         $user->save();

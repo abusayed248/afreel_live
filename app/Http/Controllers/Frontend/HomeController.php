@@ -181,7 +181,7 @@ class HomeController extends Controller
     public function allCandidates(Request $request)
     {
         $keywords = $request->keyword;
-        $candidatesQuery = User::query()->inRandomOrder();
+        $candidatesQuery = User::query()->orderByRaw("CASE WHEN bost_profile = 1 THEN 0 ELSE 1 END")->orderBy('bost_profile', 'asc')->inRandomOrder();
 
         if ($keywords) {
             $keywords = '%' . strtolower($keywords) . '%'; 
