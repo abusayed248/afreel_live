@@ -35,6 +35,8 @@ return new class extends Migration
             $table->string('protfolio_video')->nullable();
             $table->string('protfolio_photo')->nullable();
             $table->string('user_type')->nullable();
+            $table->string('bost_profile')->nullable();
+            $table->string('boost_profile_date')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

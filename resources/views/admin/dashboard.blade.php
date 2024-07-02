@@ -18,6 +18,7 @@
                                             <th>Sl</th>
                                             <th>User name</th>
                                             <th>User Email</th>
+                                            <th>User Type</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -33,6 +34,7 @@
                                                     {{ $user->username }}
                                                 </td>
                                                 <td>{{ $user->email }}</td>
+                                                <td>{{ $user->user_type=='Ouvrière'?'Ouvrière':'' }}{{ $user->user_type=='Clientes'?"Clientes ($user->client_type)":'' }}</td>
                                                 <td colspan="2">
                                                     <a href="{{ route('admin.user.delete', $user->id) }}" class="btn btn-danger">Delete </a>
                                                     {{-- <a href="#" class="btn btn-warning">Deactive </a> --}}

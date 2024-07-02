@@ -34,7 +34,7 @@ class User extends Authenticatable
         'job_category',
         'client_type', 'tag',
         'job_apply_count',
-        'inter',
+        'inter','bost_profile','boost_profile_date',
         'inter_passing_year',
         'graduation',
         'graduation_passing_year',
