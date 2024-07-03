@@ -11,29 +11,49 @@ class SocialController extends Controller
 {
     public function redirect($provider)
     {
-     return Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
-    public function Callback($provider){
-        $userSocial =   Socialite::driver($provider)->stateless()->user();
-        $users      =   User::where(['email' => $userSocial->getEmail()])->first();
-        
-        if($users){
+    public function Callback($provider)
+    {
+        $userSocial = Socialite::driver($provider)->stateless()->user();
+        $users = User::where(['email' => $userSocial->getEmail()])->first();
+
+        if ($users) {
             Auth::login($users);
             return redirect('/');
         } else {
             $user = User::create([
-                'fullname'      => $userSocial->getName(),
-                'name'      => $userSocial->getName(),
-                'username'      => $userSocial->getName().rand(10,100..'2024'),
-                'email'         => $userSocial->getEmail(),
-                'photo'         => $userSocial->getAvatar(),
-                'provider_id'   => $userSocial->getId(),
-                'provider'      => $provider,
-                'is_activated'  => 1,
+                'fullname' => $userSocial->getName(),
+                'name' => $userSocial->getName(),
+                'username' => $userSocial->getName() . rand(10, 100. . '2024'),
+                'email' => $userSocial->getEmail(),
+                'photo' => $userSocial->getAvatar(),
+                'provider_id' => $userSocial->getId(),
+                'provider' => $provider,
+                'is_activated' => 1,
             ]);
             Auth::login($user);
-            return redirect()->route('homepage');
+            return view('user-type');
+
         }
+
     }
+    public function userTypeAdd(Request $request)
+    {
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+
+        if ($request->has('user_type')) {
+            $user->user_type = $request->user_type;
+        }
+        if ($request->has('client_type')) {
+            $user->client_type = $request->client_type;
+        }
+
+        $user->save();
+        return redirect('/');
+
+    }
+
 }

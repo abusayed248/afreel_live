@@ -45,18 +45,24 @@
 
 </head>
 
-<body>
+<body class="bbg">
 
-    <div class="container">
-        <div class="row">
+ <div class="container">
+        <div class="row justify-content-center align-items-center otp_div ">
+            <div class="col-md-5 otp_sec p-4 bg-white">
+                <h3 class="mt-3 text-center text-success" style="font-weight: bold;">Choisissez votre type de compte</h3>
+     <form action="{{ route('userType') }}" method="post" enctype="multipart/form-data">
+                        @csrf
 
-            <div class="col-md-6">
+                <div class="row">
+            <div class="col-md-12">
+
                 <div>
                     <label class="col-form-label">Type d'utilisateur</label>
                 </div>
                 <div>
                     <select class="form-select w-100 p-2 user_type" name="user_type" required>
-                        <option selected disabled selected>Sélectionnez-en un</option>
+                        <option  disabled selected>Sélectionnez-en un</option>
                         <option {{ old('user_type')=='Ouvrière' ?'selected':'' }}
                             value="Ouvrière">Ouvrière
                         </option>
@@ -65,6 +71,7 @@
                         </option>
                     </select>
                 </div>
+
             </div>
         </div>
         <div class="row">
@@ -74,8 +81,20 @@
                 </div>
             </div>
         </div>
+
+           <div class=" mt-3">
+                   <input class="w-100 btn btn-success" type="submit" value="Soumettre">
+                </div>
+       </form>
+            </div>
+        </div>
     </div>
-    
+
+
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
          $(document).ready(function() {
@@ -90,7 +109,7 @@
                     <label>Type de client</label>
                     <select name='client_type' class='form-control'>
                         <option value="Entreprises">Entreprises</option>
-                        <option value="Particulier">Particulier</option>                
+                        <option value="Particulier">Particulier</option>
                     </select>`;
                 }
 

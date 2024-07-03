@@ -107,7 +107,7 @@
                             <span class=" text-danger">{{ $message }}</span>
                             @enderror
 
-                            <div class="row">
+                            <div class="mb-3 row">
                                 <div class="col-md-6">
                                     <div>
                                         <label class="col-form-label">Catégorie d'emploi</label>
@@ -323,7 +323,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="mb-3 row">
                                 <div class="col-md-12">
                                     <div class="meth client_design">
 
@@ -331,7 +331,7 @@
                                 </div>
                             </div>
 
-                            
+
                             <div class="mb-3 row">
                                 <div class="col-md-6">
                                     <x-input-label for="country" class="col-form-label"
@@ -408,11 +408,11 @@
                 $('.meth').empty(); // Clear the .meth element
 
                 if (val == 'Clientes') {
-                    html = `<br>
+                    html = `
                     <label>Type de client</label>
                     <select name='client_type' class='form-control'>
                         <option value="Entreprises">Entreprises</option>
-                        <option value="Particulier">Particulier</option>                
+                        <option value="Particulier">Particulier</option>
                     </select>`;
                 }
 

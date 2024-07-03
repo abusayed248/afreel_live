@@ -1,21 +1,20 @@
 <?php
 
-use App\Models\SocialMedia;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
-use App\Http\Controllers\SocialController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\User\SubController;
-use App\Http\Controllers\User\HireController;
-use App\Http\Controllers\User\PostController;
-use App\Http\Controllers\User\AdressController;
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\User\DashboardController;
-use App\Http\Controllers\User\SocialMediaController;
 use App\Http\Controllers\Frontend\DeliveryController;
-use App\Http\Controllers\User\JobAplicationController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PostController as FrontendPostController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialController;
+use App\Http\Controllers\User\AdressController;
+use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\HireController;
+use App\Http\Controllers\User\JobAplicationController;
+use App\Http\Controllers\User\PostController;
+use App\Http\Controllers\User\SocialMediaController;
+use App\Http\Controllers\User\SubController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,14 +25,18 @@ use App\Http\Controllers\Frontend\PostController as FrontendPostController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
-Route::get('/strorage-link', function() {
+ */
+Route::get('/strorage-link', function () {
     Artisan::call('storage:link');
 });
 
 Route::get('/test', function () {
     return view('test');
 });
+
+Route::get('/user-type', [SocialController::class, 'userTypeAdd'])->name('userType');
+Route::post('/user-type', [SocialController::class, 'userTypeAdd'])->name('userType');
+
 Route::get('/policy-and-confidentiality', [HomeController::class, 'policy'])->name('policy-and-confidentiality');
 
 Route::get('/test-success', [SubController::class, 'success']);
@@ -41,8 +44,6 @@ Route::get('/test-success', [SubController::class, 'success']);
 Route::get('/test-fail', [SubController::class, 'fail']);
 
 Route::get('/withdraw-success', [SubController::class, 'withdraw_success']);
-
-
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/find-job', [HomeController::class, 'findJobs'])->name('find.job');
@@ -55,19 +56,16 @@ Route::post('verifyotp', [DashboardController::class, 'useractivation'])->name('
 Route::get('/verify-otp/{user}', [DashboardController::class, 'verifyOtpByUser'])->name('otp-verify');
 Route::get('/resend-otp/{user}', [DashboardController::class, 'resendOtp'])->name('resend-otp');
 
-
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
 
     //Withdraw
 
     Route::get('withdraw', [DashboardController::class, 'withdraw'])->name('user.withdraw');
 
     Route::post('withdraw', [DashboardController::class, 'withdraw_submit'])->name('user.withdraw');
-
 
     //job aplication
     Route::get('/job-applicationa/{slug}={id}', [JobAplicationController::class, 'jobAplication'])->name('job.aplication');
@@ -82,7 +80,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //download delivery attachment
     Route::get('/download-delivery-attachment/{id}', [DeliveryController::class, 'downloadDeliveryAttachment'])->name('download.delivery.order.attachment');
-
 
     //user dashboard
     Route::get('/user/deshboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
@@ -124,15 +121,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //refund money
     Route::post('/refund-money', [HomeController::class, 'refundMoney'])->name('user.refund');
 
-
     //social account update
     Route::post('/update/social-media', [SocialMediaController::class, 'update'])->name('social.account.update');
     // update user info
     Route::post('/update/user/info', [AdressController::class, 'updateUserInfo'])->name('user.update.info');
 });
-
-
-
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -147,7 +140,6 @@ Route::middleware(['auth'])->group(function () {
 //social-login
 Route::get('login/{provider}', [SocialController::class, 'redirect']);
 Route::get('login/{provider}/callback', [SocialController::class, 'Callback']);
-
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin/auth.php';
