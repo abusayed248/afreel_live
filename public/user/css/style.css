@@ -932,6 +932,10 @@ input:focus {
 
 }
 
+.bbg {
+    background-image: url(../abstract-textured-backgound.jpg);
+}
+
 @media only screen and (max-width: 600px) {
 
     .sign_btn {

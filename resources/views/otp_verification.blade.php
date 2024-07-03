@@ -45,12 +45,12 @@
 
 </head>
 
-<body>
+<body class="bbg">
 
     <div class="container">
         <div class="row justify-content-center align-items-center otp_div">
-            <div class="col-md-5 otp_sec p-4">
-                <h3 class="mt-5 text-center text-warning" style="font-weight: bold;">Vérification de l'E-mail</h3>
+            <div class="col-md-5 otp_sec bg-white p-4">
+                <h3 class="mt-3 text-center text-warning" style="font-weight: bold;">Vérification de l'E-mail</h3>
 
                 @if(session()->has('message'))
                 <div class="alert alert-success">
