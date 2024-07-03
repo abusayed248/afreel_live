@@ -51,7 +51,7 @@
         <div class="row justify-content-center align-items-center otp_div ">
             <div class="col-md-5 otp_sec p-4 bg-white">
                 <h3 class="mt-3 text-center text-success" style="font-weight: bold;">Choisissez votre type de compte</h3>
-     <form action="{{ route('userType') }}" method="post" enctype="multipart/form-data">
+     <form action="{{ route('user.type.add') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                 <div class="row">
