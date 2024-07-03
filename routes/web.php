@@ -34,8 +34,8 @@ Route::get('/test', function () {
     return view('test');
 });
 
-Route::get('/user-type', [SocialController::class, 'userTypeAdd'])->name('userType');
-Route::post('/user-type', [SocialController::class, 'userTypeAdd'])->name('userType');
+Route::get('/user-type', [SocialController::class, 'Callback'])->name('userType');
+Route::post('/user/type/add', [SocialController::class, 'userTypeAdd'])->name('user.type.add');
 
 Route::get('/policy-and-confidentiality', [HomeController::class, 'policy'])->name('policy-and-confidentiality');
 
