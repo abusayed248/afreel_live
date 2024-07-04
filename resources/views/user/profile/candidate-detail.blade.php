@@ -46,12 +46,17 @@
                                             <i class="fa-solid fa-location-dot"></i>
                                             <samp class="bc">{{ $user->country.",".$user->city }}</samp>
                                         </div>
-                                        <div class="mt-2 mb-2 px-2">
-                                            <i class="fa-solid fa-business-time"></i>
-                                            <span class="bc">
-                                                {{ $user->job_title}}
-                                            </span>
-                                        </div>
+                                         @if (!empty($user->user_type))
+                                            @if ($user->user_type == "Travailleurs")
+                                                        <div class="mt-2 mb-2 px-2">
+                                                        <i class="fa-solid fa-business-time"></i>
+                                                        <span class="bc">
+                                                            {{ $user->job_title}}
+                                                        </span>
+                                                    </div>
+                                            @endif
+                                 @endif
+
                                     </div>
 
                                 </div>
@@ -60,8 +65,10 @@
                             </div>
                         </div>
                         @if(Request::url() === route('candidate.detail'))
-                        <div class="col-md-3 d-flex justify-content-end align-items-center">
-                            <a class="applied_job2 w-100 h-100" href="{{ route('user.sub') }}">
+
+                        @if (!empty($user->user_type))
+                                @if ($user->user_type == "Travailleurs")
+                                <a class="applied_job2 w-100 h-100" href="{{ route('user.sub') }}">
                                 <div class=" pt-3 pb-3">
 
 
@@ -98,6 +105,10 @@
 
                                 </div>
                             </a>
+                                 @endif
+                                 @endif
+                        <div class="col-md-3 d-flex justify-content-end align-items-center">
+
                         </div>
                         @endif
 
@@ -134,8 +145,9 @@
                             </div>
 
                         </div>
-
-                        <div class="mt-5">
+                               @if (!empty($user->user_type))
+                                @if ($user->user_type == "Travailleurs")
+                                <div class="mt-5">
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-3 fw-bold">Qualification</h6>
                                 @if(Request::url() === route('candidate.detail'))
@@ -147,7 +159,7 @@
                                 @endif
 
                             </div>
-                            <div>
+                            <div class="mt-5">
                                 <div class="exslio-list mt-3">
                                     <ul>
                                         <li>
@@ -283,6 +295,10 @@
                                 </div>
                             </div>
                         </div>
+                                @endif
+                                @endif
+
+
                     </div>
                 </div>
             </div>
@@ -303,7 +319,9 @@
                 <form method="post" action="{{ route('user.update.info') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <div class="mb-3 row">
+                         @if (!empty($user->user_type))
+                                @if ($user->user_type == "Travailleurs")
+   <div class="mb-3 row">
                             <div>
                                 <label class="col-form-label">Catégorie d'emploi</label>
                             </div>
@@ -515,6 +533,10 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                                @endif
+                         @endif
+
+
                         <div class="mb-3 row">
                             <div class="col-md-6">
                                 <div><label for="country">Pays</label></div>

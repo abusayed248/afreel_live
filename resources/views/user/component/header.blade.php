@@ -15,12 +15,27 @@
                         <a class="nav-link active" aria-current="page" href="{{ url('/') }}">{{
                             Lang::get('homepage.nav.home') }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('find.job') }}">
-                            {{ Lang::get('homepage.nav.findJob') }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
+                        @php
+                          $user = auth()->user();
+                         @endphp
+
+                        @if (!empty($user->user_type))
+                                @if ($user->user_type == "Travailleurs")
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('find.job') }}">
+                                    {{ Lang::get('homepage.nav.findJob') }}
+                                </a>
+                            </li>
+                        @else
+                             <li class="nav-item">
+                                <a class="nav-link active" aria-current="page"  href="{{ route('all.candidates') }}">
+                                   Candidats
+                                </a>
+                            </li>
+                         @endif
+                        @endif
+
+                          <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('message') }}">
                             Messages
                         </a>
@@ -80,13 +95,13 @@
 
                 </div>
                 @auth
-                <div class="m-1">
-                    <a href="{{ route('user.withdraw') }}" class="btn btn-success text-white">
-                        {{-- <i class="fa-solid fa-plus"></i> --}}
-                        <span>Portefeuille: {{ Auth::user()->wallet }}</span>
-                    </a>
-                </div>
-                @endauth
+                 <div class="m-1">
+                                    <a href="{{ route('user.withdraw') }}" class="btn btn-success text-white">
+                                        {{-- <i class="fa-solid fa-plus"></i> --}}
+                                        <span>Portefeuille: {{ Auth::user()->wallet }}</span>
+                                    </a>
+                                </div>
+                  @endauth
 
                 <div class=" m-1">
                     <a href="{{ route('user.job.post') }}" class="btn text-white post_btn">

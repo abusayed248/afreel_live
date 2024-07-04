@@ -108,7 +108,117 @@
                             @enderror
 
                             <div class="mb-3 row">
+                                 <div class="col-md-12">
+                                    <div>
+                                        <label class="col-form-label">Type d'utilisateur</label>
+                                    </div>
+                                    <div>
+                                        <select class="form-select w-100 p-2 user_type" name="user_type" required>
+                                            <option selected disabled selected>Sélectionnez-en un</option>
+                                            <option {{ old('user_type')=='Travailleurs' ?'selected':'' }}
+                                                value="Travailleurs">Travailleurs
+                                            </option>
+                                            <option {{ old('user_type')=='Clients' ?'selected':'' }}
+                                                value="Clients">Clients
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="col-md-12">
+                                    <div class="meth client_design">
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
                                 <div class="col-md-6">
+                                    <x-input-label for="country" class="col-form-label"
+                                        value="{{ Lang::get('register.page.country.text') }}" />
+
+                                    <div class="">
+                                        <x-text-input id="country" class="form-control" type="text"
+                                            :value="old('country')"
+                                            placeholder="{{ Lang::get('register.page.country.text') }}" name="country"
+                                            required />
+                                    </div>
+                                </div>
+
+                                @error('country')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                                <div class="col-md-6">
+                                    <x-input-label for="city" class="col-form-label"
+                                        value="{{ Lang::get('register.page.city.text') }}" />
+
+                                    <div class="">
+                                        <x-text-input id="city" class="form-control" :value="old('city')" type="text"
+                                            placeholder="{{ Lang::get('register.page.city.text') }}" name="city"
+                                            required />
+                                    </div>
+                                </div>
+
+                                @error('city')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3 row">
+                                <x-input-label class="col-form-label" for="photo" :value="__('Photo')" />
+
+                                <div class="">
+                                    <input type="file" class="dropify" data-height="145" name="photo" />
+                                </div>
+                            </div>
+
+                            @error('photo')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
+                            <div class="mb-3 row">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <input class="w-100 btn btn-success" type="submit" value="Créer un compte">
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="social-login">
+                            <a class="d-flex align-items-center justify-content-center bc btn-success mb-3 p-2"
+                                href="{{ url('/login/google') }}" class="d-flex social-pd">
+                                <span><i class="fa-brands fa-google"></i></span>
+                                <span class="mx-3">{{ Lang::get('login.page.continuewithgoogletext') }}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+         $(document).ready(function() {
+            $('.user_type').on('change', function() {
+                var val = $('.user_type').val();
+                var html = ''; // Declare the html variable
+
+                $('.meth').empty(); // Clear the .meth element
+
+                if (val == 'Clients') {
+                    html = `
+                    <label>Type de client</label>
+                    <select name='client_type' class='form-control'>
+                        <option value="Entreprises">Entreprises</option>
+                        <option value="Particulier">Particulier</option>
+                    </select>`;
+                }else{
+                     html = `
+                   <div class="col-md-12">
                                     <div>
                                         <label class="col-form-label">Catégorie d'emploi</label>
                                     </div>
@@ -304,116 +414,7 @@
                                     @error('job_title')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div>
-                                        <label class="col-form-label">Type d'utilisateur</label>
-                                    </div>
-                                    <div>
-                                        <select class="form-select w-100 p-2 user_type" name="user_type" required>
-                                            <option selected disabled selected>Sélectionnez-en un</option>
-                                            <option {{ old('user_type')=='Ouvrière' ?'selected':'' }}
-                                                value="Ouvrière">Ouvrière
-                                            </option>
-                                            <option {{ old('user_type')=='Clientes' ?'selected':'' }}
-                                                value="Clientes">Clientes
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <div class="col-md-12">
-                                    <div class="meth client_design">
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="mb-3 row">
-                                <div class="col-md-6">
-                                    <x-input-label for="country" class="col-form-label"
-                                        value="{{ Lang::get('register.page.country.text') }}" />
-
-                                    <div class="">
-                                        <x-text-input id="country" class="form-control" type="text"
-                                            :value="old('country')"
-                                            placeholder="{{ Lang::get('register.page.country.text') }}" name="country"
-                                            required />
-                                    </div>
-                                </div>
-
-                                @error('country')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                                <div class="col-md-6">
-                                    <x-input-label for="city" class="col-form-label"
-                                        value="{{ Lang::get('register.page.city.text') }}" />
-
-                                    <div class="">
-                                        <x-text-input id="city" class="form-control" :value="old('city')" type="text"
-                                            placeholder="{{ Lang::get('register.page.city.text') }}" name="city"
-                                            required />
-                                    </div>
-                                </div>
-
-                                @error('city')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3 row">
-                                <x-input-label class="col-form-label" for="photo" :value="__('Photo')" />
-
-                                <div class="">
-                                    <input type="file" class="dropify" data-height="145" name="photo" />
-                                </div>
-                            </div>
-
-                            @error('photo')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-
-                            <div class="mb-3 row">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <input class="w-100 btn btn-success" type="submit" value="Créer un compte">
-                                </div>
-                            </div>
-                        </form>
-
-                        <div class="social-login">
-                            <a class="d-flex align-items-center justify-content-center bc btn-success mb-3 p-2"
-                                href="{{ url('/login/google') }}" class="d-flex social-pd">
-                                <span><i class="fa-brands fa-google"></i></span>
-                                <span class="mx-3">{{ Lang::get('login.page.continuewithgoogletext') }}</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-         $(document).ready(function() {
-            $('.user_type').on('change', function() {
-                var val = $('.user_type').val();
-                var html = ''; // Declare the html variable
-
-                $('.meth').empty(); // Clear the .meth element
-
-                if (val == 'Clientes') {
-                    html = `
-                    <label>Type de client</label>
-                    <select name='client_type' class='form-control'>
-                        <option value="Entreprises">Entreprises</option>
-                        <option value="Particulier">Particulier</option>
-                    </select>`;
+                                </div>`;
                 }
 
                 $('.meth').html(html); // Add the HTML to the .meth element
