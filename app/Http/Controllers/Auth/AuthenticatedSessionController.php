@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
-use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -42,7 +42,7 @@ class AuthenticatedSessionController extends Controller
             toastr()->error('', 'Votre email et votre mot de passe ne correspondent pas !');
             return redirect()->back();
         }
-        
+
     }
 
     /**
@@ -55,6 +55,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        Session::forget('provider_id');
 
         return redirect('/');
     }

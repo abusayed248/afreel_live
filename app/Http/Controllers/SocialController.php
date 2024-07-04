@@ -12,7 +12,7 @@ class SocialController extends Controller
 {
     public function redirect($provider)
     {
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)->stateless()->user();
     }
 
     public function Callback($provider)
@@ -76,6 +76,7 @@ class SocialController extends Controller
         $user->save();
         Auth::login($user);
         return redirect('/');
+        Session::forget('provider_id');
 
     }
 
