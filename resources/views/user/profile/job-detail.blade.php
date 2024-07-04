@@ -102,7 +102,14 @@
                             @if($notApply_job->user->id != Auth::user()->id)
                                 @if(!$hireCheck)
                                     @if(!$apply_job)
-                                    <a class="btn btn-success" href="{{ route('job.aplication', ['slug' => $post->slug, 'id' => $post->id]) }}">Postuler à un emploi </a>
+                                    @if (Auth::user()->user_type != "Clients")
+                                       <a class="btn btn-success" href="{{ route('job.aplication', ['slug' => $post->slug, 'id' => $post->id]) }}">Postuler à un emploi </a>
+                                    @endif
+
+
+
+
+
                                     @else
                                     <button type="button" class="btn btn-warning" disabled>Vous êtes postulé ! </button>
                                     @endif
