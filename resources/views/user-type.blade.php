@@ -104,7 +104,7 @@
 
                 $('.meth').empty(); // Clear the .meth element
 
-                if (val == 'Clientes') {
+                if (val == 'Clients') {
                     html = `<br>
                     <label>Type de client</label>
                     <select name='client_type' class='form-control'>

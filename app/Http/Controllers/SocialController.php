@@ -76,6 +76,7 @@ class SocialController extends Controller
         $user->save();
         Auth::login($user);
         return redirect('/');
+        Session::forget('provider_id');
 
     }
 

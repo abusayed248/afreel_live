@@ -66,7 +66,9 @@
                         </div>
                         @if(Request::url() === route('candidate.detail'))
 
-                        @if (!empty($user->user_type))
+
+                        <div class="col-md-3 d-flex justify-content-end align-items-center">
+  @if (!empty($user->user_type))
                                 @if ($user->user_type == "Travailleurs")
                                 <a class="applied_job2 w-100 h-100" href="{{ route('user.sub') }}">
                                 <div class=" pt-3 pb-3">
@@ -107,8 +109,6 @@
                             </a>
                                  @endif
                                  @endif
-                        <div class="col-md-3 d-flex justify-content-end align-items-center">
-
                         </div>
                         @endif
 
