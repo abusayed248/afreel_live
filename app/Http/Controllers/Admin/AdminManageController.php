@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminManageController extends Controller
 {
-    
+
     public function index()
     {
         $admins = Admin::latest()->get();
 
-        return view('admin.admin_manage.index',compact('admins'));
+        return view('admin.admin_manage.index', compact('admins'));
     }
-    
+
     public function create()
     {
 
         return view('admin.admin_manage.create');
     }
-    
+
     public function store(Request $request)
     {
 
@@ -40,7 +40,7 @@ class AdminManageController extends Controller
         toastr()->success('', 'Admin created successfully!');
         return redirect()->route('admin.manages');
     }
-    
+
     public function destroy($id)
     {
 
@@ -50,12 +50,12 @@ class AdminManageController extends Controller
         toastr()->success('', 'Admin deleted successfully!');
         return redirect()->route('admin.manages');
     }
-    
+
     public function changePassword()
     {
         return view('admin.auth.change-password');
     }
-    
+
     public function passwordChange(Request $request)
     {
         $admin = Auth::guard('admin')->user();
@@ -80,9 +80,7 @@ class AdminManageController extends Controller
             toastr()->error('', 'Your old password does not match!');
             return redirect()->back();
         }
-        
-    }
-    
 
+    }
 
 }

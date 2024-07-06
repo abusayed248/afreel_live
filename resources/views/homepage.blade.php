@@ -24,6 +24,32 @@
         </div>
     </section>
 
+      <section class="bg-white pb-5 pt-3">
+        <div class="container">
+            <div class="text-center">
+                <p class="ptc">Entreprises populaires</p>
+                <h1>Entreprises</h1>
+            </div>
+            <div class="row mt-3 flex-wrap">
+
+                <div class="center">
+                    @foreach($enterprises as $enterprise)
+                    <div class="col-md-2 p-2">
+                        <div class="recet_job_con p-2">
+                            <div class="d-flex justify-content-center align-items-center flex-column">
+                            <img style="height:80px; width: 80px;" src="{{asset($enterprise->photo)}}"
+                                                alt="">
+                            <h6 class="fw-bold mt-2 mb-2">{{ $enterprise->title }}</h6>
+
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="bg-white pb-5 pt-3">
         <div class="container">
             <div class="row justify-content-between active_job">
@@ -78,6 +104,7 @@
                 <p class="ptc">Emplois récents</p>
                 <h1>Emplois <span class="bc">Récents</span> répertoriés actif</h1>
             </div>
+
             <div class="row mt-3">
 
                 @foreach($latestPosts as $latestPost)

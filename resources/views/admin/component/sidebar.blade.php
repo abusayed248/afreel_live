@@ -33,6 +33,14 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Change Password
                 </a>
+                <a class="nav-link" href="{{ route('admin.all.enterprises') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                   All Enterprises Post
+                </a>
+                <a class="nav-link" href="{{ route('admin.postview') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Enterprises Post
+                </a>
 
             </div>
         </div>

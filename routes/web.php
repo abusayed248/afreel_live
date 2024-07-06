@@ -125,6 +125,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/update/social-media', [SocialMediaController::class, 'update'])->name('social.account.update');
     // update user info
     Route::post('/update/user/info', [AdressController::class, 'updateUserInfo'])->name('user.update.info');
+
 });
 
 Route::middleware(['auth'])->group(function () {
