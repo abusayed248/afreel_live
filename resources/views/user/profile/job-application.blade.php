@@ -16,10 +16,10 @@
                         <div class="m-3 row">
                             <div class="col-md-6">
                                 <div>
-                                    <label class="col-form-label">combien d'argent veux tu</label>
+                                    <label class="col-form-label">montant demandé pour le travail</label>
                                 </div>
                                 <input type="number" class="form-control w-100" name="seller_amount" min="5"
-                                    value="{{ old('seller_amount') }}" placeholder="Votre besoin Montant">
+                                    value="{{ old('seller_amount') }}" placeholder="combien voulez vous être payé pour le travail">
 
                                 @error('seller_amount')
                                 <span class="text-danger">{{ $message }}</span>
@@ -107,7 +107,7 @@
         //tag
         $("#tag").tagsinput();
 
-        //datepicker 
+        //datepicker
         $("#deadline").flatpickr({
             enableTime: false,
             dateFormat: "Y/m/d",

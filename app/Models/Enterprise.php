@@ -11,6 +11,8 @@ class Enterprise extends Model
 
     protected $fillable = [
         'title',
+        'details',
+        'email',
         'photo',
     ];
 

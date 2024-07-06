@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\EnterpriseController;
 use App\Http\Controllers\Frontend\DeliveryController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PostController as FrontendPostController;
@@ -92,6 +93,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/user/sub/{id}', [SubController::class, 'sub'])->name('user.subs');
     //job post details
     Route::get('/job-post-details/{slug}={id}', [FrontendPostController::class, 'jobPostDetails'])->name('job.post.details');
+
+    //Enterprise post details
+
+    Route::get('/enterprises-post-details/{id}', [EnterpriseController::class, 'enterprisesPostDetails'])->name('enterprises.post.details');
 
     //order route
     Route::get('/hire-person/{id}', [HireController::class, 'store'])->name('hire.person');
