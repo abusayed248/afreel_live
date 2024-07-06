@@ -26,9 +26,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        $validated = $request->validate([
+            'email' => 'required',
+        ]);
 
         $user = User::query()->where('email', $request->loginname)->orWhere('phone', $request->loginname)->first();
         // dd($user);
+
         if ($user->email || $user->phone) {
             if ($user->is_activated == 1) {
                 $request->authenticate();
