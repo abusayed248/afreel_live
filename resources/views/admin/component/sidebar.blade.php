@@ -28,6 +28,11 @@
                     Admin Manages
                 </a>
                 @endif
+               <a class="nav-link" href="{{ route('admin.change.email.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Change Email
+                </a>
+
 
                 <a class="nav-link" href="{{ route('admin.change.password.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

@@ -51,6 +51,7 @@ class AdminManageController extends Controller
         return redirect()->route('admin.manages');
     }
 
+// change Password
     public function changePassword()
     {
         return view('admin.auth.change-password');
@@ -78,6 +79,34 @@ class AdminManageController extends Controller
             }
         } else {
             toastr()->error('', 'Your old password does not match!');
+            return redirect()->back();
+        }
+
+    }
+
+    // change email
+    public function changeEmail()
+    {
+        $admin = Auth::guard('admin')->user();
+
+        $oldEmail = $admin->email;
+
+        return view('admin.auth.change-email', compact('oldEmail'));
+    }
+
+    public function emailChange(Request $request)
+    {
+        $admin = Auth::guard('admin')->user();
+        $newEmail = $request->email;
+        if (!empty($newEmail)) {
+
+            $admin->email = $newEmail;
+            $admin->save();
+
+            toastr()->success('', 'Eamil changed successfully!');
+            return redirect()->back();
+        } else {
+            toastr()->error('', 'Your old Email does not Edit!');
             return redirect()->back();
         }
 
