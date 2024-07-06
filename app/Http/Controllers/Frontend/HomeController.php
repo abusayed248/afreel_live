@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
+use App\Models\Enterprise;
+use App\Models\Job_aplication;
 use App\Models\Post;
-use App\Models\User;
 use App\Models\RefundMony;
 use App\Models\SocialMedia;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Job_aplication;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -30,10 +31,9 @@ class HomeController extends Controller
 
         $appliedJobs = Job_aplication::selectRaw('post_id, COUNT(*) as count')
             ->groupBy('post_id')->get();
+        $enterprises = Enterprise::all();
 
-        
-
-        return view('homepage', compact('latestPosts', 'hireTopCandidates', 'jobCats', 'appliedJobs'));
+        return view('homepage', compact('latestPosts', 'hireTopCandidates', 'jobCats', 'appliedJobs', 'enterprises'));
     }
 
     //candidate profile details
@@ -44,7 +44,6 @@ class HomeController extends Controller
         return view('user.profile.candidate-detail', compact('user', 'socialMedia'));
     }
 
-
     //find jobs
     public function findJobs(Request $request)
     {
@@ -54,21 +53,21 @@ class HomeController extends Controller
         $job_type = $request->job_type;
         $job_category = $request->job_category;
         $career_level = $request->career_level;
-        $amount     = $request->amount;
-        $per_page   = $request->per_page ?: 15;
+        $amount = $request->amount;
+        $per_page = $request->per_page ?: 15;
 
         $jobs = Post::query()->with('user')->latest('id');
 
         if ($keywords || $location || $job_category || $job_type || $career_level || $amount) {
-            $jobs->where(function ($query) use ($keywords, $location, $job_type,  $job_category, $career_level, $amount) {
+            $jobs->where(function ($query) use ($keywords, $location, $job_type, $job_category, $career_level, $amount) {
                 if ($keywords) {
                     $query->where('job_title', 'like', '%' . $keywords . '%')
-                          ->orWhere('slug', 'like', '%' . $keywords . '%');
+                        ->orWhere('slug', 'like', '%' . $keywords . '%');
                 }
                 if ($location) {
                     $query->orWhereHas('user', function ($query) use ($location) {
                         $query->where('country', 'like', '%' . $location . '%')
-                              ->orWhere('city', 'like', '%' . $location . '%');
+                            ->orWhere('city', 'like', '%' . $location . '%');
                     });
                 }
 
@@ -79,11 +78,11 @@ class HomeController extends Controller
                 if ($job_type && is_array($job_type)) {
                     $query->whereIn('job_type', $job_type);
                 }
-                
+
                 if ($career_level && is_array($career_level)) {
                     $query->whereIn('career_level', $career_level);
                 }
-                
+
                 if ($amount && is_array($amount)) {
                     foreach ($amount as $range) {
                         list($min, $max) = explode('-', $range);
@@ -175,32 +174,30 @@ class HomeController extends Controller
         return view('find-job', compact('jobs', 'fulltime', 'parttime', 'freelance', 'Débutant', 'Intermédiaire', 'Expert', 'oneTwoHund', 'oneHunOneThu', 'OneThuOneTwoThu', 'developmentWebLogical', 'designEtCreation', 'redictionEtTraduction', 'marketingEtVente', 'supportAdminstratif', 'servicesClient', 'formationEtCoacing', 'servicesTecnic', 'photographieEtVidéographie', 'santéEtBienêtre', 'ArtetDivertissement', 'ÉducationetTutorat', 'ConstructionetRénovation', 'LogistiqueetTransport', 'FinanceetComptabilité', 'ConseiletStratégie', 'PlomberieetÉlectricité', 'JardinageetPaysagisme', 'NettoyageetEntretien', 'SécuritéetSurveillance', 'CuisineetRestauration', 'CoiffureetEsthétique', 'MaintenanceetRéparationÉquipements', 'EvénementieletAnimation', 'BricolageetPetitsTravaux', 'BabysittingetGardedEnfants', 'ServicesauxAnimaux', 'EnseignementetFormation', 'DéveloppementPersonnel', 'RédactiondeCVetLettresdeMotivation', 'GraphismeetIllustration', 'DéveloppementMobile', 'EcommerceetDropshipping', 'RéparationdeVéhicules', 'BienêtreetSpa', 'AccompagnementetServicesauxPersonnesÂgées', 'AssistanceJuridique', 'ArchitectureetDesigndIntérieur', 'ServicesFunéraires', 'AgricultureetElevage', 'ProductionetRéalisationAudiovisuelle', 'RestaurationetHôtellerie', 'DécorationetAmeublement', 'RecrutementetChassedeTêtes', 'GestiondePropriétésImmobilières', 'NutritionetDiététique', 'ProgrammationetAutomatisation', 'CommunityManagement', 'ServicedeTraductionetInterprétation', 'IntelligenceArtificielleetMachineLearning', 'ConceptiondeJeuxVidéo', 'GestiondeProjets', 'ServicesPhotographiques', 'RechercheetDéveloppement', 'ServicesdAssurance', 'DesigndeMode', 'InformatiqueetRéseaux', 'GestiondesDéchetsetRecyclage', 'BiensdeConsommationetRetail'));
     }
 
-
-
-    // all candidates list 
+    // all candidates list
     public function allCandidates(Request $request)
     {
         $keywords = $request->keyword;
         $candidatesQuery = User::query()->orderByRaw("CASE WHEN bost_profile = 1 THEN 0 ELSE 1 END")->orderBy('bost_profile', 'asc')->inRandomOrder();
 
         if ($keywords) {
-            $keywords = '%' . strtolower($keywords) . '%'; 
+            $keywords = '%' . strtolower($keywords) . '%';
             $candidatesQuery->whereRaw('LOWER(fullname) like ?', [$keywords])
-                            ->orWhereRaw('LOWER(username) like ?', [$keywords])
-                            ->orWhereRaw('LOWER(job_title) like ?', [$keywords])
-                            ->orWhereRaw('LOWER(job_category) like ?', [$keywords])
-                            ->orWhereRaw('LOWER(tag) like ?', [$keywords]);
+                ->orWhereRaw('LOWER(username) like ?', [$keywords])
+                ->orWhereRaw('LOWER(job_title) like ?', [$keywords])
+                ->orWhereRaw('LOWER(job_category) like ?', [$keywords])
+                ->orWhereRaw('LOWER(tag) like ?', [$keywords]);
         }
         $candidates = $candidatesQuery->paginate(12);
         return view('all-candidates', compact('candidates'));
     }
 
-      // for policy page
+    // for policy page
     public function policy()
     {
-       return view('policy-and-confidentiality');
+        return view('policy-and-confidentiality');
     }
-      // for refund money
+    // for refund money
     public function refundMoney(Request $request)
     {
         $user = Auth::user();
@@ -218,9 +215,9 @@ class HomeController extends Controller
         $refund->status = 0;
         $refund->save();
 
-       toastr()->success('', 'Votre demande de remboursement a été soumise avec succès.!');
-       Session::forget('buyer_info');
-       return redirect()->to('/');
+        toastr()->success('', 'Votre demande de remboursement a été soumise avec succès.!');
+        Session::forget('buyer_info');
+        return redirect()->to('/');
     }
 
 }

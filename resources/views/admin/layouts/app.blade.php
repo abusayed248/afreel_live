@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -9,10 +8,13 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Dashboard - AFREE Admin</title>
+    <!-- Dropify css -->
     <link rel="icon" type="image/x-icon" href="{{ asset('user') }}/img/WhatsApp.png">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="{{ asset('admin') }}/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -27,7 +29,9 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
     <script src="{{ asset('admin') }}/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="{{ asset('admin') }}/assets/demo/chart-area-demo.js"></script>
@@ -36,4 +40,5 @@
     <script src="{{ asset('admin') }}/js/datatables-simple-demo.js"></script>
     @yield('script')
 </body>
+
 </html>
