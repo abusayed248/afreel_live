@@ -55,6 +55,9 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     //change passwords
     Route::get('admin-store', [AdminManageController::class, 'changePassword'])->name('change.password.index');
     Route::post('password-change', [AdminManageController::class, 'passwordChange'])->name('password.change');
+    //change email
+    Route::get('change-email', [AdminManageController::class, 'changeEmail'])->name('change.email.index');
+    Route::post('email-change', [AdminManageController::class, 'emailChange'])->name('email.change');
 
     Route::get('enterprises-post', [EnterpriseController::class, 'postview'])->name('postview');
     Route::post('enterprises-post/store', [EnterpriseController::class, 'store'])->name('enterprises.store');
