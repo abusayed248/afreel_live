@@ -10,7 +10,8 @@
 
                     <h1 class="title pb-2 ">Explorez plus de <spen class="bc">7840+</spen> Jobs</h1>
 
-                    <p class="title_p ptc">Votre avenir commence ici, découvrez des opportunités sans limites avec notre large éventail de catégories</p>
+                    <p class="title_p ptc">Votre avenir commence ici, découvrez des opportunités sans limites avec notre
+                        large éventail de catégories</p>
                 </div>
                 <div class="col-md-6 text-end">
                     <div class="slider-banar">
@@ -24,28 +25,31 @@
         </div>
     </section>
 
-      <section class="bg-white pb-5 pt-3">
+    <section class="bg-white pb-5 pt-3">
         <div class="container">
             <div class="text-center">
                 <p class="ptc">Entreprises populaires</p>
                 <h1>Entreprises</h1>
             </div>
             <div class="row mt-3 flex-wrap">
-
                 <div class="center">
                     @foreach($enterprises as $enterprise)
-                    <div class="col-md-2 p-2">
-                        <div class="recet_job_con p-2">
-                            <div class="d-flex justify-content-center align-items-center flex-column">
-                            <img style="height:80px; width: 80px;" src="{{asset($enterprise->photo)}}"
-                                                alt="">
-                            <h6 class="fw-bold mt-2 mb-2">{{ $enterprise->title }}</h6>
-
+                    <a class="text-black col-md-2 p-2"
+                        href="{{ route('enterprises.post.details', ['id' => $enterprise->id]) }}">
+                        <div class="">
+                            <div class="recet_job_con p-2">
+                                <div class="d-flex justify-content-center align-items-center flex-column">
+                                    <img style="height:80px; width: 80px;" src="{{asset($enterprise->photo)}}" alt="">
+                                    <h6 class="fw-bold mt-2 mb-2 text-dark">{{
+                                        ucwords(Str::limit($enterprise->title, 15, '...')) }}</h6>
+                                </div>
                             </div>
+
                         </div>
-                    </div>
+                    </a>
                     @endforeach
                 </div>
+
             </div>
         </div>
     </section>
@@ -61,7 +65,7 @@
                         <div class="active_job_con">
                             <h4 class="pb-2 fw-bold">{{Lang::get('home.page.emploi.text')}}</h4>
                             <p class="ptc">Des opportunités de carrière en constante évolution prêtes à être saisies
-</p>
+                            </p>
 
                         </div>
                     </div>
@@ -74,7 +78,7 @@
                         <div class="active_job_con">
                             <h4 class="pb-2 fw-bold">{{Lang::get('home.page.Employeurs.text')}}</h4>
                             <p class="ptc"> Collaborez avec des employeurs visionnaires qui transforment <br>l’industrie
-</p>
+                            </p>
 
                         </div>
                     </div>
@@ -113,12 +117,13 @@
                         <div class="recet_job_title_div col-md-7">
                             <h5 class="p-1">{{ ucwords(Str::limit($latestPost->job_title, 35, '...')) }}</h5>
                             <div class="d-flex justify-content-start align-items-center">
-                                 @if( !empty($latestPost->user->country) && !empty($latestPost->user->city))
-                                    <i class="fa-solid fa-location-dot p-1"></i>
-                                    <span>
-                                       {{ ucwords(Str::limit( $latestPost->user->country.','.$latestPost->user->city, 25, '...')) }}
-                                    </span>
-                                  @endif
+                                @if( !empty($latestPost->user->country) && !empty($latestPost->user->city))
+                                <i class="fa-solid fa-location-dot p-1"></i>
+                                <span>
+                                    {{ ucwords(Str::limit( $latestPost->user->country.','.$latestPost->user->city, 25,
+                                    '...')) }}
+                                </span>
+                                @endif
                             </div>
 
                             <div class="d-flex">
@@ -236,4 +241,8 @@
             <a href="{{ route('all.candidates') }}" class="btn btn-success px-5">Voir plus</a>
         </div>
     </section>
+
+    <!-- @foreach ($users as $user)
+    <p>{{$user->email}}</p>
+    @endforeach -->
 </x-guest-layout>

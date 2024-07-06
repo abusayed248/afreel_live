@@ -32,8 +32,9 @@ class HomeController extends Controller
         $appliedJobs = Job_aplication::selectRaw('post_id, COUNT(*) as count')
             ->groupBy('post_id')->get();
         $enterprises = Enterprise::all();
+        $users = User::all();
 
-        return view('homepage', compact('latestPosts', 'hireTopCandidates', 'jobCats', 'appliedJobs', 'enterprises'));
+        return view('homepage', compact('latestPosts', 'hireTopCandidates', 'jobCats', 'appliedJobs', 'enterprises', 'users'));
     }
 
     //candidate profile details

@@ -29,6 +29,8 @@ class EnterpriseController extends Controller
         ]);
         $enterprise = Enterprise::create([
             'title' => $request->title,
+            'details' => $request->details,
+            'email' => $request->email,
 
         ]);
 
@@ -62,5 +64,11 @@ class EnterpriseController extends Controller
         toastr()->success('', 'Post deleted successfully!');
         return redirect()->back();
 
+    }
+
+    public function enterprisesPostDetails($id)
+    {
+        $post = Enterprise::whereId($id)->firstOrFail();
+        return view('user.profile.post-detail', compact('post'));
     }
 }
