@@ -15,7 +15,7 @@
                 </nav>
             </nav>
             {{-- Search input --}}
-            <input type="text" class="messenger-search" placeholder="Search" />
+            <input type="text" class="messenger-search" placeholder="Rechercher" />
             {{-- Tabs --}}
             {{-- <div class="messenger-listView-tabs">
                 <a href="#" class="active-tab" data-view="users">
@@ -36,15 +36,15 @@
                 <p class="messenger-title"><span>Votre espace</span></p>
                 {!! view('Chatify::layouts.listItem', ['get' => 'saved']) !!}
                 {{-- Contact --}}
-                <p class="messenger-title"><span>All Messages</span></p>
+                <p class="messenger-title"><span>Tous les messages</span></p>
                 <div class="listOfContacts" style="width: 100%;height: calc(100% - 272px);position: relative;"></div>
             </div>
             {{-- ---------------- [ Search Tab ] ---------------- --}}
             <div class="messenger-tab search-tab app-scroll" data-view="search">
                 {{-- items --}}
-                <p class="messenger-title"><span>Search</span></p>
+                <p class="messenger-title"><span>Rechercher</span></p>
                 <div class="search-records">
-                    <p class="message-hint center-el"><span>Type to search..</span></p>
+                    <p class="message-hint center-el"><span>Tapez pour rechercher.</span></p>
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@
         {{-- Messaging area --}}
         <div class="m-body messages-container app-scroll">
             <div class="messages">
-                <p class="message-hint center-el"><span>Please select a chat to start messaging</span></p>
+                <p class="message-hint center-el"><span>Sélectionnez une discussion</span></p>
             </div>
             {{-- Typing indicator --}}
             <div class="typing-indicator">
@@ -104,7 +104,7 @@
     <div class="messenger-infoView app-scroll">
         {{-- nav actions --}}
         <nav>
-            <p>User Details</p>
+            <p>Détails de l'utilisateur</p>
             <a href="#"><i class="fas fa-times"></i></a>
         </nav>
         {!! view('Chatify::layouts.info')->render() !!}
