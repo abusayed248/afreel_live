@@ -113,3 +113,18 @@ function viIcon() {
     document.querySelector('.fa-circle-plus').style.opacity = '';
 }
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    let text = document.querySelector('.page-link').textContent;
+    if (text == "pagination.previous") {
+        text.textContent = 'Page précédente';
+    } else {
+        text.textContent = 'Page suivante';
+    }
+
+});
+
+
+

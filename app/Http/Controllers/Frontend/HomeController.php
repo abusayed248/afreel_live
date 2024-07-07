@@ -189,7 +189,7 @@ class HomeController extends Controller
                 ->orWhereRaw('LOWER(job_category) like ?', [$keywords])
                 ->orWhereRaw('LOWER(tag) like ?', [$keywords]);
         }
-        $candidates = $candidatesQuery->paginate(12);
+        $candidates = $candidatesQuery->paginate(1);
         return view('all-candidates', compact('candidates'));
     }
 
