@@ -938,6 +938,11 @@ input:focus {
     background-image: url(../abstract-textured-backgound.jpg);
 }
 
+.pagination {
+    justify-content: space-between;
+    width: 100%;
+}
+
 @media only screen and (max-width: 600px) {
 
     .sign_btn {
