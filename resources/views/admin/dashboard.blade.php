@@ -34,7 +34,11 @@
                                                     {{ $user->username }}
                                                 </td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>{{ $user->user_type  }}({{ $user->client_type   }})</td>
+                                                <td>
+                                                {{ $user->user_type  }}
+                                                 @if ($user->client_type)
+                                                ({{ $user->client_type   }})
+                                                @endif </td>
                                                 <td colspan="2">
                                                     <a href="{{ route('admin.user.delete', $user->id) }}" class="btn btn-danger">Delete </a>
                                                     {{-- <a href="#" class="btn btn-warning">Deactive </a> --}}
