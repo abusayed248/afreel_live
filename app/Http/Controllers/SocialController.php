@@ -60,8 +60,6 @@ class SocialController extends Controller
     }
     public function userTypeAdd(Request $request)
     {
-        // dd($userSocial->user_type);
-
         $getProvider_id = session()->get('provider_id');
 
         $user = User::where('provider_id', $getProvider_id)->first();
