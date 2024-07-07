@@ -32,13 +32,13 @@ const setMessengerId = (id) => $("meta[name=id]").attr("content", id);
  */
 Pusher.logToConsole = chatify.pusher.debug;
 const pusher = new Pusher(chatify.pusher.key, {
-    encrypted: chatify.pusher.options.encrypted,
-    cluster: chatify.pusher.options.cluster,
-    wsHost: chatify.pusher.options.host,
-    wsPort: chatify.pusher.options.port,
-    wssPort: chatify.pusher.options.port,
-    forceTLS: chatify.pusher.options.useTLS,
-    authEndpoint: chatify.pusherAuthEndpoint,
+  encrypted: chatify.pusher.options.encrypted,
+  cluster: chatify.pusher.options.cluster,
+  wsHost: chatify.pusher.options.host,
+  wsPort: chatify.pusher.options.port,
+  wssPort: chatify.pusher.options.port,
+  forceTLS: chatify.pusher.options.useTLS,
+  authEndpoint: chatify.pusherAuthEndpoint,
   auth: {
     headers: {
       "X-CSRF-TOKEN": csrfToken,
@@ -162,6 +162,7 @@ function sendTempMessageCard(message, id) {
      <div class="message-card-content">
          <div class="message">
              ${message}
+           
              <sub>
                  <span class="far fa-clock"></span>
              </sub>
@@ -405,7 +406,7 @@ function IDinfo(id) {
             "background-image",
             'url("' + data.fetch.photo + '")'
           );
-        } else{
+        } else {
           $(".messenger-infoView")
             .find(".avatar")
             .css("background-image", 'url("' + 'https://afreel.com/' + data.fetch.photo + '")');
@@ -414,7 +415,7 @@ function IDinfo(id) {
             'url("' + 'https://afreel.com/' + data.fetch.photo + '")'
           );
         }
-        
+
         // Show shared and actions
         $(".messenger-infoView-btns .delete-conversation").show();
         $(".messenger-infoView-shared").show();
@@ -1721,3 +1722,4 @@ function updateElementsDateToTimeAgo() {
 setInterval(() => {
   updateElementsDateToTimeAgo();
 }, 60000);
+

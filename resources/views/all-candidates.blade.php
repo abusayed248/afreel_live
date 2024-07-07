@@ -44,8 +44,9 @@
                                                     <span>{{ $candidate->job_title }}</span>
                                                 </div>
                                                 <div class="d-flex justify-content-center align-items-center">
+                                                      <i class="fa-solid fa-location-dot p-1"></i>
+
                                                   @if( !empty($candidate->country) && !empty($candidate->city))
-                                    <i class="fa-solid fa-location-dot p-1"></i>
                                     <span>
                                        {{ ucwords(Str::limit( $candidate->country.','.$candidate->city, 20, '...')) }}
                                     </span>
