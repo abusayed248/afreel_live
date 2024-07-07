@@ -1,5 +1,5 @@
 <x-admin-app-layout>
-       
+
         <div id="layoutSidenav">
            @include('admin.component.sidebar')
             <div id="layoutSidenav_content">
@@ -22,7 +22,7 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tbody>
                                         @php
                                             $users = \App\Models\User::latest()->get();
@@ -34,7 +34,7 @@
                                                     {{ $user->username }}
                                                 </td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>{{ $user->user_type=='Ouvrière'?'Ouvrière':'' }}{{ $user->user_type=='Clientes'?"Clientes ($user->client_type)":'' }}</td>
+                                                <td>{{ $user->user_type  }}({{ $user->client_type   }})</td>
                                                 <td colspan="2">
                                                     <a href="{{ route('admin.user.delete', $user->id) }}" class="btn btn-danger">Delete </a>
                                                     {{-- <a href="#" class="btn btn-warning">Deactive </a> --}}
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </main>
-               
+
             </div>
         </div>
 </x-admin-app-layout>
