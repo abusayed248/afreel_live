@@ -6,7 +6,7 @@ return [
     | Messenger display name
     |-------------------------------------
     */
-    'name' => env('CHATIFY_NAME', 'Afree Messenger'),
+    'name' => env('CHATIFY_NAME', 'Afreel'),
 
     /*
     |-------------------------------------

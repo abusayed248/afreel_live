@@ -39,16 +39,16 @@
                   <div class="app-modal-body">
                       {{-- Udate profile avatar --}}
                       <div class="avatar av-l upload-avatar-preview chatify-d-flex"
-                      style="background-image: url('{{ Chatify::getUserWithAvatar(Auth::user())->avatar }}');"
+                      style="background-image: url('{{ asset('/user/AFRREL.png') }}');"
                       ></div>
                       <p class="upload-avatar-details"></p>
                       <label class="app-btn a-btn-primary update" style="background-color:{{$messengerColor}}">
-                          Upload New
+                        Changer votre photo
                           <input class="upload-avatar chatify-d-none" accept="image/*" name="avatar" type="file" />
                       </label>
                       {{-- Dark/Light Mode  --}}
                       <p class="divider"></p>
-                      <p class="app-modal-header">Dark Mode <span class="
+                      <p class="app-modal-header">Mode nuit <span class="
                         {{ Auth::user()->dark_mode > 0 ? 'fas' : 'far' }} fa-moon dark-mode-switch"
                          data-mode="{{ Auth::user()->dark_mode > 0 ? 1 : 0 }}"></span></p>
                       {{-- change messenger color  --}}
@@ -64,8 +64,8 @@
                       </div>
                   </div>
                   <div class="app-modal-footer">
-                      <a href="javascript:void(0)" class="app-btn cancel">Cancel</a>
-                      <input type="submit" class="app-btn a-btn-success update" value="Save Changes" />
+                      <a href="javascript:void(0)" class="app-btn cancel">Annuler</a>
+                      <input type="submit" class="app-btn a-btn-success update" value="Enregistrer changements" />
                   </div>
               </form>
           </div>
