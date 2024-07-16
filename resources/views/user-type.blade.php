@@ -63,8 +63,8 @@
                 <div>
                     <select class="form-select w-100 p-2 user_type" name="user_type" required>
                         <option  disabled selected>Sélectionnez-en un</option>
-                        <option {{ old('user_type')=='Travailleurs' ?'selected':'' }}
-                            value="Travailleurs">Travailleurs
+                        <option {{ old('user_type')=='Prestataires' ?'selected':'' }}
+                            value="Prestataires">Prestataires
                         </option>
                         <option {{ old('user_type')=='Clients' ?'selected':'' }}
                             value="Clients">Clients

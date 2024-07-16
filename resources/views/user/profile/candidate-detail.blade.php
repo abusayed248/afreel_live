@@ -46,16 +46,16 @@
                                             <i class="fa-solid fa-location-dot"></i>
                                             <samp class="bc">{{ $user->country.",".$user->city }}</samp>
                                         </div>
-                                         @if (!empty($user->user_type))
-                                            @if ($user->user_type == "Travailleurs")
-                                                        <div class="mt-2 mb-2 px-2">
-                                                        <i class="fa-solid fa-business-time"></i>
-                                                        <span class="bc">
-                                                            {{ $user->job_title}}
-                                                        </span>
-                                                    </div>
-                                            @endif
-                                 @endif
+                                        @if (!empty($user->user_type))
+                                        @if ($user->user_type == "Travailleurs")
+                                        <div class="mt-2 mb-2 px-2">
+                                            <i class="fa-solid fa-business-time"></i>
+                                            <span class="bc">
+                                                {{ $user->job_title}}
+                                            </span>
+                                        </div>
+                                        @endif
+                                        @endif
 
                                     </div>
 
@@ -68,9 +68,9 @@
 
 
                         <div class="col-md-3 d-flex justify-content-end align-items-center">
-  @if (!empty($user->user_type))
-                                @if ($user->user_type == "Travailleurs")
-                                <a class="applied_job2 w-100 h-100" href="{{ route('user.sub') }}">
+                            @if (!empty($user->user_type))
+                            @if ($user->user_type == "Travailleurs")
+                            <a class="applied_job2 w-100 h-100" href="{{ route('user.sub') }}">
                                 <div class=" pt-3 pb-3">
 
 
@@ -107,8 +107,8 @@
 
                                 </div>
                             </a>
-                                 @endif
-                                 @endif
+                            @endif
+                            @endif
                         </div>
                         @endif
 
@@ -145,9 +145,9 @@
                             </div>
 
                         </div>
-                               @if (!empty($user->user_type))
-                                @if ($user->user_type == "Travailleurs")
-                                <div class="mt-5">
+                        @if (!empty($user->user_type))
+                        @if ($user->user_type == "Travailleurs")
+                        <div class="mt-5">
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-3 fw-bold">Qualification</h6>
                                 @if(Request::url() === route('candidate.detail'))
@@ -267,6 +267,31 @@
                             </div>
                             <div class="mt-5">
                                 <div class="d-flex justify-content-between">
+                                    <h6 class="mb-3 fw-bold">Ajouter Cv</h6>
+                                    @if(Request::url() === route('candidate.detail'))
+                                    <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop44"></i>
+
+                                    @else
+
+                                    @endif
+
+                                </div>
+                                <div class="exslio-list mt-3">
+
+                                    <ul>
+                                        <li>
+
+                                            <a style="background-color: #f8f9fa;"
+                                                href="{{ route('download.cv', ['id' => $user->id]) }}"
+                                                class="btn w-100 text-center ">Télécharger mon CV</a>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <div class="d-flex justify-content-between">
                                     <h6 class="mb-3 fw-bold">Portofolio</h6>
                                     @if(Request::url() === route('candidate.detail'))
                                     <i class="fa-solid fa-circle-plus in_fo_add" data-bs-toggle="modal"
@@ -295,8 +320,8 @@
                                 </div>
                             </div>
                         </div>
-                                @endif
-                                @endif
+                        @endif
+                        @endif
 
 
                     </div>
@@ -319,9 +344,9 @@
                 <form method="post" action="{{ route('user.update.info') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                         @if (!empty($user->user_type))
-                                @if ($user->user_type == "Travailleurs")
-   <div class="mb-3 row">
+                        @if (!empty($user->user_type))
+                        @if ($user->user_type == "Travailleurs")
+                        <div class="mb-3 row">
                             <div>
                                 <label class="col-form-label">Catégorie d'emploi</label>
                             </div>
@@ -533,8 +558,8 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                                @endif
-                         @endif
+                        @endif
+                        @endif
 
 
                         <div class="mb-3 row">
@@ -717,6 +742,39 @@
                             <input type="text" id="tag"
                                 value="@isset($user->tag) @foreach($user->tag as $key => $tag) {{ $tag }} @endforeach @endisset"
                                 name="tag" class="form-control" data-role="tagsinput">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <div class="accoun_btn_div">
+                            <input class="w-100 btn btn-success" type="submit" value="Ajouter">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--cv Modal -->
+    <div class="modal fade" id="staticBackdrop44" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Télécharger votre CV</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form method="post" action="{{ route('user.update.info') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <label class="col-form-label">CV(docx,pdf,zip)</label>
+                            {{-- {{ dd($user->tag) }} --}}
+
+                            <input type="file" class="form-control w-100" name="cv_file">
+                            @error('file')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-footer">

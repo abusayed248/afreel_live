@@ -17,6 +17,7 @@ class AdressController extends Controller
             'inter_passing_year' => 'nullable|numeric',
             'graduation_passing_year' => 'nullable|numeric',
             'photo' => 'nullable|image',
+            'file' => 'nullable|max:10240|mimes:docx,pdf,zip', //a required, max 10000kb, doc or docx file
         ]);
 
         $userinfo = User::where('id', Auth::user()->id)->first();
@@ -95,7 +96,16 @@ class AdressController extends Controller
 
         if ($photo) {
             if ($request->old_photo) {
-                unlink(public_path($request->old_photo));
+
+                $firstFourLetters = substr($request->old_photo, 0, 4);
+
+                if ($firstFourLetters === 'http') {
+
+                } else {
+                    unlink(public_path($request->old_photo));
+
+                }
+
             }
             $extension = $photo->getClientOriginalExtension();
             $fileNameToStore = $slug . '_' . time() . '.' . $extension; // Filename to store
@@ -144,8 +154,27 @@ class AdressController extends Controller
             }
         }
 
+        $document = $request->file('cv_file');
+        $slug = Str::slug(\Auth::id(), '-');
+
+        if ($document) {
+            $extension = $document->getClientOriginalExtension();
+            $fileNameToStore = $slug . '.' . $extension; // Filename to store
+            $destinationPath = 'files/cv';
+            $document->move(public_path($destinationPath), $fileNameToStore);
+            $userinfo->cv_file = 'files/cv/' . $fileNameToStore;
+            $userinfo->save();
+        }
+
         $userinfo->save();
 
         return redirect()->back();
+    }
+
+    public function downloadDeliveryAttachment($id)
+    {
+        $file = User::whereId($id)->first();
+        return response()->download(public_path($file->cv_file));
+        toastr()->success('', 'Pièce jointe téléchargée avec succès!');
     }
 }

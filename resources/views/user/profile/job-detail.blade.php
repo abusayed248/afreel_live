@@ -126,8 +126,6 @@
     </div>
 
 
-    @push('script')
-    <script src="{{ asset('user/js/share.js') }}"></script>
-    @endpush
+
 
 </x-app-layout>
