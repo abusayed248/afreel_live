@@ -28,7 +28,7 @@
                             <i class="fa-brands fa-x-twitter"></i>
                         </a></div>
                     <div class="media_icon tag_btn d-flex justify-content-center align-items-center">
-                        <a href="//api.whatsapp.com/send?phone=+225{{$webSocialLinks->phone}}&text=WHATEVER_LINK_OR_TEXT_YOU_WANT_TO_SEND">
+                        <a href="https://wa.me/{{ $webSocialLinks->phone }}?text=urlencodedtext">
                             <i class="fa-brands fa-whatsapp"></i>
                         </a>
                     </div>
@@ -41,7 +41,7 @@
             <div class="col-md-4 text-center">
                 <h5 class="text-bold fo_title">À propos de la société</h5>
                 <p class="text-light py-3 ab_com">XCompany Côte d’Ivoire, entreprise de création de solutions web et de
-                    mise en place de systèmes démotiques et électroniques de maisons connectés et d’installations de
+                    mise en place de systèmes Demotique et électroniques de maisons connectés et d’installations de
                     dispositifs électroniques</p>
             </div>
             <div class="col-md-4 text-center">

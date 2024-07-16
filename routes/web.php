@@ -81,6 +81,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //download delivery attachment
     Route::get('/download-delivery-attachment/{id}', [DeliveryController::class, 'downloadDeliveryAttachment'])->name('download.delivery.order.attachment');
+    //download CV
+
+    Route::get('/download-cv/{id}', [AdressController::class, 'downloadDeliveryAttachment'])->name('download.cv');
 
     //user dashboard
     Route::get('/user/deshboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
