@@ -174,7 +174,17 @@ class AdressController extends Controller
     public function downloadDeliveryAttachment($id)
     {
         $file = User::whereId($id)->first();
-        return response()->download(public_path($file->cv_file));
-        toastr()->success('', 'Pièce jointe téléchargée avec succès!');
+        // dd($file->cv_file);
+
+        if (empty($file->cv_file)) {
+            toastr()->error('', 'CV introuvable!');
+            return redirect()->route('candidate.detail');
+
+        } else {
+            return response()->download(public_path($file->cv_file));
+            toastr()->success('', 'Pièce jointe téléchargée avec succès!');
+
+        }
+
     }
 }

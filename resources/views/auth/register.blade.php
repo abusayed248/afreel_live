@@ -73,39 +73,7 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
 
-                            <div class="mb-3 row">
-                                <x-input-label for="password" class="col-form-label"
-                                    value="{{ Lang::get('register.page.password.text') }}" />
 
-                                <div class="pass_div">
-                                    <x-text-input id="password" class="form-control pass_input w-100" type="password"
-                                        placeholder="{{ Lang::get('register.page.password.placeholder.text') }}"
-                                        name="password" />
-                                    <i onclick="myFunctioncheckshow()" id="password_co"
-                                        class="fa-regular fa-eye pas-eye"></i>
-                                </div>
-                            </div>
-
-                            @error('password')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-
-                            <div class="mb-3 row">
-                                <x-input-label for="password_confirmation" class="col-form-label"
-                                    value="{{ Lang::get('register.page.confirm.password.text') }}" />
-
-                                <div class="pass_div">
-                                    <x-text-input id="password_confirmation" class="form-control w-100" type="password"
-                                        placeholder="{{ Lang::get('register.page.confirm.password.placeholder.text') }}"
-                                        name="password_confirmation" required />
-                                    <i onclick="myFunctioncheck()" id="password_con"
-                                        class="fa-regular fa-eye pas-eye"></i>
-                                </div>
-                            </div>
-
-                            @error('password_confirmation')
-                            <span class=" text-danger">{{ $message }}</span>
-                            @enderror
 
                             <div class="mb-3 row">
                                  <div class="col-md-12">
@@ -179,7 +147,43 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
 
+
+
+                                     <div class="mb-3 row">
+                                <x-input-label for="password" class="col-form-label"
+                                    value="{{ Lang::get('register.page.password.text') }}" />
+
+                                <div class="pass_div">
+                                    <x-text-input id="password" class="form-control pass_input w-100" type="password"
+                                        placeholder="{{ Lang::get('register.page.password.placeholder.text') }}"
+                                        name="password" />
+                                    <i onclick="myFunctioncheckshow()" id="password_co"
+                                        class="fa-regular fa-eye pas-eye"></i>
+                                </div>
+                            </div>
+
+                            @error('password')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
                             <div class="mb-3 row">
+                                <x-input-label for="password_confirmation" class="col-form-label"
+                                    value="{{ Lang::get('register.page.confirm.password.text') }}" />
+
+                                <div class="pass_div">
+                                    <x-text-input id="password_confirmation" class="form-control w-100" type="password"
+                                        placeholder="{{ Lang::get('register.page.confirm.password.placeholder.text') }}"
+                                        name="password_confirmation" required />
+                                    <i onclick="myFunctioncheck()" id="password_con"
+                                        class="fa-regular fa-eye pas-eye"></i>
+                                </div>
+                            </div>
+
+                            @error('password_confirmation')
+                            <span class=" text-danger">{{ $message }}</span>
+                            @enderror
+
+                                <div class="mb-3 row">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <input class="w-100 btn btn-success" type="submit" value="Créer un compte">
                                 </div>
@@ -216,7 +220,9 @@
                         <option value="Entreprises">Entreprises</option>
                         <option value="Particulier">Particulier</option>
                     </select>`;
-                }else{
+                }
+
+                    if (val == 'Prestataires'){
                      html = `
                    <div class="col-md-12">
                                     <div>

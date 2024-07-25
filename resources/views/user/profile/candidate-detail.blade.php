@@ -146,7 +146,7 @@
 
                         </div>
                         @if (!empty($user->user_type))
-                        @if ($user->user_type == "Travailleurs")
+                        @if ($user->user_type == "Prestataires")
                         <div class="mt-5">
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-3 fw-bold">Qualification</h6>
