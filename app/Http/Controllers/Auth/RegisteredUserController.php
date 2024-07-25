@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use App\Mail\WelcomeMail;
-use Illuminate\View\View;
-use App\Models\Verifytoken;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Mail\WelcomeMail;
+use App\Models\User;
+use App\Models\Verifytoken;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Auth\Events\Registered;
-use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
@@ -38,8 +34,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'fullname' => 'required|string|max:55',
             'username' => 'required|string|alpha_dash|min:4|max:15|unique:users',
-            'email' => 'required|string|lowercase|email|max:255|unique:'. User::class,
-            'job_title' => 'required',
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'country' => 'required|string',
             'city' => 'required',
             'phone' => 'required|numeric|digits:10',
@@ -77,8 +72,8 @@ class RegisteredUserController extends Controller
         $user->save();
 
         Verifytoken::create([
-            'token'=> $validToken,
-            'email'=> $request->email,
+            'token' => $validToken,
+            'email' => $request->email,
         ]);
 
         $get_user_email = $request->email;

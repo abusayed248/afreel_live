@@ -20,7 +20,7 @@
                          @endphp
 
                         @if (!empty($user->user_type))
-                                @if ($user->user_type == "Travailleurs")
+                                @if ($user->user_type == "Prestataires")
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ route('find.job') }}">
                                     {{ Lang::get('homepage.nav.findJob') }}

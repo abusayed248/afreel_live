@@ -58,7 +58,7 @@
                             <h6 class="mt-3 fw-bold">Exigence</h6>
                             <div class="d-flex mt-2">
                                 <div class="col-md-4 px-3 ">Montant requis</div>
-                                <div class="col-md-8 px-3">${{ $applicationDetails->seller_amount }} </div>
+                                <div class="col-md-8 px-3"><i class="fa-solid fa-franc-sign mx-2"></i>{{ $applicationDetails->seller_amount }} </div>
                             </div>
                             <div class="d-flex mt-2">
                                 <div class="col-md-4 px-3 ">Temps requis</div>

@@ -41,7 +41,7 @@
             <div class="col-md-4 text-center">
                 <h5 class="text-bold fo_title">À propos de la société</h5>
                 <p class="text-light py-3 ab_com">XCompany Côte d’Ivoire, entreprise de création de solutions web et de
-                    mise en place de systèmes Demotique et électroniques de maisons connectés et d’installations de
+                    mise en place de systèmes Domotique et électroniques de maisons connectés et d’installations de
                     dispositifs électroniques</p>
             </div>
             <div class="col-md-4 text-center">
